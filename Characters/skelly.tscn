@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://2qe6qneqp2iq"]
+
+[ext_resource type="Script" uid="uid://bgua6ninpsiqn" path="res://Characters/skelly.gd" id="1_17e70"]
+[ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="1_uc80s"]
+[ext_resource type="Script" uid="uid://jl12bc1d6d6d" path="res://Components/health_component.gd" id="3_uxuou"]
+[ext_resource type="Texture2D" uid="uid://d2d0vqc8fes6c" path="res://Assets/Images/health_bar_2.png" id="4_6vldy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17e70"]
+radius = 6.0
+height = 16.0
+
+[node name="Skelly" type="Area2D"]
+script = ExtResource("1_17e70")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_uc80s")
+hframes = 49
+vframes = 22
+frame = 323
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("CapsuleShape2D_17e70")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_uxuou")
+health = 2
+max_health = 2
+metadata/_custom_type_script = "uid://jl12bc1d6d6d"
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+position = Vector2(15, 2)
+texture = ExtResource("4_6vldy")
+offset = Vector2(1, 5.5)
+hframes = 2
+frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="on_damaged" from="HealthComponent" to="." method="_on_health_component_on_damaged"]

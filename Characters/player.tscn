@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8bjrq16v05pq"]
+
+[ext_resource type="Script" uid="uid://ck84022nl37fw" path="res://Characters/player.gd" id="1_eovys"]
+[ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="2_vb825"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_eovys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_vb825")
+hframes = 49
+vframes = 22
+frame = 73
+
+[node name="FireboltSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(14, 8)

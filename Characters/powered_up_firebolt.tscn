@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgo35ppjx7gb3"]
+
+[ext_resource type="Texture2D" uid="uid://d267bnbh3bqp7" path="res://Assets/Images/firebolt_poweredup.png" id="1_14uqb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acb8i"]
+radius = 8.0
+
+[node name="PoweredUpFirebolt" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_14uqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_acb8i")
