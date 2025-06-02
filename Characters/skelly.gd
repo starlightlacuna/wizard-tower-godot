@@ -9,4 +9,4 @@ func _ready() -> void:
 	var tween_duration = abs((end_position.x - _start_position.x) / speed)
 	var tween: Tween = self.create_tween()
 	tween.tween_property(self, "position", Vector2(end_position), tween_duration)
-	tween.tween_callback(queue_free)
+	tween.tween_callback(damage_tower)

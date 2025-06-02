@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 	_health_component.set_max_health(max_health)
 	_update_health_bar(_health_component.health)
-	_set_start_position()
+	_start_position = Grid.grid_to_world(Vector2i(15, 2 + lane))
 
 func _on_health_component_damaged(health: int) -> void:
 	_update_health_bar(health)
@@ -34,5 +34,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _update_health_bar(value: int) -> void:
 	_health_bar.set_frame(max(value - 1, 0))
 
-func _set_start_position() -> void:
-	_start_position = Grid.grid_to_world(Vector2i(15, 2 + lane))
+func damage_tower() -> void:
+	Event.tower_damaged.emit(_health_component.get_health())
+	queue_free()

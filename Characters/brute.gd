@@ -17,6 +17,5 @@ func _create_tween_chain(starting_lane: int) -> void:
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.set_trans(Tween.TRANS_QUAD)
 		
-	tween.tween_callback(queue_free)
+	tween.tween_callback(damage_tower)
 	
-	# TODO: deal damage to tower

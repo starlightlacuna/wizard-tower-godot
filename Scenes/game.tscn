@@ -44,7 +44,6 @@ lane = 1
 [node name="Brute2" parent="." instance=ExtResource("10_ldgsr")]
 position = Vector2(55, 36)
 lane = 2
-max_health = 6
 
 [node name="Skelly" parent="." instance=ExtResource("8_v158k")]
 position = Vector2(97, 90)

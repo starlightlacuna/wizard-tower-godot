@@ -25,7 +25,7 @@ func _create_tween_chain(starting_lane: int) -> void:
 	tween.tween_property(self, "position", waypoints[1], tween_duration)
 	tween.tween_interval(tween_delay)
 	tween.tween_property(self, "position", end_position, tween_duration)
-	tween.tween_callback(queue_free)
+	tween.tween_callback(damage_tower)
 
 func _set_start_and_end_positions(starting_lane: int) -> void:
 	_start_position = Grid.grid_to_world(Vector2i(15, 2 + starting_lane))
