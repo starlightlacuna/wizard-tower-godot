@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b8bjrq16v05pq" path="res://Characters/player.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dpsv6nrk5dkh" path="res://Scenes/ui.tscn" id="2_v158k"]
 [ext_resource type="PackedScene" uid="uid://c6lqeovf4si6s" path="res://Characters/firebolt.tscn" id="3_3dryh"]
-[ext_resource type="PackedScene" uid="uid://2qe6qneqp2iq" path="res://Characters/skelly.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://bgg7s5y41pgi8" path="res://Characters/ghost.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://dgqj7t05kdacs" path="res://Characters/brute.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://deqvmeynk6rse" path="res://Characters/ghost.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://csfw10w08i0co" path="res://Characters/skelly.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://ckirv4ehdtd1v" path="res://Characters/brute.tscn" id="10_ldgsr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wrm1d")
@@ -37,21 +37,27 @@ color = Color(0.831001, 0.280342, 0.675983, 1)
 position = Vector2(120, 80)
 zoom = Vector2(4, 4)
 
-[node name="Skelly" parent="." instance=ExtResource("5_wowpa")]
-position = Vector2(180, 72)
-
-[node name="Ghost" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(86, 34)
-lane = 5
-
-[node name="Ghost2" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(117, 49)
-lane = 4
-
-[node name="Ghost3" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(123, 68)
-lane = 3
-
-[node name="Brute" parent="." instance=ExtResource("7_1l0tm")]
+[node name="Brute" parent="." instance=ExtResource("10_ldgsr")]
 position = Vector2(69, 57)
 lane = 1
+
+[node name="Brute2" parent="." instance=ExtResource("10_ldgsr")]
+position = Vector2(55, 36)
+lane = 2
+max_health = 6
+
+[node name="Skelly" parent="." instance=ExtResource("8_v158k")]
+position = Vector2(97, 90)
+
+[node name="Ghost" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(158, 79)
+lane = 2
+
+[node name="Ghost2" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(133, 59)
+
+[node name="Ghost3" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(182, 60)
+lane = 4
+
+[editable path="Brute2"]

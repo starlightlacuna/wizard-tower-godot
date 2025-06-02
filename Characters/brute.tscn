@@ -1,39 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgqj7t05kdacs"]
+[gd_scene load_steps=6 format=3 uid="uid://ckirv4ehdtd1v"]
 
 [ext_resource type="Script" uid="uid://cthvu7s2kl548" path="res://Characters/brute.gd" id="1_37ti2"]
 [ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="1_att5q"]
-[ext_resource type="Script" uid="uid://jl12bc1d6d6d" path="res://Components/health_component.gd" id="1_j352e"]
+[ext_resource type="PackedScene" uid="uid://da88fobvjp2mq" path="res://Characters/enemy.tscn" id="1_j352e"]
 [ext_resource type="Texture2D" uid="uid://bomeynhrg3stk" path="res://Assets/Images/health_bar_6.png" id="3_37ti2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xp228"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_att5q"]
 radius = 7.0
 height = 16.0
 
-[node name="Brute" type="Area2D"]
+[node name="Brute" instance=ExtResource("1_j352e")]
 script = ExtResource("1_37ti2")
+tween_delay = 0.5
+max_health = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 position = Vector2(8, 8)
 texture = ExtResource("1_att5q")
 hframes = 49
 vframes = 22
 frame = 324
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(8, 8)
-shape = SubResource("CapsuleShape2D_xp228")
+shape = SubResource("CapsuleShape2D_att5q")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("1_j352e")
-max_health = 6
-metadata/_custom_type_script = "uid://jl12bc1d6d6d"
-
-[node name="HealthBar" type="Sprite2D" parent="."]
+[node name="HealthBar" parent="." index="3"]
 position = Vector2(16, 2)
 texture = ExtResource("3_37ti2")
 offset = Vector2(1.5, 5.5)
 hframes = 6
 frame = 5
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="on_damaged" from="HealthComponent" to="." method="_on_health_component_on_damaged"]
