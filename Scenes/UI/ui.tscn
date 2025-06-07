@@ -1,0 +1,197 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpsv6nrk5dkh"]
+
+[ext_resource type="Script" uid="uid://bp61okyjoqclt" path="res://Scenes/UI/ui.gd" id="1_jxero"]
+[ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Scenes/UI/Assets/modal_frame.png" id="3_c7mb3"]
+[ext_resource type="PackedScene" uid="uid://ddrmc5mfsyvjo" path="res://Scenes/UI/tower_health_icon.tscn" id="4_2246s"]
+[ext_resource type="Texture2D" uid="uid://deew1ag02ts5e" path="res://Scenes/UI/Assets/gameover.png" id="5_1c2ca"]
+[ext_resource type="Texture2D" uid="uid://byrsbac1gqsrf" path="res://Scenes/UI/Assets/yes.png" id="5_duuxe"]
+[ext_resource type="Texture2D" uid="uid://d0yg3py57y4m6" path="res://Scenes/UI/Assets/no.png" id="6_jfwrg"]
+[ext_resource type="Texture2D" uid="uid://ciy0nx68g3chx" path="res://Scenes/UI/Assets/win.png" id="7_duuxe"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jxero")
+tower_health_icon_scene = ExtResource("4_2246s")
+
+[node name="TowerHealthBar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 260.0
+offset_bottom = 16.0
+
+[node name="TowerHealthIcon" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+
+[node name="TowerHealthIcon2" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 48.0
+
+[node name="TowerHealthIcon3" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 88.0
+
+[node name="TowerHealthIcon4" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 128.0
+
+[node name="TowerHealthIcon5" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 168.0
+
+[node name="TowerHealthIcon6" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 208.0
+
+[node name="TowerHealthIcon7" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 248.0
+
+[node name="TowerHealthIcon8" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 288.0
+
+[node name="TowerHealthIcon9" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 320.0
+offset_right = 328.0
+
+[node name="TowerHealthIcon10" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
+layout_mode = 0
+offset_left = 360.0
+offset_right = 368.0
+
+[node name="LoseWindow" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LoseWindow"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -50.0
+offset_right = 90.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(90, 50)
+texture = ExtResource("3_c7mb3")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseWindow/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LoseWindow/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_1c2ca")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoseWindow/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="YesButton" type="TextureButton" parent="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_duuxe")
+
+[node name="NoButton" type="TextureButton" parent="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_jfwrg")
+
+[node name="WinWindow" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="WinWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(100, 50)
+texture = ExtResource("3_c7mb3")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinWindow/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="WinWindow/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_duuxe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinWindow/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="YesButton" type="TextureButton" parent="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_duuxe")
+
+[node name="NoButton" type="TextureButton" parent="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_jfwrg")
+
+[connection signal="pressed" from="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_lose_yes_button_pressed"]
+[connection signal="pressed" from="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_lose_no_button_pressed"]
+[connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_win_yes_button_pressed"]
+[connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_win_no_button_pressed"]

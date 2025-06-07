@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://deqvmeynk6rse"]
 
-[ext_resource type="PackedScene" uid="uid://da88fobvjp2mq" path="res://Characters/enemy.tscn" id="1_h312f"]
-[ext_resource type="Script" uid="uid://bige14du6k5lu" path="res://Characters/ghost.gd" id="1_nunuq"]
+[ext_resource type="PackedScene" uid="uid://da88fobvjp2mq" path="res://Characters/Enemies/enemy.tscn" id="1_h312f"]
+[ext_resource type="Script" uid="uid://bige14du6k5lu" path="res://Characters/Enemies/ghost.gd" id="1_nunuq"]
 [ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="2_axuxc"]
-[ext_resource type="Texture2D" uid="uid://brvsn4uqhwoj6" path="res://Assets/Images/health_bar_3.png" id="3_axuxc"]
+[ext_resource type="Texture2D" uid="uid://brvsn4uqhwoj6" path="res://Components/Assets/health_bar_3.png" id="3_axuxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nunuq"]
 radius = 6.0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckirv4ehdtd1v"]
 
-[ext_resource type="Script" uid="uid://cthvu7s2kl548" path="res://Characters/brute.gd" id="1_37ti2"]
+[ext_resource type="Script" uid="uid://cthvu7s2kl548" path="res://Characters/Enemies/brute.gd" id="1_37ti2"]
 [ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="1_att5q"]
-[ext_resource type="PackedScene" uid="uid://da88fobvjp2mq" path="res://Characters/enemy.tscn" id="1_j352e"]
-[ext_resource type="Texture2D" uid="uid://bomeynhrg3stk" path="res://Assets/Images/health_bar_6.png" id="3_37ti2"]
+[ext_resource type="PackedScene" uid="uid://da88fobvjp2mq" path="res://Characters/Enemies/enemy.tscn" id="1_j352e"]
+[ext_resource type="Texture2D" uid="uid://bomeynhrg3stk" path="res://Components/Assets/health_bar_6.png" id="3_37ti2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_att5q"]
 radius = 7.0
