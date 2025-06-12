@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://brhllmdgpj07q"]
+[gd_scene load_steps=8 format=4 uid="uid://brhllmdgpj07q"]
 
 [ext_resource type="TileSet" uid="uid://tibl5rc5piad" path="res://Scenes/level_tile_set.tres" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://s5g5xuyidp5p" path="res://Scenes/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b8bjrq16v05pq" path="res://Characters/player.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dpsv6nrk5dkh" path="res://Scenes/UI/ui.tscn" id="2_v158k"]
+[ext_resource type="PackedScene" uid="uid://ke2oqvxlb7wy" path="res://Scenes/Enemy Manager/enemy_manager.tscn" id="3_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://c6lqeovf4si6s" path="res://Characters/firebolt.tscn" id="3_3dryh"]
-[ext_resource type="Script" uid="uid://bugof36dl51dx" path="res://Scenes/enemy_manager.gd" id="3_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://deqvmeynk6rse" path="res://Characters/Enemies/ghost.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://csfw10w08i0co" path="res://Characters/Enemies/skelly.tscn" id="8_v158k"]
 [ext_resource type="AudioStream" uid="uid://wd1goqxq72d6" path="res://Assets/Audio/Action 2 (Loop).ogg" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://ckirv4ehdtd1v" path="res://Characters/Enemies/brute.tscn" id="10_ldgsr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wrm1d")
@@ -18,8 +15,7 @@ script = ExtResource("1_wrm1d")
 
 [node name="UI" parent="UICanvasLayer" instance=ExtResource("2_v158k")]
 
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource("3_ldgsr")
+[node name="EnemyManager" parent="." instance=ExtResource("3_1l0tm")]
 
 [node name="Firebolts" type="Node2D" parent="."]
 
@@ -44,34 +40,9 @@ color = Color(0.117647, 0.0784314, 0.196078, 1)
 position = Vector2(120, 80)
 zoom = Vector2(4, 4)
 
-[node name="Brute" parent="." instance=ExtResource("10_ldgsr")]
-position = Vector2(69, 57)
-lane = 1
-
-[node name="Brute2" parent="." instance=ExtResource("10_ldgsr")]
-position = Vector2(55, 36)
-lane = 2
-
-[node name="Skelly" parent="." instance=ExtResource("8_v158k")]
-position = Vector2(97, 90)
-
-[node name="Ghost" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(158, 79)
-lane = 2
-
-[node name="Ghost2" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(133, 59)
-
-[node name="Ghost3" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(182, 60)
-lane = 4
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_h4fw4")
 bus = &"Music"
 parameters/looping = false
 
-[connection signal="game_completed" from="EnemyManager" to="." method="_on_enemy_manager_game_completed"]
-
 [editable path="UICanvasLayer/UI"]
-[editable path="Brute2"]
