@@ -1,0 +1,162 @@
+[gd_scene load_steps=7 format=3 uid="uid://dynm7se0gewia"]
+
+[ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Scenes/UI/Assets/modal_frame.png" id="1_kfh4b"]
+[ext_resource type="FontFile" uid="uid://c6x2yu7g74v0v" path="res://Scenes/UI/Assets/Fonts/1bitpack_11x13.png" id="2_gus5t"]
+[ext_resource type="PackedScene" uid="uid://6fekoamvdemc" path="res://Scenes/UI/volume_up_button.tscn" id="4_vrd41"]
+[ext_resource type="PackedScene" uid="uid://cmukmmoumunts" path="res://Scenes/UI/volume_down_button.tscn" id="4_ynxh7"]
+[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Scenes/UI/Assets/button.png" id="5_n6o6n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs2gm"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelBackground" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -240.0
+offset_right = -200.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kfh4b")
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="MasterLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 98.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "MASTER"
+
+[node name="MasterVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 38.0
+offset_right = 53.0
+offset_bottom = 58.0
+
+[node name="MasterValueLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 60.0
+offset_right = 72.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 80.0
+offset_right = 53.0
+offset_bottom = 100.0
+
+[node name="MusicLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 26.0
+offset_right = 134.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "MUSIC"
+
+[node name="MusicVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 112.0
+offset_bottom = 58.0
+
+[node name="MusicValueLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 60.0
+offset_right = 131.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 100.0
+
+[node name="SFXLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "SFX"
+
+[node name="SFXVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 38.0
+offset_right = 170.0
+offset_bottom = 58.0
+
+[node name="SFXValueLabel" type="Label" parent="PanelBackground"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 60.0
+offset_right = 189.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_gus5t")
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 80.0
+offset_right = 170.0
+offset_bottom = 100.0
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.5417
+offset_top = 42.2755
+offset_right = 41.5417
+offset_bottom = 50.2755
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cs2gm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Back"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.54168
+offset_top = -6.27547
+offset_right = 6.45832
+offset_bottom = 5.72453
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_n6o6n")

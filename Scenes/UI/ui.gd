@@ -1,8 +1,12 @@
 class_name UI
 extends Control
 
-@export var tower_health_icon_scene: PackedScene
+signal lose_no_button_pressed
+signal lose_yes_button_pressed
+signal win_no_button_pressed
+signal win_yes_button_pressed
 
+@export var tower_health_icon_scene: PackedScene
 var tower_health_icons: Array[TowerHealthIcon]
 
 @onready var tower_health_bar: Control = $TowerHealthBar
@@ -54,18 +58,16 @@ func _get_icon_count(max_health: int) -> int:
 
 
 func _on_lose_no_button_pressed() -> void:
-	# TODO: Go to main menu
-	pass # Replace with function body.
+	lose_no_button_pressed.emit()
 
 
 func _on_lose_yes_button_pressed() -> void:
-	Event.restart_button_pressed.emit()
+	lose_yes_button_pressed.emit()
 
 
 func _on_win_no_button_pressed() -> void:
-	# TODO: Go to main menu
-	pass # Replace with function body.
+	win_no_button_pressed.emit()
 
 
 func _on_win_yes_button_pressed() -> void:
-	Event.restart_button_pressed.emit()
+	win_yes_button_pressed.emit()

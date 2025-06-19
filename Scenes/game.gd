@@ -1,7 +1,10 @@
+class_name Game
 extends Node2D
 
-@export var tower_max_health: int = 20
+signal restart_button_pressed
+signal start_menu_button_pressed
 
+@export var tower_max_health: int = 20
 var tower_health: int = tower_max_health
 
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
@@ -18,7 +21,6 @@ func _ready() -> void:
 	background_music.play()
 	
 	Event.tower_damaged.connect(_damage_tower)
-	Event.restart_button_pressed.connect(_on_restart_button_pressed)
 
 
 func _damage_tower(damage: int) -> void:
@@ -34,5 +36,9 @@ func _on_enemy_manager_game_completed() -> void:
 	ui.show_win_screen()
 
 
+func _on_start_menu_button_pressed() -> void:
+	start_menu_button_pressed.emit()
+
+
 func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	restart_button_pressed.emit()

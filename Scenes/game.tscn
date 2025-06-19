@@ -45,4 +45,10 @@ stream = ExtResource("9_h4fw4")
 bus = &"Music"
 parameters/looping = false
 
+[connection signal="lose_no_button_pressed" from="UICanvasLayer/UI" to="." method="_on_start_menu_button_pressed"]
+[connection signal="lose_yes_button_pressed" from="UICanvasLayer/UI" to="." method="_on_restart_button_pressed"]
+[connection signal="win_no_button_pressed" from="UICanvasLayer/UI" to="." method="_on_start_menu_button_pressed"]
+[connection signal="win_yes_button_pressed" from="UICanvasLayer/UI" to="." method="_on_restart_button_pressed"]
+[connection signal="game_completed" from="EnemyManager" to="." method="_on_enemy_manager_game_completed"]
+
 [editable path="UICanvasLayer/UI"]
