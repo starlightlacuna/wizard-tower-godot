@@ -2,6 +2,8 @@ class_name EnemyManager
 extends Node2D
 
 signal game_completed
+signal enemies_cleared
+
 enum EnemyType { SKELLY, GHOST, BRUTE }
 
 @export var skelly_scene: PackedScene
@@ -9,9 +11,9 @@ enum EnemyType { SKELLY, GHOST, BRUTE }
 @export var brute_scene: PackedScene
 @export var levels: Array[Level]
 
-var enemy_group_index: int = 0
-var wave_index: int = 0
-var level_index: int = 0
+var _level_index: int = 0
+var _level_step_index: int = 0
+var _enemies_count: int = 0
 
 @onready var enemies: Node = $Enemies
 @onready var spawn_timer: Timer = $SpawnTimer
@@ -21,18 +23,58 @@ func _ready() -> void:
 	assert(skelly_scene, "[Enemy Manager] Skelly Scene not set!")
 	assert(ghost_scene, "[Enemy Manager] Ghost Scene not set!")
 	assert(brute_scene, "[Enemy Manager] Brute Scene not set!")
+	assert(levels, "[Enemy Manager] Levels not set!")
 	
-	_on_spawn_timer_timeout()
-
-	#_spawn_enemy(EnemyType.SKELLY, 0)
-	#_spawn_enemy(EnemyType.SKELLY, 1)
-	#_spawn_enemy(EnemyType.SKELLY, 2)
-	#_spawn_enemy(EnemyType.SKELLY, 3)
-	#_spawn_enemy(EnemyType.SKELLY, 4)
-	#_spawn_enemy(EnemyType.SKELLY, 5)
+	enemies.child_entered_tree.connect(_on_enemy_entered_tree)
+	enemies.child_exiting_tree.connect(_on_enemy_exiting_tree)
+	
+	_begin_game.call_deferred()
 
 
-func _spawn_enemy_group(enemy_group: EnemyGroup) -> void:
+func _begin_game() -> void:
+	while _level_index < levels.size():
+		var current_level: Level = levels[_level_index]
+		if _level_step_index < current_level.steps.size():
+			# We have to await here, otherwise execution will proceed without
+			# pausing during wait steps
+			await _execute_level_step(current_level.steps[_level_step_index])
+			_level_step_index += 1
+		else:
+			_level_step_index = 0
+			_level_index += 1
+	
+	# TODO: Handle no more levels
+	print("[Enemy Manager] No more levels!")
+	game_completed.emit()
+
+
+func _execute_level_step(level_step: LevelStep) -> void:
+	if level_step is SpawnEnemyGroup:
+		_spawn_enemy_group(level_step as SpawnEnemyGroup)
+	elif level_step is WaitDuration:
+		await get_tree().create_timer((level_step as WaitDuration).duration).timeout
+		return
+	elif level_step is WaitClear:
+		await enemies_cleared
+		return
+	else:
+		push_error("[Enemy Manager] Unknown LevelStep!")
+		return
+
+
+func _execute_next_level_step() -> void:
+	if _level_step_index >= levels[_level_index].steps.size():
+		# Move to next level
+		_level_step_index = 0
+		_level_index += 1
+		return
+		
+	_execute_level_step(levels[_level_index].steps[_level_step_index])
+	_level_step_index += 1
+
+
+func _spawn_enemy_group(enemy_group: SpawnEnemyGroup) -> void:
+	var new_enemies: Array[Enemy] = []
 	for index in enemy_group.enemies.size():
 		var enemy_config: EnemyConfig = enemy_group.enemies[index]
 		var enemy: Enemy
@@ -42,53 +84,22 @@ func _spawn_enemy_group(enemy_group: EnemyGroup) -> void:
 			EnemyType.GHOST:
 				enemy = ghost_scene.instantiate()
 			EnemyType.BRUTE:
-				enemy = brute_scene.instatiate()
+				enemy = brute_scene.instantiate()
 		enemy.lane = enemy_config.lane
-		enemies.add_child(enemy)
+		new_enemies.push_back(enemy)
+		# Have to defer the call to avoid an error
+		enemies.add_child.call_deferred(enemy)
+
+
+func _on_enemy_entered_tree(_node: Node) -> void:
+	_enemies_count += 1
+
+
+func _on_enemy_exiting_tree(_node: Node) -> void:
+	_enemies_count -= 1
+	if _enemies_count <= 0:
+		enemies_cleared.emit()
 
 
 func _on_spawn_timer_timeout() -> void:
-	if level_index > levels.size():
-		# TODO: handle no more levels
-		return
-		
-	#region Process Level
-	var current_level: Level = levels[level_index]
-	if wave_index > current_level.waves.size():
-		# TODO: handle no more waves in level
-		return
-	#endregion
-	
-	#region Process Wave
-	var current_wave: Wave = current_level.waves[wave_index]
-	
-	if enemy_group_index >= current_wave.enemy_groups.size():
-		enemy_group_index = 0
-		wave_index += 1
-		if current_wave.wait_for_clear:
-			# TODO: handle enemy clearing
-			#var next_wave = current_level.waves[wave_index]
-			#if next_wave.begin_delay > 0:
-				#spawn_timer.set_wait_time(next_wave.begin_delay)
-				#spawn_timer.start()
-				#return
-			#_on_spawn_timer_timeout()
-			return
-	
-	if enemy_group_index == 0 and current_wave.begin_delay > 0:
-		await get_tree().create_timer(current_wave.begin_delay).timeout
-	#endregion
-	
-	#region Process EnemyGroup
-	var enemy_group: EnemyGroup = current_wave.enemy_groups[enemy_group_index]
-	_spawn_enemy_group(enemy_group)
-	enemy_group_index += 1
-	
-	# TODO: Don't restart timer if last wave?
-	spawn_timer.set_wait_time(current_wave.delay)
-	spawn_timer.start()
-	#endregion
-
-#level = 0
-#wave = 0
-#group = 0
+	pass

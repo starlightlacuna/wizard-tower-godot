@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SpawnEnemyGroup" load_steps=6 format=3 uid="uid://b0cflc5rn5drr"]
+
+[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://enemy_config.gd" id="1_dexjy"]
+[ext_resource type="Script" uid="uid://bnfwlbpwfh5fb" path="res://Scenes/Enemy Manager/spawn_enemy_group.gd" id="1_pnoug"]
+
+[sub_resource type="Resource" id="Resource_dexjy"]
+script = ExtResource("1_dexjy")
+enemy_type = 0
+lane = 0
+metadata/_custom_type_script = "uid://b3caof2drmctg"
+
+[sub_resource type="Resource" id="Resource_hyhlk"]
+script = ExtResource("1_dexjy")
+enemy_type = 0
+lane = 2
+metadata/_custom_type_script = "uid://b3caof2drmctg"
+
+[sub_resource type="Resource" id="Resource_6wpka"]
+script = ExtResource("1_dexjy")
+enemy_type = 0
+lane = 4
+metadata/_custom_type_script = "uid://b3caof2drmctg"
+
+[resource]
+script = ExtResource("1_pnoug")
+enemies = Array[ExtResource("1_dexjy")]([SubResource("Resource_dexjy"), SubResource("Resource_hyhlk"), SubResource("Resource_6wpka")])
+metadata/_custom_type_script = "uid://bnfwlbpwfh5fb"

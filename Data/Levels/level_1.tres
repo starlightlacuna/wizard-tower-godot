@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://b3hprhtni8y5o"]
+
+[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Enemy Manager/level_step.gd" id="1_agxgp"]
+[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://enemy_config.gd" id="2_m6tf1"]
+[ext_resource type="Resource" uid="uid://6ury7eisg5e1" path="res://Data/Levels/test_enemy_config.tres" id="3_6cmcy"]
+[ext_resource type="Script" uid="uid://bnfwlbpwfh5fb" path="res://Scenes/Enemy Manager/spawn_enemy_group.gd" id="4_pkmhs"]
+[ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Enemy Manager/level.gd" id="5_13ja6"]
+
+[sub_resource type="Resource" id="Resource_agxgp"]
+script = ExtResource("4_pkmhs")
+enemies = Array[ExtResource("2_m6tf1")]([ExtResource("3_6cmcy")])
+metadata/_custom_type_script = "uid://bnfwlbpwfh5fb"
+
+[resource]
+script = ExtResource("5_13ja6")
+steps = Array[ExtResource("1_agxgp")]([SubResource("Resource_agxgp")])
+metadata/_custom_type_script = "uid://dtw3dow0778l"

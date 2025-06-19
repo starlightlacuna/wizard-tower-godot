@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyGroup" load_steps=2 format=3 uid="uid://b0cflc5rn5drr"]
-
-[ext_resource type="Script" uid="uid://bnfwlbpwfh5fb" path="res://Scenes/Enemy Manager/enemy_group.gd" id="1_pnoug"]
-
-[resource]
-script = ExtResource("1_pnoug")
-metadata/_custom_type_script = "uid://bnfwlbpwfh5fb"
