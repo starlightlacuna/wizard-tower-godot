@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6fekoamvdemc"]
 
 [ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Scenes/UI/Assets/button.png" id="1_nyuyd"]
-[ext_resource type="Texture2D" uid="uid://dtqy5w5dmu8fo" path="res://Scenes/UI/Assets/sound_up.png" id="2_47bqc"]
+[ext_resource type="Texture2D" uid="uid://dtqy5w5dmu8fo" path="res://Scenes/UI/Assets/volume_up.png" id="2_47bqc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynxh7"]
 
@@ -10,6 +10,7 @@ custom_minimum_size = Vector2(20, 20)
 offset_right = 20.0
 offset_bottom = 20.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ynxh7")
+icon_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

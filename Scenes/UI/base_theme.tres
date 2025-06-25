@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://metrw8hf6qy1"]
+
+[ext_resource type="FontFile" uid="uid://galtjhdbjeod" path="res://Scenes/UI/Assets/Fonts/WizardTower.ttf" id="1_chxq1"]
+[ext_resource type="StyleBox" uid="uid://c7jph0drq0g05" path="res://Scenes/UI/button_style_box_texture.tres" id="2_245he"]
+
+[resource]
+Button/font_sizes/font_size = 12
+Button/fonts/font = ExtResource("1_chxq1")
+Button/styles/disabled = null
+Button/styles/focus = ExtResource("2_245he")
+Button/styles/hover = ExtResource("2_245he")
+Button/styles/normal = ExtResource("2_245he")
+Button/styles/pressed = ExtResource("2_245he")
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_chxq1")

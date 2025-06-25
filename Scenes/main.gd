@@ -1,15 +1,28 @@
 extends Node
 
-@export var game_scene: PackedScene
-@export var start_menu_scene: PackedScene
+enum SceneClass {
+	GAME,
+	SETTINGS_MENU,
+	START_MENU,
+}
 
-enum SceneClass { GAME, START_MENU }
+@export_category("Scenes")
+@export var game_scene: PackedScene
+@export var settings_menu_scene: PackedScene
+@export var start_menu_scene: PackedScene
+@export_category("Volume")
+@export var master_volume: float = 100.0
+@export var music_volume: float = 100.0
+@export var sfx_volume: float = 100.0
+
 
 func _ready() -> void:
-	assert(game_scene, "[Main] Game Scene not initialized!")
-	assert(start_menu_scene, "[Main] Start Menu Scene not initialized!")
+	assert(game_scene, "[Main] Game Scene not set!")
+	assert(settings_menu_scene, "[Main] Settings Menu Scene not set!")
+	assert(start_menu_scene, "[Main] Start Menu Scene not set!")
 	
-	_switch_to_scene(SceneClass.START_MENU)
+	#_switch_to_scene(SceneClass.START_MENU)
+	_switch_to_scene(SceneClass.SETTINGS_MENU)
 
 
 func _free_children() -> void:
@@ -28,6 +41,9 @@ func _switch_to_scene(scene_class: SceneClass) -> void:
 			game.restart_button_pressed.connect(_on_game_restart_button_pressed)
 			game.start_menu_button_pressed.connect(_on_game_start_menu_button_pressed)
 			add_child(game)
+		SceneClass.SETTINGS_MENU:
+			var settings_menu: SettingsMenu = settings_menu_scene.instantiate()
+			add_child(settings_menu)
 		SceneClass.START_MENU:
 			var start_menu: StartMenu = start_menu_scene.instantiate()
 			start_menu.start_button_pressed.connect(_on_start_menu_start_button_pressed)

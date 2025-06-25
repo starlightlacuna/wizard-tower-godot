@@ -22,6 +22,7 @@ buses/default_bus_layout="res://Data/default_bus_layout.tres"
 [autoload]
 
 Event="*res://Utilities/event.gd"
+Settings="*res://Utilities/settings.gd"
 
 [display]
 

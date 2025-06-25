@@ -1,12 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dynm7se0gewia"]
+[gd_scene load_steps=9 format=3 uid="uid://dynm7se0gewia"]
 
+[ext_resource type="Script" uid="uid://bqmfav66fbuh4" path="res://Scenes/UI/settings_menu.gd" id="1_cs2gm"]
 [ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Scenes/UI/Assets/modal_frame.png" id="1_kfh4b"]
-[ext_resource type="FontFile" uid="uid://c6x2yu7g74v0v" path="res://Scenes/UI/Assets/Fonts/1bitpack_11x13.png" id="2_gus5t"]
-[ext_resource type="PackedScene" uid="uid://6fekoamvdemc" path="res://Scenes/UI/volume_up_button.tscn" id="4_vrd41"]
-[ext_resource type="PackedScene" uid="uid://cmukmmoumunts" path="res://Scenes/UI/volume_down_button.tscn" id="4_ynxh7"]
-[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Scenes/UI/Assets/button.png" id="5_n6o6n"]
+[ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="2_ynxh7"]
+[ext_resource type="PackedScene" uid="uid://cm4u7at475mjr" path="res://Scenes/UI/volume_group.tscn" id="4_n6o6n"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="5_cs2gm"]
+[ext_resource type="FontFile" uid="uid://galtjhdbjeod" path="res://Scenes/UI/Assets/Fonts/WizardTower.ttf" id="5_n6o6n"]
+[ext_resource type="Texture2D" uid="uid://dbljduymv0gbq" path="res://Scenes/UI/Assets/button_focused.png" id="5_ynxh7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs2gm"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6o6n"]
+texture = ExtResource("5_ynxh7")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cs2gm")
+metadata/_edit_lock_ = true
 
 [node name="PanelBackground" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -26,7 +35,7 @@ anchor_bottom = 0.5
 offset_left = -400.0
 offset_top = -240.0
 offset_right = -200.0
-offset_bottom = -120.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_kfh4b")
@@ -34,129 +43,90 @@ patch_margin_left = 13
 patch_margin_top = 13
 patch_margin_right = 13
 patch_margin_bottom = 13
+metadata/_edit_lock_ = true
 
 [node name="MasterLabel" type="Label" parent="PanelBackground"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 10.0
-offset_right = 98.0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 67.0
 offset_bottom = 26.0
-theme_override_fonts/font = ExtResource("2_gus5t")
+theme = ExtResource("2_ynxh7")
 text = "MASTER"
 
-[node name="MasterVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 38.0
-offset_right = 53.0
-offset_bottom = 58.0
-
-[node name="MasterValueLabel" type="Label" parent="PanelBackground"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 60.0
-offset_right = 72.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("2_gus5t")
-text = "100%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MasterVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 80.0
-offset_right = 53.0
-offset_bottom = 100.0
+[node name="MasterVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
+offset_left = 74.0
+offset_top = 8.0
+offset_right = 189.0
+offset_bottom = 30.0
 
 [node name="MusicLabel" type="Label" parent="PanelBackground"]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 26.0
-offset_right = 134.0
-offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("2_gus5t")
+offset_left = 23.0
+offset_top = 45.0
+offset_right = 66.0
+offset_bottom = 57.0
+theme = ExtResource("2_ynxh7")
 text = "MUSIC"
 
-[node name="MusicVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 38.0
-offset_right = 112.0
-offset_bottom = 58.0
-
-[node name="MusicValueLabel" type="Label" parent="PanelBackground"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 60.0
-offset_right = 131.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("2_gus5t")
-text = "100%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MusicVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 80.0
-offset_right = 112.0
-offset_bottom = 100.0
+[node name="MusicVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
+offset_left = 74.0
+offset_top = 39.0
+offset_right = 189.0
+offset_bottom = 61.0
 
 [node name="SFXLabel" type="Label" parent="PanelBackground"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 12.0
-offset_right = 183.0
-offset_bottom = 28.0
-theme_override_fonts/font = ExtResource("2_gus5t")
+offset_left = 40.0
+offset_top = 76.0
+offset_right = 67.0
+offset_bottom = 88.0
+theme = ExtResource("2_ynxh7")
 text = "SFX"
 
-[node name="SFXVolumeUpButton" parent="PanelBackground" instance=ExtResource("4_vrd41")]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 38.0
-offset_right = 170.0
-offset_bottom = 58.0
-
-[node name="SFXValueLabel" type="Label" parent="PanelBackground"]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 60.0
+[node name="SFXVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
+offset_left = 74.0
+offset_top = 70.0
 offset_right = 189.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("2_gus5t")
-text = "100%"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_bottom = 92.0
 
-[node name="SFXVolumeDownButton" parent="PanelBackground" instance=ExtResource("4_ynxh7")]
+[node name="BackButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 80.0
-offset_right = 170.0
-offset_bottom = 100.0
+offset_left = 57.0
+offset_top = 102.0
+offset_right = 91.0
+offset_bottom = 120.0
+text = "Back"
 
-[node name="Back" type="Button" parent="."]
-layout_mode = 0
-offset_left = 33.5417
-offset_top = 42.2755
-offset_right = 41.5417
-offset_bottom = 50.2755
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cs2gm")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Back"]
-custom_minimum_size = Vector2(12, 12)
+[node name="TestButton" type="Button" parent="PanelBackground"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.54168
-offset_top = -6.27547
-offset_right = 6.45832
-offset_bottom = 5.72453
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -28.0
+offset_right = 42.0
+offset_bottom = -10.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_n6o6n")
+grow_vertical = 0
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../SFXVolumeGroup")
+theme = ExtResource("2_ynxh7")
+text = "Test"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("5_n6o6n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_n6o6n")
+text = "Boop"
+
+[connection signal="volume_down_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_down_pressed"]
+[connection signal="volume_up_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_up_pressed"]
+[connection signal="volume_down_pressed" from="PanelBackground/MusicVolumeGroup" to="." method="_on_music_volume_group_volume_down_pressed"]
+[connection signal="volume_up_pressed" from="PanelBackground/MusicVolumeGroup" to="." method="_on_music_volume_group_volume_up_pressed"]
+[connection signal="volume_down_pressed" from="PanelBackground/SFXVolumeGroup" to="." method="_on_sfx_volume_group_volume_down_pressed"]
+[connection signal="volume_up_pressed" from="PanelBackground/SFXVolumeGroup" to="." method="_on_sfx_volume_group_volume_up_pressed"]
