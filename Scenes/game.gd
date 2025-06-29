@@ -17,10 +17,15 @@ func _ready() -> void:
 	player.set_position(Grid.grid_to_world(Vector2i(0, 2)))
 	player.set_firebolts_node(firebolts)
 	ui.build_health_bar(tower_max_health)
+	ui.set_visible(true)
 	
-	background_music.play()
-	
+	#background_music.play()
 	Event.tower_damaged.connect(_damage_tower)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause_game"):
+		ui.show_pause_window()
 
 
 func _damage_tower(damage: int) -> void:
@@ -29,11 +34,11 @@ func _damage_tower(damage: int) -> void:
 	
 	if tower_health <= 0:
 		background_music.stop()
-		ui.show_lose_screen()
+		ui.show_lose_window()
 
 
 func _on_enemy_manager_game_completed() -> void:
-	ui.show_win_screen()
+	ui.show_win_window()
 
 
 func _on_start_menu_button_pressed() -> void:

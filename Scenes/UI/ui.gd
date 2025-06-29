@@ -11,6 +11,7 @@ var tower_health_icons: Array[TowerHealthIcon]
 
 @onready var tower_health_bar: Control = $TowerHealthBar
 @onready var lose_window: Control = $LoseWindow
+@onready var pause_window: Control = $PauseWindow
 @onready var win_window: Control = $WinWindow
 
 
@@ -44,11 +45,15 @@ func update_tower_health_bar(current_health: int, max_health) -> void:
 			tower_health_icons[index].update(TowerHealthIcon.Display.NONE)
 
 
-func show_lose_screen() -> void:
+func show_lose_window() -> void:
 	lose_window.set_visible(true)
 
 
-func show_win_screen() -> void:
+func show_pause_window() -> void:
+	pause_window.set_visible(true)
+
+
+func show_win_window() -> void:
 	win_window.set_visible(true)
 
 

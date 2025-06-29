@@ -11,9 +11,9 @@ func set_value(value: float) -> void:
 	value_bar.set_value_no_signal(value)
 
 
-func _on_volume_down_button_pressed() -> void:
+func _on_down_button_pressed() -> void:
 	volume_down_pressed.emit()
 
 
-func _on_volume_up_button_pressed() -> void:
+func _on_up_button_pressed() -> void:
 	volume_up_pressed.emit()
