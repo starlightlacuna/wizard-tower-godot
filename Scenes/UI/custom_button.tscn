@@ -30,16 +30,16 @@
 [node name="CustomButton" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 39.0
-offset_bottom = 18.0
+offset_right = 10.0
+offset_bottom = 20.0
 script = ExtResource("1_e87du")
 
 [node name="FocusTexture" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = -3.0
 offset_top = -3.0
-offset_right = 42.0
-offset_bottom = 21.0
+offset_right = 13.0
+offset_bottom = 23.0
 texture = ExtResource("2_m33a2")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -48,8 +48,8 @@ patch_margin_bottom = 6
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 39.0
-offset_bottom = 18.0
+offset_right = 10.0
+offset_bottom = 20.0
 theme = ExtResource("1_tl800")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_myjmq")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_lh4kv")
@@ -66,22 +66,21 @@ icon_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="Button"]
 layout_mode = 0
-offset_right = 39.0
-offset_bottom = 18.0
+offset_right = 10.0
+offset_bottom = 20.0
 texture = ExtResource("4_myjmq")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Text" type="Label" parent="Button"]
+[node name="Label" type="Label" parent="Button"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 16.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 6.0
+offset_bottom = 17.0
 theme = ExtResource("1_tl800")
-text = "Text"
 
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
