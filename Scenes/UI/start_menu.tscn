@@ -26,40 +26,16 @@ metadata/_edit_lock_ = true
 [node name="StartButton" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 560.0
 offset_top = 352.0
-offset_right = 612.0
-offset_bottom = 370.0
+offset_right = 570.0
+offset_bottom = 372.0
 scale = Vector2(4, 4)
-
-[node name="FocusTexture" parent="StartButton" index="0"]
-offset_right = 55.0
-
-[node name="Button" parent="StartButton" index="1"]
-offset_right = 52.0
-
-[node name="Frame" parent="StartButton/Button" index="0"]
-offset_right = 52.0
-
-[node name="Text" parent="StartButton/Button" index="1"]
-text = "START"
 
 [node name="SettingsButton" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 516.0
 offset_top = 444.0
-offset_right = 591.0
-offset_bottom = 462.0
+offset_right = 526.0
+offset_bottom = 464.0
 scale = Vector2(4, 4)
-
-[node name="FocusTexture" parent="SettingsButton" index="0"]
-offset_right = 78.0
-
-[node name="Button" parent="SettingsButton" index="1"]
-offset_right = 52.0
-
-[node name="Frame" parent="SettingsButton/Button" index="0"]
-offset_right = 75.0
-
-[node name="Text" parent="SettingsButton/Button" index="1"]
-text = "SETTINGS"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
