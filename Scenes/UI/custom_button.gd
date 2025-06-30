@@ -37,9 +37,6 @@ func button_grab_focus() -> void:
 
 
 func _get_button_path(node_path: NodePath) -> NodePath:
-	#var node: Control = get_tree() \
-			#.get_current_scene() \
-			#.get_node_or_null(node_path)
 	var node: Control = get_node_or_null(node_path)
 	if node is CustomButton:
 		return node.button.get_path()
@@ -88,5 +85,5 @@ func _set_focus_neighbors() -> void:
 	if not neighbor_next.is_empty():
 		button.set_focus_next(_get_button_path(neighbor_next))
 	if not neighbor_previous.is_empty():
-		button.set_focus_previous(_get_button_path(neighbor_next))
+		button.set_focus_previous(_get_button_path(neighbor_previous))
 		

@@ -24,21 +24,31 @@ texture = ExtResource("2_8wf1d")
 metadata/_edit_lock_ = true
 
 [node name="StartButton" parent="." instance=ExtResource("3_8wf1d")]
-offset_left = 560.0
-offset_top = 352.0
-offset_right = 570.0
-offset_bottom = 372.0
+offset_left = 548.0
+offset_top = 348.0
+offset_right = 602.0
+offset_bottom = 368.0
 scale = Vector2(4, 4)
+text = "START"
+neighbor_left = NodePath(".")
+neighbor_top = NodePath(".")
+neighbor_right = NodePath(".")
+neighbor_bottom = NodePath("../SettingsButton")
+neighbor_next = NodePath("../SettingsButton")
+neighbor_previous = NodePath(".")
 
 [node name="SettingsButton" parent="." instance=ExtResource("3_8wf1d")]
-offset_left = 516.0
-offset_top = 444.0
-offset_right = 526.0
-offset_bottom = 464.0
+offset_left = 502.0
+offset_top = 448.0
+offset_right = 579.0
+offset_bottom = 468.0
 scale = Vector2(4, 4)
+text = "SETTINGS"
+neighbor_left = NodePath(".")
+neighbor_top = NodePath("../StartButton")
+neighbor_right = NodePath(".")
+neighbor_next = NodePath(".")
+neighbor_previous = NodePath("../StartButton")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
-
-[editable path="StartButton"]
-[editable path="SettingsButton"]
