@@ -7,9 +7,10 @@ signal pressed
 @export var text: String = "":
 	set(new_text):
 		text = new_text
-		# Need to check that the node is ready, otherwise the label is null
-		if is_node_ready():
-			_resize()
+@export var icon: Texture2D:
+	set(new_texture):
+		icon = new_texture
+			
 @export_category("Focus")
 @export var neighbor_left: NodePath
 @export var neighbor_top: NodePath
@@ -18,18 +19,24 @@ signal pressed
 @export var neighbor_next: NodePath
 @export var neighbor_previous: NodePath
 
+var top_left_corner: Vector2 = Vector2i(5, 5)
+
 @onready var focus_texture: NinePatchRect = $FocusTexture
 @onready var button: Button = $Button
 @onready var button_frame: NinePatchRect = $Button/Frame
 @onready var button_label: Label = $Button/Label
+@onready var button_icon: TextureRect = $Button/Icon
 
 
 func _ready() -> void:
-	_resize()
 	if not Engine.is_editor_hint():
 		focus_texture.set_visible(false)
 		await get_tree().get_current_scene().ready
-		_set_focus_neighbors()
+		set_focus_neighbors()
+
+
+func _process(_delta: float) -> void:
+	_resize()
 
 
 func button_grab_focus() -> void:
@@ -60,20 +67,33 @@ func _on_button_pressed() -> void:
 	pressed.emit()
 
 
-func _resize() -> void:
-	button_label.set_text(text)
-	button_label.reset_size()
-	button_frame.set_size(button_label.get_size() + Vector2(9, 8))
+func _resize() -> Vector2:
+	var minimum_size: Vector2 = Vector2.ZERO
+	if not text.is_empty():
+		button_label.set_text(text)
+		button_label.reset_size()
+		minimum_size = button_label.get_size()
+	if icon != null:
+		# Adding 1 extra pixel to account for horizontal spacing
+		button_icon.set_texture(icon)
+		minimum_size.x = max(minimum_size.x, icon.get_width() + 1)
+		minimum_size.y = max(minimum_size.y, icon.get_height() + 2)
+	button_frame.set_size(minimum_size + Vector2(9, 8))
 	focus_texture.set_size(button_frame.get_size() + Vector2(6, 6))
 	button.set_size(button_frame.get_size())
 	set_size(button.get_size())
+	return minimum_size
 
 
 func _set_focus_neighbor(side: Side, node_path: NodePath) -> void:
 	button.set_focus_neighbor(side, _get_button_path(node_path))
 
 
-func _set_focus_neighbors() -> void:
+func _set_icon() -> void:
+	button_icon.set_texture(icon)
+
+
+func set_focus_neighbors() -> void:
 	if not neighbor_left.is_empty():
 		_set_focus_neighbor(SIDE_LEFT, neighbor_left)
 	if not neighbor_top.is_empty():
@@ -86,4 +106,3 @@ func _set_focus_neighbors() -> void:
 		button.set_focus_next(_get_button_path(neighbor_next))
 	if not neighbor_previous.is_empty():
 		button.set_focus_previous(_get_button_path(neighbor_previous))
-		

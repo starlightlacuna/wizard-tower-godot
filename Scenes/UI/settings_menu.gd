@@ -28,10 +28,13 @@ func _ready() -> void:
 		back_button.set_position(pause_menu_back_button_position)
 		test_button.set_position(pause_menu_test_button_position)
 		quit_button.set_visible(true)
-		var quit_button_button: Button = get_node("PanelBackground/QuitButton/Button")
-		back_button.get_node("Button").set_focus_neighbor(SIDE_LEFT, quit_button_button.get_path())
-		back_button.get_node("Button").set_focus_previous(quit_button_button.get_path())
-		sfx_volume_up_button.get_node("Button").set_focus_next(quit_button_button.get_path())
+		var quit_button_path: NodePath = quit_button.get_path()
+		back_button.neighbor_left = quit_button_path
+		back_button.neighbor_previous = quit_button_path
+		back_button.set_focus_neighbors()
+		sfx_volume_up_button.focus_next = quit_button_path
+		sfx_volume_up_button.set_focus_neighbors()
+		
 	else:
 		back_button.set_position(main_menu_back_button_position)
 		test_button.set_position(main_menu_test_button_position)

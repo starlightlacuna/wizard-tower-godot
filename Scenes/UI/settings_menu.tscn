@@ -47,22 +47,25 @@ metadata/_edit_lock_ = true
 [node name="MasterVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
 offset_left = 76.0
 offset_top = 8.0
-offset_right = 191.0
+offset_right = 198.0
 offset_bottom = 30.0
 metadata/_edit_lock_ = true
 
-[node name="Button" parent="PanelBackground/MasterVolumeGroup/DownButton" index="1"]
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath("../../UpButton/Button")
-focus_neighbor_bottom = NodePath("../../../MusicVolumeGroup/DownButton/Button")
-focus_next = NodePath("../../UpButton/Button")
-focus_previous = NodePath("../../../TestButton/Button")
+[node name="DownButton" parent="PanelBackground/MasterVolumeGroup" index="0"]
+neighbor_left = NodePath(".")
+neighbor_top = NodePath(".")
+neighbor_right = NodePath("../UpButton")
+neighbor_bottom = NodePath("../../MusicVolumeGroup/DownButton")
+neighbor_next = NodePath("../UpButton")
+neighbor_previous = NodePath("../../TestButton")
 
-[node name="Button" parent="PanelBackground/MasterVolumeGroup/UpButton" index="1"]
-focus_neighbor_left = NodePath("../../DownButton/Button")
-focus_neighbor_bottom = NodePath("../../../MusicVolumeGroup/UpButton/Button")
-focus_next = NodePath("../../../MusicVolumeGroup/DownButton/Button")
-focus_previous = NodePath("../../DownButton/Button")
+[node name="UpButton" parent="PanelBackground/MasterVolumeGroup" index="2"]
+neighbor_left = NodePath("../DownButton")
+neighbor_top = NodePath(".")
+neighbor_right = NodePath(".")
+neighbor_bottom = NodePath("../../MusicVolumeGroup/UpButton")
+neighbor_next = NodePath("../../MusicVolumeGroup/DownButton")
+neighbor_previous = NodePath("../DownButton")
 
 [node name="MusicLabel" type="Label" parent="PanelBackground"]
 layout_mode = 0
@@ -77,24 +80,25 @@ metadata/_edit_lock_ = true
 [node name="MusicVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
 offset_left = 76.0
 offset_top = 39.0
-offset_right = 191.0
+offset_right = 198.0
 offset_bottom = 61.0
 metadata/_edit_lock_ = true
 
-[node name="Button" parent="PanelBackground/MusicVolumeGroup/DownButton" index="1"]
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../MasterVolumeGroup/DownButton/Button")
-focus_neighbor_right = NodePath("../../UpButton/Button")
-focus_neighbor_bottom = NodePath("../../../SFXVolumeGroup/DownButton/Button")
-focus_next = NodePath("../../UpButton/Button")
-focus_previous = NodePath("../../../MasterVolumeGroup/UpButton/Button")
+[node name="DownButton" parent="PanelBackground/MusicVolumeGroup" index="0"]
+neighbor_left = NodePath(".")
+neighbor_top = NodePath("../../MasterVolumeGroup/DownButton")
+neighbor_right = NodePath("../UpButton")
+neighbor_bottom = NodePath("../../SFXVolumeGroup/DownButton")
+neighbor_next = NodePath("../UpButton")
+neighbor_previous = NodePath("../../MasterVolumeGroup/UpButton")
 
-[node name="Button" parent="PanelBackground/MusicVolumeGroup/UpButton" index="1"]
-focus_neighbor_left = NodePath("../../DownButton/Button")
-focus_neighbor_top = NodePath("../../../MasterVolumeGroup/UpButton/Button")
-focus_neighbor_bottom = NodePath("../../../SFXVolumeGroup/UpButton/Button")
-focus_next = NodePath("../../../SFXVolumeGroup/DownButton/Button")
-focus_previous = NodePath("../../DownButton/Button")
+[node name="UpButton" parent="PanelBackground/MusicVolumeGroup" index="2"]
+neighbor_left = NodePath("../DownButton")
+neighbor_top = NodePath("../../MasterVolumeGroup/UpButton")
+neighbor_right = NodePath(".")
+neighbor_bottom = NodePath("../../SFXVolumeGroup/UpButton")
+neighbor_next = NodePath("../../SFXVolumeGroup/DownButton")
+neighbor_previous = NodePath("../DownButton")
 
 [node name="SFXLabel" type="Label" parent="PanelBackground"]
 layout_mode = 0
@@ -109,108 +113,65 @@ metadata/_edit_lock_ = true
 [node name="SFXVolumeGroup" parent="PanelBackground" instance=ExtResource("4_n6o6n")]
 offset_left = 76.0
 offset_top = 70.0
-offset_right = 191.0
+offset_right = 198.0
 offset_bottom = 92.0
 metadata/_edit_lock_ = true
 
-[node name="Button" parent="PanelBackground/SFXVolumeGroup/DownButton" index="1"]
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../MusicVolumeGroup/DownButton/Button")
-focus_neighbor_right = NodePath("../../UpButton/Button")
-focus_neighbor_bottom = NodePath("../../../BackButton/Button")
-focus_next = NodePath("../../UpButton/Button")
-focus_previous = NodePath("../../../MusicVolumeGroup/UpButton/Button")
+[node name="DownButton" parent="PanelBackground/SFXVolumeGroup" index="0"]
+neighbor_left = NodePath(".")
+neighbor_top = NodePath("../../MusicVolumeGroup/DownButton")
+neighbor_right = NodePath("../UpButton")
+neighbor_bottom = NodePath("../../BackButton")
+neighbor_next = NodePath("../UpButton")
+neighbor_previous = NodePath("../../MusicVolumeGroup/UpButton")
 
-[node name="Button" parent="PanelBackground/SFXVolumeGroup/UpButton" index="1"]
-focus_neighbor_left = NodePath("../../DownButton/Button")
-focus_neighbor_top = NodePath("../../../MusicVolumeGroup/UpButton/Button")
-focus_neighbor_bottom = NodePath("../../../TestButton/Button")
-focus_next = NodePath("../../../BackButton/Button")
-focus_previous = NodePath("../../DownButton")
+[node name="UpButton" parent="PanelBackground/SFXVolumeGroup" index="2"]
+neighbor_left = NodePath("../DownButton")
+neighbor_top = NodePath("../../MusicVolumeGroup/UpButton")
+neighbor_right = NodePath(".")
+neighbor_bottom = NodePath("../../TestButton")
+neighbor_previous = NodePath("../DownButton")
 
 [node name="BackButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
 layout_mode = 0
 offset_left = 83.0
 offset_top = 102.0
-offset_right = 121.0
-offset_bottom = 120.0
-
-[node name="FocusTexture" parent="PanelBackground/BackButton" index="0"]
-offset_right = 41.0
-metadata/_edit_lock_ = true
-
-[node name="Button" parent="PanelBackground/BackButton" index="1"]
-offset_right = 38.0
-metadata/_edit_lock_ = true
-
-[node name="Frame" parent="PanelBackground/BackButton/Button" index="0"]
-offset_right = 38.0
-metadata/_edit_lock_ = true
-
-[node name="Text" parent="PanelBackground/BackButton/Button" index="1"]
-offset_right = 35.0
+offset_right = 123.0
+offset_bottom = 122.0
 text = "Back"
-metadata/_edit_lock_ = true
+neighbor_left = NodePath(".")
+neighbor_top = NodePath("../SFXVolumeGroup/DownButton")
+neighbor_right = NodePath("../TestButton")
+neighbor_bottom = NodePath(".")
+neighbor_next = NodePath("../TestButton")
+neighbor_previous = NodePath("../SFXVolumeGroup/UpButton")
 
 [node name="TestButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
 layout_mode = 0
 offset_left = 135.0
 offset_top = 102.0
-offset_right = 173.0
-offset_bottom = 120.0
-
-[node name="FocusTexture" parent="PanelBackground/TestButton" index="0"]
-offset_right = 41.0
-metadata/_edit_lock_ = true
-
-[node name="Button" parent="PanelBackground/TestButton" index="1"]
-offset_right = 38.0
-focus_neighbor_left = NodePath("../../BackButton/Button")
-focus_neighbor_top = NodePath("../../SFXVolumeGroup/UpButton/Button")
-focus_neighbor_right = NodePath(".")
-focus_next = NodePath("../../MasterVolumeGroup/DownButton/Button")
-focus_previous = NodePath("../../BackButton/Button")
-metadata/_edit_lock_ = true
-
-[node name="Frame" parent="PanelBackground/TestButton/Button" index="0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.013
-anchor_right = -0.013
-offset_left = 0.494
-offset_right = 38.494
-metadata/_edit_lock_ = true
-
-[node name="Text" parent="PanelBackground/TestButton/Button" index="1"]
-offset_right = 35.0
+offset_right = 175.0
+offset_bottom = 122.0
 text = "Test"
-metadata/_edit_lock_ = true
+neighbor_left = NodePath("../BackButton")
+neighbor_top = NodePath("../SFXVolumeGroup/UpButton")
+neighbor_right = NodePath(".")
+neighbor_bottom = NodePath(".")
+neighbor_next = NodePath("../MasterVolumeGroup/DownButton")
+neighbor_previous = NodePath("../BackButton")
 
 [node name="QuitButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
 offset_left = 36.0
 offset_top = 102.0
-offset_right = 69.0
-offset_bottom = 120.0
-
-[node name="FocusTexture" parent="PanelBackground/QuitButton" index="0"]
-offset_right = 36.0
-metadata/_edit_lock_ = true
-
-[node name="Button" parent="PanelBackground/QuitButton" index="1"]
-offset_right = 33.0
-focus_neighbor_right = NodePath("../../BackButton/Button")
-focus_next = NodePath("../../BackButton/Button")
-focus_previous = NodePath("../../SFXVolumeGroup/UpButton/Button")
-metadata/_edit_lock_ = true
-
-[node name="Frame" parent="PanelBackground/QuitButton/Button" index="0"]
-offset_right = 33.0
-metadata/_edit_lock_ = true
-
-[node name="Text" parent="PanelBackground/QuitButton/Button" index="1"]
-offset_right = 30.0
+offset_right = 71.0
+offset_bottom = 122.0
 text = "Quit"
-metadata/_edit_lock_ = true
+neighbor_left = NodePath(".")
+neighbor_top = NodePath(".")
+neighbor_right = NodePath("../BackButton")
+neighbor_bottom = NodePath(".")
+neighbor_next = NodePath("../BackButton")
+neighbor_previous = NodePath("../SFXVolumeGroup/UpButton")
 
 [connection signal="volume_down_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_down_pressed"]
 [connection signal="volume_up_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_up_pressed"]
@@ -221,14 +182,5 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="PanelBackground/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="PanelBackground/MasterVolumeGroup"]
-[editable path="PanelBackground/MasterVolumeGroup/DownButton"]
-[editable path="PanelBackground/MasterVolumeGroup/UpButton"]
 [editable path="PanelBackground/MusicVolumeGroup"]
-[editable path="PanelBackground/MusicVolumeGroup/DownButton"]
-[editable path="PanelBackground/MusicVolumeGroup/UpButton"]
 [editable path="PanelBackground/SFXVolumeGroup"]
-[editable path="PanelBackground/SFXVolumeGroup/DownButton"]
-[editable path="PanelBackground/SFXVolumeGroup/UpButton"]
-[editable path="PanelBackground/BackButton"]
-[editable path="PanelBackground/TestButton"]
-[editable path="PanelBackground/QuitButton"]

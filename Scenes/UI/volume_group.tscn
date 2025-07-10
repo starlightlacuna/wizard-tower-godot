@@ -9,28 +9,18 @@
 [node name="VolumeGroup" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 120.0
+offset_right = 122.0
 offset_bottom = 22.0
 script = ExtResource("1_tym0c")
 
 [node name="DownButton" parent="." instance=ExtResource("2_8l4wn")]
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 21.0
+icon = ExtResource("4_v3b0a")
 
-[node name="FocusTexture" parent="DownButton" index="0"]
-offset_right = 23.0
-
-[node name="Button" parent="DownButton" index="1"]
-offset_right = 20.0
-
-[node name="Frame" parent="DownButton/Button" index="0"]
-offset_right = 20.0
-
-[node name="Text" parent="DownButton/Button" index="1"]
+[node name="TextureRect" type="TextureRect" parent="DownButton"]
 visible = false
-
-[node name="TextureRect" type="TextureRect" parent="DownButton/Button" index="2"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -51,23 +41,13 @@ texture_progress = ExtResource("3_w3fb6")
 
 [node name="UpButton" parent="." instance=ExtResource("2_8l4wn")]
 offset_left = 100.0
-offset_top = 2.0
-offset_right = 120.0
-offset_bottom = 20.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 21.0
+icon = ExtResource("3_8lj13")
 
-[node name="FocusTexture" parent="UpButton" index="0"]
-offset_right = 23.0
-
-[node name="Button" parent="UpButton" index="1"]
-offset_right = 20.0
-
-[node name="Frame" parent="UpButton/Button" index="0"]
-offset_right = 20.0
-
-[node name="Text" parent="UpButton/Button" index="1"]
+[node name="TextureRect" type="TextureRect" parent="UpButton"]
 visible = false
-
-[node name="TextureRect" type="TextureRect" parent="UpButton/Button" index="2"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -78,6 +58,3 @@ stretch_mode = 2
 
 [connection signal="pressed" from="DownButton" to="." method="_on_down_button_pressed"]
 [connection signal="pressed" from="UpButton" to="." method="_on_up_button_pressed"]
-
-[editable path="DownButton"]
-[editable path="UpButton"]
