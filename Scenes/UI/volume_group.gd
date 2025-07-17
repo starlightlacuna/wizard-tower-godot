@@ -4,7 +4,14 @@ extends Control
 signal volume_down_pressed
 signal volume_up_pressed
 
+@onready var down_button: CustomButton = $DownButton
 @onready var value_bar: TextureProgressBar = $ValueBar
+@onready var up_button: CustomButton = $UpButton
+
+
+func _ready() -> void:
+	down_button.owner = owner
+	up_button.owner = owner
 
 
 func set_value(value: float) -> void:

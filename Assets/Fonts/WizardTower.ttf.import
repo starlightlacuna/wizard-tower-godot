@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://galtjhdbjeod"
-path="res://.godot/imported/WizardTower.ttf-152ff7ffa0af25619d2e1317e34777d5.fontdata"
+path="res://.godot/imported/WizardTower.ttf-34e641cca298b5da20cbab5091c271e2.fontdata"
 
 [deps]
 
-source_file="res://Scenes/UI/Assets/Fonts/WizardTower.ttf"
-dest_files=["res://.godot/imported/WizardTower.ttf-152ff7ffa0af25619d2e1317e34777d5.fontdata"]
+source_file="res://Assets/Fonts/WizardTower.ttf"
+dest_files=["res://.godot/imported/WizardTower.ttf-34e641cca298b5da20cbab5091c271e2.fontdata"]
 
 [params]
 

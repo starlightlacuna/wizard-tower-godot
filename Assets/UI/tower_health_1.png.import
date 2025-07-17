@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciy0nx68g3chx"
-path="res://.godot/imported/win.png-4e145fd2dcccefd98ab69f6216ae3549.ctex"
+uid="uid://dmibt3gppippc"
+path="res://.godot/imported/tower_health_1.png-29fb2be60523a3dd26d2037049b53087.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Assets/win.png"
-dest_files=["res://.godot/imported/win.png-4e145fd2dcccefd98ab69f6216ae3549.ctex"]
+source_file="res://Assets/UI/tower_health_1.png"
+dest_files=["res://.godot/imported/tower_health_1.png-29fb2be60523a3dd26d2037049b53087.ctex"]
 
 [params]
 

@@ -1,17 +1,33 @@
 @tool
 class_name CustomButton
 extends Control
+## A button that has a special focus frame.
+##
+## This node reimplements some of the functionality of the built-in Button node 
+## such as focus neighbors and custom text/icon. It uses an inner button to
+## handle input events; the button text and icon are separate nodes that are
+## updated automatically when their corresponding member variables are updated.
+## [br][br]
+## This can have both text and an icon, however, unlike [Button], the text
+## will be covered by the icon instead of shifting to accomodate the icon. See
+## [member Button.icon_alignment].
 
+## Emitted when the inner [member button] emits the [signal Button.pressed] signal
 signal pressed
 
+## The text to display. If this and [member icon] are set, the button is resized
+## to the combined minimum size of both.
 @export var text: String = "":
 	set(new_text):
 		text = new_text
+## The icon to display. If this and [member text] are set, the button is resized
+## to the combined minimum size of both.
 @export var icon: Texture2D:
 	set(new_texture):
 		icon = new_texture
-			
+
 @export_category("Focus")
+## The node to focus when the 
 @export var neighbor_left: NodePath
 @export var neighbor_top: NodePath
 @export var neighbor_right: NodePath
@@ -31,19 +47,27 @@ var top_left_corner: Vector2 = Vector2i(5, 5)
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		focus_texture.set_visible(false)
-		await get_tree().get_current_scene().ready
+		# This is a code smell, but it works.
+		await owner.ready
+		_resize()
 		set_focus_neighbors()
 
 
 func _process(_delta: float) -> void:
-	_resize()
+	# IMPROVE: Call _resize only during scene setup
+	if Engine.is_editor_hint():
+		_resize()
+		set_focus_neighbors()
 
 
+## Calls the inner [member button]'s [method Control.grab_focus] method.
 func button_grab_focus() -> void:
 	button.grab_focus()
 
 
 func _get_button_path(node_path: NodePath) -> NodePath:
+	if !owner.is_node_ready():
+		await owner.ready
 	var node: Control = get_node_or_null(node_path)
 	if node is CustomButton:
 		return node.button.get_path()
@@ -86,7 +110,7 @@ func _resize() -> Vector2:
 
 
 func _set_focus_neighbor(side: Side, node_path: NodePath) -> void:
-	button.set_focus_neighbor(side, _get_button_path(node_path))
+	button.set_focus_neighbor(side, await _get_button_path(node_path))
 
 
 func _set_icon() -> void:
@@ -103,6 +127,6 @@ func set_focus_neighbors() -> void:
 	if not neighbor_bottom.is_empty():
 		_set_focus_neighbor(SIDE_BOTTOM, neighbor_bottom)
 	if not neighbor_next.is_empty():
-		button.set_focus_next(_get_button_path(neighbor_next))
+		button.set_focus_next(await _get_button_path(neighbor_next))
 	if not neighbor_previous.is_empty():
-		button.set_focus_previous(_get_button_path(neighbor_previous))
+		button.set_focus_previous(await _get_button_path(neighbor_previous))

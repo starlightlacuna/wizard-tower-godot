@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dok1u1v8sgu4d"
-path="res://.godot/imported/volume_down.png-725d3251bc4f4a2817a081baa7a66924.ctex"
+uid="uid://dbljduymv0gbq"
+path="res://.godot/imported/button_focused.png-a451fceddd03eb81c954724027e4fc1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Assets/volume_down.png"
-dest_files=["res://.godot/imported/volume_down.png-725d3251bc4f4a2817a081baa7a66924.ctex"]
+source_file="res://Assets/UI/button_focused.png"
+dest_files=["res://.godot/imported/button_focused.png-a451fceddd03eb81c954724027e4fc1c.ctex"]
 
 [params]
 

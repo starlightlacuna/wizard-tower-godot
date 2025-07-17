@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b67nm148cfyt6"
-path="res://.godot/imported/modal_frame.png-78b072e1d10428d374f520fe87decc4d.ctex"
+uid="uid://deew1ag02ts5e"
+path="res://.godot/imported/gameover.png-900ac55b5edc96f9d0ec7846dda13c65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Assets/modal_frame.png"
-dest_files=["res://.godot/imported/modal_frame.png-78b072e1d10428d374f520fe87decc4d.ctex"]
+source_file="res://Assets/UI/gameover.png"
+dest_files=["res://.godot/imported/gameover.png-900ac55b5edc96f9d0ec7846dda13c65.ctex"]
 
 [params]
 

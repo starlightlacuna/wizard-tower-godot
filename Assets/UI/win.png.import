@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8y51jjvkhk4m"
-path="res://.godot/imported/tower_health_2.png-10563c43a6df4d96ba138394bc0fccfa.ctex"
+uid="uid://ciy0nx68g3chx"
+path="res://.godot/imported/win.png-f376327c31562ae7fb93b8ed2f4fb1b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/Assets/tower_health_2.png"
-dest_files=["res://.godot/imported/tower_health_2.png-10563c43a6df4d96ba138394bc0fccfa.ctex"]
+source_file="res://Assets/UI/win.png"
+dest_files=["res://.godot/imported/win.png-f376327c31562ae7fb93b8ed2f4fb1b0.ctex"]
 
 [params]
 

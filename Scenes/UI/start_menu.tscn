@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjv3ykbxr5gmn"]
 
 [ext_resource type="Script" uid="uid://bx8luj603scuu" path="res://Scenes/UI/start_menu.gd" id="1_xry01"]
-[ext_resource type="Texture2D" uid="uid://ppqy17o0duf6" path="res://Scenes/UI/Assets/main_menu_background.png" id="2_8wf1d"]
+[ext_resource type="Texture2D" uid="uid://ppqy17o0duf6" path="res://Assets/UI/main_menu_background.png" id="2_8wf1d"]
 [ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="3_8wf1d"]
 
 [node name="StartMenu" type="Control"]
@@ -35,7 +35,7 @@ neighbor_top = NodePath(".")
 neighbor_right = NodePath(".")
 neighbor_bottom = NodePath("../SettingsButton")
 neighbor_next = NodePath("../SettingsButton")
-neighbor_previous = NodePath(".")
+neighbor_previous = NodePath("../SettingsButton")
 
 [node name="SettingsButton" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 502.0
@@ -47,7 +47,8 @@ text = "SETTINGS"
 neighbor_left = NodePath(".")
 neighbor_top = NodePath("../StartButton")
 neighbor_right = NodePath(".")
-neighbor_next = NodePath(".")
+neighbor_bottom = NodePath(".")
+neighbor_next = NodePath("../StartButton")
 neighbor_previous = NodePath("../StartButton")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
