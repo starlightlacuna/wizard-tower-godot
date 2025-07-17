@@ -132,6 +132,19 @@ neighbor_right = NodePath(".")
 neighbor_bottom = NodePath("../../TestButton")
 neighbor_previous = NodePath("../DownButton")
 
+[node name="QuitButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
+offset_left = 36.0
+offset_top = 102.0
+offset_right = 71.0
+offset_bottom = 122.0
+text = "Quit"
+neighbor_left = NodePath(".")
+neighbor_top = NodePath(".")
+neighbor_right = NodePath("../BackButton")
+neighbor_bottom = NodePath(".")
+neighbor_next = NodePath("../BackButton")
+neighbor_previous = NodePath("../SFXVolumeGroup/UpButton")
+
 [node name="BackButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
 layout_mode = 0
 offset_left = 83.0
@@ -159,19 +172,6 @@ neighbor_right = NodePath(".")
 neighbor_bottom = NodePath(".")
 neighbor_next = NodePath("../MasterVolumeGroup/DownButton")
 neighbor_previous = NodePath("../BackButton")
-
-[node name="QuitButton" parent="PanelBackground" instance=ExtResource("5_cs2gm")]
-offset_left = 36.0
-offset_top = 102.0
-offset_right = 71.0
-offset_bottom = 122.0
-text = "Quit"
-neighbor_left = NodePath(".")
-neighbor_top = NodePath(".")
-neighbor_right = NodePath("../BackButton")
-neighbor_bottom = NodePath(".")
-neighbor_next = NodePath("../BackButton")
-neighbor_previous = NodePath("../SFXVolumeGroup/UpButton")
 
 [connection signal="volume_down_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_down_pressed"]
 [connection signal="volume_up_pressed" from="PanelBackground/MasterVolumeGroup" to="." method="_on_master_volume_group_volume_up_pressed"]

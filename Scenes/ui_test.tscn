@@ -22,7 +22,6 @@ offset_right = 169.0
 offset_bottom = 64.0
 
 [node name="DownButton" parent="VolumeGroup" index="0"]
-test = null
 neighbor_left = NodePath(".")
 neighbor_top = NodePath(".")
 neighbor_right = NodePath("../UpButton")
@@ -31,7 +30,6 @@ neighbor_next = NodePath("../UpButton")
 neighbor_previous = NodePath("../../BananaButton")
 
 [node name="UpButton" parent="VolumeGroup" index="2"]
-test = null
 neighbor_left = NodePath("../DownButton")
 neighbor_top = NodePath(".")
 neighbor_right = NodePath(".")
@@ -45,7 +43,6 @@ offset_top = 88.0
 offset_right = 186.0
 offset_bottom = 108.0
 text = "Banana"
-test = null
 neighbor_left = NodePath(".")
 neighbor_top = NodePath("../VolumeGroup/UpButton")
 neighbor_right = NodePath(".")
