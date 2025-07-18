@@ -26,6 +26,7 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_game"):
 		ui.show_pause_window()
+		get_tree().paused = true
 
 
 func _damage_tower(damage: int) -> void:
@@ -47,3 +48,7 @@ func _on_start_menu_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	restart_button_pressed.emit()
+
+
+func _on_ui_pause_menu_back_button_pressed() -> void:
+	get_tree().paused = false

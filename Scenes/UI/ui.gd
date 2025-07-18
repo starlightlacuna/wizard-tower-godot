@@ -3,10 +3,12 @@ extends Control
 
 signal lose_no_button_pressed
 signal lose_yes_button_pressed
+signal pause_menu_back_button_pressed
 signal win_no_button_pressed
 signal win_yes_button_pressed
 
 @export var tower_health_icon_scene: PackedScene
+
 var tower_health_icons: Array[TowerHealthIcon]
 
 @onready var tower_health_bar: Control = $TowerHealthBar
@@ -18,8 +20,15 @@ var tower_health_icons: Array[TowerHealthIcon]
 func _ready() -> void:
 	assert(tower_health_icon_scene, "[UI] Tower Health Icon not set!")
 	
-	lose_window.set_visible(false)
-	win_window.set_visible(false)
+	lose_window.visible = false
+	win_window.visible = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("pause_game"):
+		return
+	if pause_window.visible and event.is_action_pressed("pause_game"):
+		pause_menu_back_button_pressed.emit()
 
 
 func build_health_bar(max_health: int) -> void:
@@ -28,9 +37,13 @@ func build_health_bar(max_health: int) -> void:
 	
 	for index in _get_icon_count(max_health):
 		var new_icon: TowerHealthIcon = tower_health_icon_scene.instantiate()
-		new_icon.set_position(Vector2(index * 40, 0))
+		new_icon.position = Vector2(index * 40, 0)
 		tower_health_bar.add_child(new_icon)
 		tower_health_icons.append(new_icon)
+
+
+func hide_pause_menu() -> void:
+	pause_window.visible = false
 
 
 func update_tower_health_bar(current_health: int, max_health) -> void:
@@ -46,15 +59,15 @@ func update_tower_health_bar(current_health: int, max_health) -> void:
 
 
 func show_lose_window() -> void:
-	lose_window.set_visible(true)
+	lose_window.visible = true
 
 
 func show_pause_window() -> void:
-	pause_window.set_visible(true)
+	pause_window.visible = true
 
 
 func show_win_window() -> void:
-	win_window.set_visible(true)
+	win_window.visible = true
 
 
 func _get_icon_count(max_health: int) -> int:
@@ -76,3 +89,8 @@ func _on_win_no_button_pressed() -> void:
 
 func _on_win_yes_button_pressed() -> void:
 	win_yes_button_pressed.emit()
+
+
+func _on_pause_window_back_button_pressed() -> void:
+	hide_pause_menu()
+	pause_menu_back_button_pressed.emit()

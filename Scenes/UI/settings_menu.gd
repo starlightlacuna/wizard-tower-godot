@@ -2,6 +2,7 @@ class_name SettingsMenu
 extends Control
 
 signal back_button_pressed
+signal quit_button_pressed
 
 const Bus = Settings.Bus
 
@@ -59,6 +60,10 @@ func _on_music_volume_group_volume_down_pressed() -> void:
 
 func _on_music_volume_group_volume_up_pressed() -> void:
 	Settings.set_volume(Bus.MUSIC, Settings.get_volume(Bus.MUSIC) + 0.1)
+
+
+func _on_quit_button_pressed() -> void:
+	quit_button_pressed.emit()
 
 
 func _on_sfx_volume_group_volume_down_pressed() -> void:

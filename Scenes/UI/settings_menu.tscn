@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="5_cs2gm"]
 
 [node name="SettingsMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cs2gm")
@@ -179,6 +180,7 @@ neighbor_previous = NodePath("../BackButton")
 [connection signal="volume_up_pressed" from="PanelBackground/MusicVolumeGroup" to="." method="_on_music_volume_group_volume_up_pressed"]
 [connection signal="volume_down_pressed" from="PanelBackground/SFXVolumeGroup" to="." method="_on_sfx_volume_group_volume_down_pressed"]
 [connection signal="volume_up_pressed" from="PanelBackground/SFXVolumeGroup" to="." method="_on_sfx_volume_group_volume_up_pressed"]
+[connection signal="pressed" from="PanelBackground/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PanelBackground/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="PanelBackground/MasterVolumeGroup"]

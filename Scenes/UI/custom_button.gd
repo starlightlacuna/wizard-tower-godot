@@ -64,8 +64,9 @@ signal pressed
 @export var neighbor_previous: NodePath = NodePath("")
 #endregion
 
+## The [Button] node that handles events and focus for the CustomButton.
+@onready var button: Button = $Button
 @onready var _focus_texture: NinePatchRect = $FocusTexture
-@onready var _button: Button = $Button
 @onready var _button_frame: NinePatchRect = $Button/Frame
 @onready var _button_label: Label = $Button/Label
 @onready var _button_icon: TextureRect = $Button/Icon
@@ -84,9 +85,9 @@ func _ready() -> void:
 		set_focus_neighbors()
 
 
-## Calls the inner [member button]'s [method Control.grab_focus] method.
+## Calls the [member button]'s [method Control.grab_focus] method.
 func button_grab_focus() -> void:
-	_button.grab_focus()
+	button.grab_focus()
 
 
 ## Sets the focus neighbors for the inner [Button]. This method should be called
@@ -101,9 +102,9 @@ func set_focus_neighbors() -> void:
 	if not neighbor_bottom.is_empty():
 		_set_focus_neighbor(SIDE_BOTTOM, neighbor_bottom)
 	if not neighbor_next.is_empty():
-		_button.set_focus_next(await _get_button_path(neighbor_next))
+		button.set_focus_next(await _get_button_path(neighbor_next))
 	if not neighbor_previous.is_empty():
-		_button.set_focus_previous(await _get_button_path(neighbor_previous))
+		button.set_focus_previous(await _get_button_path(neighbor_previous))
 
 
 func _get_button_path(node_path: NodePath) -> NodePath:
@@ -125,7 +126,7 @@ func _on_button_focus_exited() -> void:
 
 
 func _on_button_mouse_entered() -> void:
-	_button.grab_focus.call_deferred()
+	button.grab_focus.call_deferred()
 
 
 func _on_button_pressed() -> void:
@@ -143,14 +144,10 @@ func _resize() -> Vector2:
 		minimum_size.y = max(minimum_size.y, icon.get_height() + 2)
 	_button_frame.set_size(minimum_size + Vector2(9, 8))
 	_focus_texture.set_size(_button_frame.get_size() + Vector2(6, 6))
-	_button.set_size(_button_frame.get_size())
-	set_size(_button.get_size())
+	button.set_size(_button_frame.get_size())
+	set_size(button.get_size())
 	return minimum_size
 
 
 func _set_focus_neighbor(side: Side, node_path: NodePath) -> void:
-	_button.set_focus_neighbor(side, await _get_button_path(node_path))
-
-
-func _set_icon() -> void:
-	_button_icon.set_texture(icon)
+	button.set_focus_neighbor(side, await _get_button_path(node_path))

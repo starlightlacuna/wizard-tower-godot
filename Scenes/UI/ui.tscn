@@ -195,8 +195,10 @@ texture_normal = ExtResource("6_jfwrg")
 
 [node name="PauseWindow" parent="." instance=ExtResource("8_jfwrg")]
 visible = false
+is_pause_menu = true
 
 [connection signal="pressed" from="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_lose_yes_button_pressed"]
 [connection signal="pressed" from="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_lose_no_button_pressed"]
 [connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_win_yes_button_pressed"]
 [connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_win_no_button_pressed"]
+[connection signal="back_button_pressed" from="PauseWindow" to="." method="_on_pause_window_back_button_pressed"]
