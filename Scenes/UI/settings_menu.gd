@@ -23,7 +23,7 @@ const Bus = Settings.Bus
 
 func _ready() -> void:
 	Settings.volume_changed.connect(_on_settings_volume_changed)
-	back_button.button_grab_focus.call_deferred()
+	back_button_grab_focus_deferred()
 	
 	if is_pause_menu:
 		back_button.set_position(pause_menu_back_button_position)
@@ -40,6 +40,10 @@ func _ready() -> void:
 		back_button.set_position(main_menu_back_button_position)
 		test_button.set_position(main_menu_test_button_position)
 		quit_button.set_visible(false)
+
+
+func back_button_grab_focus_deferred() -> void:
+	back_button.button_grab_focus.call_deferred()
 
 
 func _on_back_button_pressed() -> void:

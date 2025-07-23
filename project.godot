@@ -30,6 +30,13 @@ window/size/viewport_width=960
 window/size/viewport_height=640
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Characters/": "orange"
+}
+
 [input]
 
 move_down={

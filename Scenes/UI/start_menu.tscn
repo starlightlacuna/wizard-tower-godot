@@ -25,9 +25,9 @@ metadata/_edit_lock_ = true
 
 [node name="StartButton" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 548.0
-offset_top = 348.0
+offset_top = 344.0
 offset_right = 602.0
-offset_bottom = 368.0
+offset_bottom = 364.0
 scale = Vector2(4, 4)
 text = "START"
 neighbor_left = NodePath(".")
@@ -35,21 +35,36 @@ neighbor_top = NodePath(".")
 neighbor_right = NodePath(".")
 neighbor_bottom = NodePath("../SettingsButton")
 neighbor_next = NodePath("../SettingsButton")
-neighbor_previous = NodePath("../SettingsButton")
+neighbor_previous = NodePath("../QuitButton")
 
 [node name="SettingsButton" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 502.0
-offset_top = 448.0
+offset_top = 444.0
 offset_right = 579.0
-offset_bottom = 468.0
+offset_bottom = 464.0
 scale = Vector2(4, 4)
 text = "SETTINGS"
 neighbor_left = NodePath(".")
 neighbor_top = NodePath("../StartButton")
 neighbor_right = NodePath(".")
+neighbor_bottom = NodePath("../QuitButton")
+neighbor_next = NodePath("../QuitButton")
+neighbor_previous = NodePath("../StartButton")
+
+[node name="QuitButton" parent="." instance=ExtResource("3_8wf1d")]
+offset_left = 572.0
+offset_top = 544.0
+offset_right = 613.0
+offset_bottom = 564.0
+scale = Vector2(4, 4)
+text = "QUIT"
+neighbor_left = NodePath(".")
+neighbor_top = NodePath("../SettingsButton")
+neighbor_right = NodePath(".")
 neighbor_bottom = NodePath(".")
 neighbor_next = NodePath("../StartButton")
-neighbor_previous = NodePath("../StartButton")
+neighbor_previous = NodePath("../SettingsButton")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

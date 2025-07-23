@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://brhllmdgpj07q"]
+[gd_scene load_steps=10 format=4 uid="uid://brhllmdgpj07q"]
 
 [ext_resource type="TileSet" uid="uid://tibl5rc5piad" path="res://Scenes/level_tile_set.tres" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://s5g5xuyidp5p" path="res://Scenes/game.gd" id="1_wrm1d"]
@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dpsv6nrk5dkh" path="res://Scenes/UI/ui.tscn" id="2_v158k"]
 [ext_resource type="PackedScene" uid="uid://ke2oqvxlb7wy" path="res://Scenes/Enemy Manager/enemy_manager.tscn" id="3_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://c6lqeovf4si6s" path="res://Characters/firebolt.tscn" id="3_3dryh"]
+[ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Enemy Manager/level.gd" id="4_h4fw4"]
+[ext_resource type="Resource" uid="uid://b3hprhtni8y5o" path="res://Data/Levels/level_1.tres" id="5_ldgsr"]
 [ext_resource type="AudioStream" uid="uid://wd1goqxq72d6" path="res://Assets/Audio/Action 2 (Loop).ogg" id="9_h4fw4"]
 
 [node name="Game" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_wrm1d")
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
@@ -17,6 +20,7 @@ script = ExtResource("1_wrm1d")
 visible = false
 
 [node name="EnemyManager" parent="." instance=ExtResource("3_1l0tm")]
+levels = Array[ExtResource("4_h4fw4")]([ExtResource("5_ldgsr")])
 
 [node name="Firebolts" type="Node2D" parent="."]
 
@@ -48,7 +52,9 @@ parameters/looping = false
 
 [connection signal="lose_no_button_pressed" from="UICanvasLayer/UI" to="." method="_on_start_menu_button_pressed"]
 [connection signal="lose_yes_button_pressed" from="UICanvasLayer/UI" to="." method="_on_restart_button_pressed"]
+[connection signal="pause_game_pressed" from="UICanvasLayer/UI" to="." method="_on_ui_pause_game_pressed"]
 [connection signal="pause_menu_back_button_pressed" from="UICanvasLayer/UI" to="." method="_on_ui_pause_menu_back_button_pressed"]
+[connection signal="pause_menu_quit_button_pressed" from="UICanvasLayer/UI" to="." method="_on_ui_pause_menu_quit_button_pressed"]
 [connection signal="win_no_button_pressed" from="UICanvasLayer/UI" to="." method="_on_start_menu_button_pressed"]
 [connection signal="win_yes_button_pressed" from="UICanvasLayer/UI" to="." method="_on_restart_button_pressed"]
 [connection signal="game_completed" from="EnemyManager" to="." method="_on_enemy_manager_game_completed"]

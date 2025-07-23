@@ -4,6 +4,8 @@ extends Control
 signal lose_no_button_pressed
 signal lose_yes_button_pressed
 signal pause_menu_back_button_pressed
+signal pause_menu_quit_button_pressed
+signal pause_game_pressed
 signal win_no_button_pressed
 signal win_yes_button_pressed
 
@@ -13,28 +15,31 @@ var tower_health_icons: Array[TowerHealthIcon]
 
 @onready var tower_health_bar: Control = $TowerHealthBar
 @onready var lose_window: Control = $LoseWindow
-@onready var pause_window: Control = $PauseWindow
+@onready var pause_window: SettingsMenu = $PauseWindow
 @onready var win_window: Control = $WinWindow
 
 
 func _ready() -> void:
 	assert(tower_health_icon_scene, "[UI] Tower Health Icon not set!")
-	
 	lose_window.visible = false
 	win_window.visible = false
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("pause_game"):
+func _shortcut_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause_game"):
+		if pause_window.visible:
+			hide_pause_menu()
+			pause_menu_back_button_pressed.emit()
+		else:
+			show_pause_window()
+			pause_game_pressed.emit()
 		return
-	if pause_window.visible and event.is_action_pressed("pause_game"):
-		pause_menu_back_button_pressed.emit()
 
 
 func build_health_bar(max_health: int) -> void:
 	for child in tower_health_bar.get_children():
 		child.queue_free()
-	
+
 	for index in _get_icon_count(max_health):
 		var new_icon: TowerHealthIcon = tower_health_icon_scene.instantiate()
 		new_icon.position = Vector2(index * 40, 0)
@@ -64,6 +69,7 @@ func show_lose_window() -> void:
 
 func show_pause_window() -> void:
 	pause_window.visible = true
+	pause_window.back_button_grab_focus_deferred()
 
 
 func show_win_window() -> void:
@@ -94,3 +100,7 @@ func _on_win_yes_button_pressed() -> void:
 func _on_pause_window_back_button_pressed() -> void:
 	hide_pause_menu()
 	pause_menu_back_button_pressed.emit()
+
+
+func _on_pause_window_quit_button_pressed() -> void:
+	pause_menu_quit_button_pressed.emit()

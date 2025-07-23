@@ -50,9 +50,10 @@ func _begin_game() -> void:
 
 func _execute_level_step(level_step: LevelStep) -> void:
 	if level_step is SpawnEnemyGroup:
-		_spawn_enemy_group(level_step as SpawnEnemyGroup)
+		_spawn_enemy_group(level_step)
 	elif level_step is WaitDuration:
-		await get_tree().create_timer((level_step as WaitDuration).duration).timeout
+		spawn_timer.start(level_step.duration)
+		await spawn_timer.timeout
 		return
 	elif level_step is WaitClear:
 		await enemies_cleared
@@ -71,6 +72,7 @@ func _execute_next_level_step() -> void:
 		
 	_execute_level_step(levels[_level_index].steps[_level_step_index])
 	_level_step_index += 1
+	randi()
 
 
 func _spawn_enemy_group(enemy_group: SpawnEnemyGroup) -> void:
