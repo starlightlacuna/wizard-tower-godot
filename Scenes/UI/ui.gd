@@ -13,11 +13,11 @@ signal win_yes_button_pressed
 @export var current_level_value: int = 20:
 	set(new_value):
 		current_level_value = new_value
-		_set_value_label_text()
+		_set_level_value_label_text()
 @export var total_level_value: int = 20:
 	set(new_value):
 		total_level_value = new_value
-		_set_value_label_text()
+		_set_level_value_label_text()
 
 var tower_health_icons: Array[TowerHealthIcon]
 
@@ -25,14 +25,16 @@ var tower_health_icons: Array[TowerHealthIcon]
 @onready var lose_window: Control = $LoseWindow
 @onready var pause_window: SettingsMenu = $PauseWindow
 @onready var win_window: Control = $WinWindow
-@onready var _value_label: Label = $LevelTracker/ValueLabel
+@onready var _level_tracker: Control = $LevelTracker
+@onready var _level_value_label: Label = $LevelTracker/ValueLabel
 
 
 func _ready() -> void:
 	assert(tower_health_icon_scene, "[UI] Tower Health Icon not set!")
+	
 	lose_window.visible = false
 	win_window.visible = false
-	_set_value_label_text()
+	_level_tracker.visible = false
 
 
 func _shortcut_input(event: InputEvent) -> void:
@@ -71,6 +73,10 @@ func update_tower_health_bar(current_health: int, max_health) -> void:
 			current_health -= 1
 		else:
 			tower_health_icons[index].update(TowerHealthIcon.Display.NONE)
+
+
+func show_level_tracker() -> void:
+	_level_tracker.visible = true
 
 
 func show_lose_window() -> void:
@@ -116,5 +122,5 @@ func _on_pause_window_quit_button_pressed() -> void:
 	pause_menu_quit_button_pressed.emit()
 
 
-func _set_value_label_text() -> void:
-	_value_label.text = str(current_level_value) + "/" + str(total_level_value)
+func _set_level_value_label_text() -> void:
+	_level_value_label.text = str(current_level_value) + "/" + str(total_level_value)

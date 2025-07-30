@@ -15,7 +15,7 @@ extends Control
 ## Emitted when the inner [Button] emits the [signal Button.pressed] signal
 signal pressed
 
-## The text to display. If this and are set, the button is resized
+## The text to display. If this and [member icon] are set, the button is resized
 ## to the combined minimum size of both. Text is rendered behind the icon.
 @export var text: String = "":
 	set(new_text):

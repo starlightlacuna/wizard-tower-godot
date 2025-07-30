@@ -20,6 +20,8 @@ size_flags_vertical = 3
 theme = ExtResource("1_s3gqk")
 script = ExtResource("1_jxero")
 tower_health_icon_scene = ExtResource("4_2246s")
+metadata/_edit_horizontal_guides_ = [160.0]
+metadata/_edit_vertical_guides_ = [240.0]
 
 [node name="TowerHealthBar" type="Control" parent="."]
 anchors_preset = 0

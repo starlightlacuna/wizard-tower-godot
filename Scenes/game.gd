@@ -1,5 +1,8 @@
 class_name Game
 extends Node2D
+## The game scene.
+##
+## This scene handles all game logic, from start to win or lose.
 
 ## Emitted when an InputEvent is received to restart the game
 signal restart_button_pressed
@@ -7,40 +10,50 @@ signal restart_button_pressed
 ## Emitted when an InputEvent is received to return to the start menu
 signal start_menu_button_pressed
 
+## The tower's maximum health. When the game starts, the tower's health is set to this value.
 @export var tower_max_health: int = 20
-var tower_health: int = tower_max_health
 
-@onready var background_music: AudioStreamPlayer = $BackgroundMusic
+## The levels to play. This gets passed into [method EnemyManager.process_levels].
+@export var levels: Array[Level]
+
+var _tower_health: int = tower_max_health
+
+@onready var _background_music: AudioStreamPlayer = $BackgroundMusic
 @onready var _enemy_manager: EnemyManager = $EnemyManager
-@onready var firebolts: Node2D = $Firebolts
-@onready var player: Player = $Player
-@onready var ui: UI = $UICanvasLayer/UI
+@onready var _firebolts: Node2D = $Firebolts
+@onready var _player: Player = $Player
+@onready var _ui: UI = $UICanvasLayer/UI
 
 
 func _ready() -> void:
-	player.set_position(Grid.grid_to_world(Vector2i(0, 2)))
-	player.set_firebolts_node(firebolts)
-	ui.build_health_bar(tower_max_health)
-	ui.set_visible(true)
+	assert(levels, "[Game] Levels is not set!")
 	
-	#background_music.play()
+	_player.set_position(Grid.grid_to_world(Vector2i(0, 2)))
+	_player.set_firebolts_node(_firebolts)
+	_ui.build_health_bar(tower_max_health)
+	_ui.set_visible(true)
+	
+	#_background_music.play()
 	Event.tower_damaged.connect(_damage_tower)
-	_on_enemy_manager_level_index_updated()
 
 
 func _damage_tower(damage: int) -> void:
-	tower_health -= damage
-	ui.update_tower_health_bar(tower_health, tower_max_health)
+	_tower_health -= damage
+	_ui.update_tower_health_bar(_tower_health, tower_max_health)
 	
-	if tower_health <= 0:
-		background_music.stop()
-		ui.show_lose_window()
-		get_tree().paused = true
-		_enemy_manager.should_process_levels = false
+	if _tower_health <= 0:
+		# Disconnect the signal to prevent multiple invocations
+		Event.tower_damaged.disconnect(_damage_tower)
+		_lose_game.call_deferred()
 
 
-func _on_enemy_manager_game_completed() -> void:
-	ui.show_win_window()
+func _on_enemy_manager_level_index_updated() -> void:
+	_ui.current_level_value = _enemy_manager.level_index + 1
+	_ui.total_level_value = levels.size()
+
+
+func _on_enemy_manager_levels_completed() -> void:
+	_ui.show_win_window()
 	get_tree().paused = true
 
 
@@ -66,6 +79,13 @@ func _on_ui_pause_menu_quit_button_pressed() -> void:
 	start_menu_button_pressed.emit()
 
 
-func _on_enemy_manager_level_index_updated() -> void:
-	ui.current_level_value = _enemy_manager.level_index + 1
-	ui.total_level_value = _enemy_manager.levels.size()
+func _on_first_level_delay_timer_timeout() -> void:
+	await _enemy_manager.process_levels(levels)
+	_ui.show_win_window()
+	get_tree().paused = true
+
+func _lose_game() -> void:
+	_background_music.stop()
+	_ui.show_lose_window()
+	get_tree().paused = true
+	
