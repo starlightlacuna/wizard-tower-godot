@@ -1,21 +1,39 @@
-[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://qi45o45m7rhc"]
+[gd_resource type="Resource" script_class="Level" load_steps=11 format=3 uid="uid://qi45o45m7rhc"]
 
 [ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Enemy Manager/level.gd" id="1_xqvn7"]
 [ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Enemy Manager/level_step.gd" id="2_p7ula"]
-[ext_resource type="Resource" uid="uid://b0cflc5rn5drr" path="res://Data/Levels/test_spawn_enemy_group.tres" id="3_p7ula"]
+[ext_resource type="Script" uid="uid://cnuovcf1umc8s" path="res://Scenes/Enemy Manager/spawn_enemy.gd" id="3_p7ula"]
 [ext_resource type="Script" uid="uid://w46wnmwje315" path="res://Scenes/Enemy Manager/wait_duration.gd" id="4_o6ls6"]
 [ext_resource type="Script" uid="uid://d3wr2buo02nux" path="res://Scenes/Enemy Manager/wait_clear.gd" id="5_nfj6f"]
 
+[sub_resource type="Resource" id="Resource_o6ls6"]
+script = ExtResource("3_p7ula")
+enemy_type = 0
+lane = 0
+metadata/_custom_type_script = "uid://cnuovcf1umc8s"
+
 [sub_resource type="Resource" id="Resource_nfj6f"]
+script = ExtResource("3_p7ula")
+enemy_type = 0
+lane = 2
+metadata/_custom_type_script = "uid://cnuovcf1umc8s"
+
+[sub_resource type="Resource" id="Resource_bjvkk"]
 script = ExtResource("4_o6ls6")
 duration = 2.0
 metadata/_custom_type_script = "uid://w46wnmwje315"
 
-[sub_resource type="Resource" id="Resource_bjvkk"]
+[sub_resource type="Resource" id="Resource_425qt"]
+script = ExtResource("3_p7ula")
+enemy_type = 1
+lane = 4
+metadata/_custom_type_script = "uid://cnuovcf1umc8s"
+
+[sub_resource type="Resource" id="Resource_12jnx"]
 script = ExtResource("5_nfj6f")
 metadata/_custom_type_script = "uid://d3wr2buo02nux"
 
 [resource]
 script = ExtResource("1_xqvn7")
-steps = Array[ExtResource("2_p7ula")]([ExtResource("3_p7ula"), SubResource("Resource_nfj6f"), ExtResource("3_p7ula"), SubResource("Resource_bjvkk")])
+steps = Array[ExtResource("2_p7ula")]([SubResource("Resource_o6ls6"), SubResource("Resource_nfj6f"), SubResource("Resource_bjvkk"), SubResource("Resource_425qt"), SubResource("Resource_12jnx")])
 metadata/_custom_type_script = "uid://dtw3dow0778l"

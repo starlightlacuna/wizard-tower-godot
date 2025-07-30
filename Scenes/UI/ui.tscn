@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpsv6nrk5dkh"]
+[gd_scene load_steps=7 format=3 uid="uid://dpsv6nrk5dkh"]
 
 [ext_resource type="Script" uid="uid://bp61okyjoqclt" path="res://Scenes/UI/ui.gd" id="1_jxero"]
+[ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_s3gqk"]
 [ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Assets/UI/modal_frame.png" id="3_c7mb3"]
 [ext_resource type="PackedScene" uid="uid://ddrmc5mfsyvjo" path="res://Scenes/UI/tower_health_icon.tscn" id="4_2246s"]
-[ext_resource type="Texture2D" uid="uid://deew1ag02ts5e" path="res://Assets/UI/gameover.png" id="5_1c2ca"]
-[ext_resource type="Texture2D" uid="uid://byrsbac1gqsrf" path="res://Assets/UI/yes.png" id="5_duuxe"]
 [ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="5_mbl0m"]
-[ext_resource type="Texture2D" uid="uid://d0yg3py57y4m6" path="res://Assets/UI/no.png" id="6_jfwrg"]
-[ext_resource type="Texture2D" uid="uid://ciy0nx68g3chx" path="res://Assets/UI/win.png" id="7_duuxe"]
 [ext_resource type="PackedScene" uid="uid://dynm7se0gewia" path="res://Scenes/UI/settings_menu.tscn" id="8_jfwrg"]
 
 [node name="UI" type="Control"]
@@ -20,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_s3gqk")
 script = ExtResource("1_jxero")
 tower_health_icon_scene = ExtResource("4_2246s")
 
@@ -78,6 +76,32 @@ layout_mode = 0
 offset_left = 360.0
 offset_right = 368.0
 
+[node name="LevelTracker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 4.0
+offset_right = -285.0
+offset_bottom = 16.0
+grow_horizontal = 0
+scale = Vector2(4, 4)
+
+[node name="LevelLabel" type="Label" parent="LevelTracker"]
+layout_mode = 2
+offset_right = 48.0
+offset_bottom = 12.0
+text = "LEVEL:"
+
+[node name="ValueLabel" type="Label" parent="LevelTracker"]
+layout_mode = 2
+offset_left = 52.0
+offset_right = 70.0
+offset_bottom = 12.0
+text = "00/00"
+horizontal_alignment = 2
+
 [node name="LoseWindow" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -108,34 +132,76 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoseWindow/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="LoseWindow/NinePatchRect/VBoxContainer"]
+[node name="BreachedLabel" type="Label" parent="LoseWindow/NinePatchRect"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_1c2ca")
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 158.0
+offset_bottom = 38.0
+text = "The Tower has been
+breached!"
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LoseWindow/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
+[node name="TryAgainLabel" type="Label" parent="LoseWindow/NinePatchRect"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 46.0
+offset_right = 126.0
+offset_bottom = 58.0
+text = "Try again?"
 
-[node name="YesButton" parent="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer" instance=ExtResource("5_mbl0m")]
+[node name="YesButton" parent="LoseWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
 layout_mode = 2
+offset_left = 46.0
+offset_top = 68.0
+offset_right = 82.0
+offset_bottom = 88.0
 text = "YES"
 
-[node name="NoButton" parent="LoseWindow/NinePatchRect/VBoxContainer/HBoxContainer" instance=ExtResource("5_mbl0m")]
+[node name="FocusTexture" parent="LoseWindow/NinePatchRect/YesButton" index="0"]
+offset_right = 39.0
+offset_bottom = 23.0
+
+[node name="Button" parent="LoseWindow/NinePatchRect/YesButton" index="1"]
+offset_right = 36.0
+offset_bottom = 20.0
+
+[node name="Frame" parent="LoseWindow/NinePatchRect/YesButton/Button" index="0"]
+offset_right = 36.0
+offset_bottom = 20.0
+
+[node name="Label" parent="LoseWindow/NinePatchRect/YesButton/Button" index="1"]
+offset_right = 32.0
+text = "YES"
+
+[node name="NoButton" parent="LoseWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
 layout_mode = 2
+offset_left = 98.0
+offset_top = 68.0
+offset_right = 134.0
+offset_bottom = 88.0
 text = "NO"
+minimum_width = 36.0
+
+[node name="FocusTexture" parent="LoseWindow/NinePatchRect/NoButton" index="0"]
+offset_right = 39.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
+
+[node name="Button" parent="LoseWindow/NinePatchRect/NoButton" index="1"]
+offset_right = 36.0
+offset_bottom = 20.0
+metadata/_edit_lock_ = true
+
+[node name="Frame" parent="LoseWindow/NinePatchRect/NoButton/Button" index="0"]
+offset_right = 36.0
+offset_bottom = 20.0
+metadata/_edit_lock_ = true
+
+[node name="Label" parent="LoseWindow/NinePatchRect/NoButton/Button" index="1"]
+offset_right = 32.0
+text = "NO"
+metadata/_edit_lock_ = true
 
 [node name="WinWindow" type="Control" parent="."]
 visible = false
@@ -167,40 +233,53 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinWindow/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 12
-alignment = 1
+[node name="SuccessLabel" type="Label" parent="WinWindow/NinePatchRect"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 10.75
+offset_right = 171.0
+offset_bottom = 37.75
+text = "You successfully
+defended the tower!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="WinWindow/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("7_duuxe")
+[node name="PlayAgainLabel" type="Label" parent="WinWindow/NinePatchRect"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 46.0
+offset_right = 138.0
+offset_bottom = 58.0
+text = "Play again?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WinWindow/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-alignment = 1
+[node name="YesButton" parent="WinWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+offset_left = 56.0
+offset_top = 68.0
+offset_right = 92.0
+offset_bottom = 88.0
+text = "YES"
 
-[node name="YesButton" type="TextureButton" parent="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_duuxe")
-
-[node name="NoButton" type="TextureButton" parent="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("6_jfwrg")
+[node name="NoButton" parent="WinWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+offset_left = 108.0
+offset_top = 68.0
+offset_right = 144.0
+offset_bottom = 88.0
+text = "NO"
+minimum_width = 36.0
 
 [node name="PauseWindow" parent="." instance=ExtResource("8_jfwrg")]
 process_mode = 2
 visible = false
 is_pause_menu = true
 
-[connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_win_yes_button_pressed"]
-[connection signal="pressed" from="WinWindow/NinePatchRect/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_win_no_button_pressed"]
+[connection signal="pressed" from="LoseWindow/NinePatchRect/YesButton" to="." method="_on_lose_yes_button_pressed"]
+[connection signal="pressed" from="LoseWindow/NinePatchRect/NoButton" to="." method="_on_lose_no_button_pressed"]
+[connection signal="pressed" from="WinWindow/NinePatchRect/YesButton" to="." method="_on_win_yes_button_pressed"]
+[connection signal="pressed" from="WinWindow/NinePatchRect/NoButton" to="." method="_on_win_no_button_pressed"]
 [connection signal="back_button_pressed" from="PauseWindow" to="." method="_on_pause_window_back_button_pressed"]
 [connection signal="quit_button_pressed" from="PauseWindow" to="." method="_on_pause_window_quit_button_pressed"]
+
+[editable path="LoseWindow/NinePatchRect/YesButton"]
+[editable path="LoseWindow/NinePatchRect/NoButton"]

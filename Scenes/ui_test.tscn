@@ -40,9 +40,10 @@ neighbor_previous = NodePath("../DownButton")
 [node name="BananaButton" parent="." instance=ExtResource("1_qk6iy")]
 offset_left = 128.0
 offset_top = 88.0
-offset_right = 186.0
+offset_right = 228.0
 offset_bottom = 108.0
 text = "Banana"
+minimum_width = 100.0
 neighbor_left = NodePath(".")
 neighbor_top = NodePath("../VolumeGroup/UpButton")
 neighbor_right = NodePath(".")
@@ -50,4 +51,27 @@ neighbor_bottom = NodePath(".")
 neighbor_next = NodePath("../VolumeGroup/DownButton")
 neighbor_previous = NodePath("../VolumeGroup/UpButton")
 
+[node name="FocusTexture" parent="BananaButton" index="0"]
+offset_right = 103.0
+offset_bottom = 23.0
+
+[node name="Button" parent="BananaButton" index="1"]
+offset_right = 100.0
+offset_bottom = 20.0
+
+[node name="Frame" parent="BananaButton/Button" index="0"]
+offset_right = 100.0
+offset_bottom = 20.0
+
+[node name="Label" parent="BananaButton/Button" index="1"]
+offset_right = 96.0
+text = "Banana"
+
+[node name="CustomButton" parent="." instance=ExtResource("1_qk6iy")]
+offset_left = 49.0
+offset_top = 103.0
+offset_right = 58.0
+offset_bottom = 111.0
+
 [editable path="VolumeGroup"]
+[editable path="BananaButton"]

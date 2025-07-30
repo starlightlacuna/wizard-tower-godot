@@ -28,7 +28,7 @@ signal pressed
 
 ## The icon to display. If this and [member text] are set, the button is resized
 ## to the combined minimum size of both. Text is rendered behind the icon.
-@export var icon: Texture2D:
+@export var icon: Texture2D = null:
 	set(new_texture):
 		icon = new_texture
 		if Engine.is_editor_hint():
@@ -36,6 +36,17 @@ signal pressed
 				await ready
 			_button_icon.texture = icon
 			_resize()
+
+## The button's minimum width. The button's frames will take the maximum value
+## between this and the width calculated from [member icon] and [member text].
+@export var minimum_width: float = 0.0:
+	set(new_minimum_width):
+		minimum_width = new_minimum_width
+		if Engine.is_editor_hint():
+			if not is_node_ready():
+				await ready
+			_resize()
+
 
 #region Focus
 @export_subgroup("Focus")
@@ -142,7 +153,14 @@ func _resize() -> Vector2:
 		# Adding 1 extra pixel to account for horizontal spacing
 		minimum_size.x = max(minimum_size.x, icon.get_width() + 1)
 		minimum_size.y = max(minimum_size.y, icon.get_height() + 2)
-	_button_frame.set_size(minimum_size + Vector2(9, 8))
+	_button_frame.set_size(Vector2(
+		max(minimum_size.x + 9, minimum_width),
+		minimum_size.y + 8
+	))
+	_button_label.size = Vector2(
+		max(_button_frame.size.x - 9, _button_label.size.x),
+		_button_label.size.y
+	)
 	_focus_texture.set_size(_button_frame.get_size() + Vector2(6, 6))
 	button.set_size(_button_frame.get_size())
 	set_size(button.get_size())
