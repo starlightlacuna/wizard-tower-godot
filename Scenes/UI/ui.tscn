@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp61okyjoqclt" path="res://Scenes/UI/ui.gd" id="1_jxero"]
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_s3gqk"]
-[ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Assets/UI/modal_frame.png" id="3_c7mb3"]
+[ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Assets/Images/UI/modal_frame.png" id="3_c7mb3"]
 [ext_resource type="PackedScene" uid="uid://ddrmc5mfsyvjo" path="res://Scenes/UI/tower_health_icon.tscn" id="4_2246s"]
 [ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="5_mbl0m"]
 [ext_resource type="PackedScene" uid="uid://dynm7se0gewia" path="res://Scenes/UI/settings_menu.tscn" id="8_jfwrg"]
@@ -10,109 +10,110 @@
 [node name="UI" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchor_right = 0.25
+anchor_bottom = 0.25
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_s3gqk")
 script = ExtResource("1_jxero")
-tower_health_icon_scene = ExtResource("4_2246s")
+_tower_health_icon_scene = ExtResource("4_2246s")
 metadata/_edit_horizontal_guides_ = [160.0]
 metadata/_edit_vertical_guides_ = [240.0]
+metadata/_edit_use_anchors_ = true
 
 [node name="TowerHealthBar" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 260.0
-offset_bottom = 16.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 257.0
+offset_bottom = 13.0
+metadata/_edit_lock_ = true
 
 [node name="TowerHealthIcon" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
 
 [node name="TowerHealthIcon2" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 48.0
+offset_left = 12.0
+offset_right = 20.0
 
 [node name="TowerHealthIcon3" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 80.0
-offset_right = 88.0
+offset_left = 24.0
+offset_right = 32.0
 
 [node name="TowerHealthIcon4" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 120.0
-offset_right = 128.0
+offset_left = 36.0
+offset_right = 44.0
 
 [node name="TowerHealthIcon5" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 160.0
-offset_right = 168.0
+offset_left = 48.0
+offset_right = 56.0
 
 [node name="TowerHealthIcon6" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 200.0
-offset_right = 208.0
+offset_left = 60.0
+offset_right = 68.0
 
 [node name="TowerHealthIcon7" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 240.0
-offset_right = 248.0
+offset_left = 72.0
+offset_right = 80.0
 
 [node name="TowerHealthIcon8" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 280.0
-offset_right = 288.0
+offset_left = 84.0
+offset_right = 92.0
 
 [node name="TowerHealthIcon9" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 320.0
-offset_right = 328.0
+offset_left = 96.0
+offset_right = 104.0
 
 [node name="TowerHealthIcon10" parent="TowerHealthBar" instance=ExtResource("4_2246s")]
 layout_mode = 0
-offset_left = 360.0
-offset_right = 368.0
+offset_left = 108.0
+offset_right = 116.0
 
-[node name="LevelTracker" type="Control" parent="."]
+[node name="LevelTracker" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -380.0
-offset_top = 4.0
-offset_right = -285.0
-offset_bottom = 16.0
+offset_left = -104.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 14.0
 grow_horizontal = 0
-scale = Vector2(4, 4)
+theme_override_constants/separation = 0
+alignment = 2
+metadata/_edit_lock_ = true
 
 [node name="LevelLabel" type="Label" parent="LevelTracker"]
 layout_mode = 2
-offset_right = 48.0
-offset_bottom = 12.0
 text = "LEVEL:"
+
+[node name="Spacer" type="Control" parent="LevelTracker"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ValueLabel" type="Label" parent="LevelTracker"]
 layout_mode = 2
-offset_left = 52.0
-offset_right = 70.0
-offset_bottom = 12.0
-text = "00/00"
+text = "99"
 horizontal_alignment = 2
 
-[node name="LoseWindow" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SlashLabel" type="Label" parent="LevelTracker"]
+layout_mode = 2
+text = "/"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="LoseWindow"]
+[node name="TotalLabel" type="Label" parent="LevelTracker"]
+layout_mode = 2
+text = "99"
+
+[node name="LoseWindow" type="NinePatchRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -126,15 +127,15 @@ offset_right = 90.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
 pivot_offset = Vector2(90, 50)
 texture = ExtResource("3_c7mb3")
 patch_margin_left = 9
 patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
+metadata/_edit_lock_ = true
 
-[node name="BreachedLabel" type="Label" parent="LoseWindow/NinePatchRect"]
+[node name="BreachedLabel" type="Label" parent="LoseWindow"]
 layout_mode = 2
 offset_left = 22.0
 offset_top = 11.0
@@ -144,7 +145,7 @@ text = "The Tower has been
 breached!"
 horizontal_alignment = 1
 
-[node name="TryAgainLabel" type="Label" parent="LoseWindow/NinePatchRect"]
+[node name="TryAgainLabel" type="Label" parent="LoseWindow"]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 46.0
@@ -152,7 +153,7 @@ offset_right = 126.0
 offset_bottom = 58.0
 text = "Try again?"
 
-[node name="YesButton" parent="LoseWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+[node name="YesButton" parent="LoseWindow" instance=ExtResource("5_mbl0m")]
 layout_mode = 2
 offset_left = 46.0
 offset_top = 68.0
@@ -160,23 +161,23 @@ offset_right = 82.0
 offset_bottom = 88.0
 text = "YES"
 
-[node name="FocusTexture" parent="LoseWindow/NinePatchRect/YesButton" index="0"]
+[node name="FocusTexture" parent="LoseWindow/YesButton" index="0"]
 offset_right = 39.0
 offset_bottom = 23.0
 
-[node name="Button" parent="LoseWindow/NinePatchRect/YesButton" index="1"]
+[node name="Button" parent="LoseWindow/YesButton" index="1"]
 offset_right = 36.0
 offset_bottom = 20.0
 
-[node name="Frame" parent="LoseWindow/NinePatchRect/YesButton/Button" index="0"]
+[node name="Frame" parent="LoseWindow/YesButton/Button" index="0"]
 offset_right = 36.0
 offset_bottom = 20.0
 
-[node name="Label" parent="LoseWindow/NinePatchRect/YesButton/Button" index="1"]
+[node name="Label" parent="LoseWindow/YesButton/Button" index="1"]
 offset_right = 32.0
 text = "YES"
 
-[node name="NoButton" parent="LoseWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+[node name="NoButton" parent="LoseWindow" instance=ExtResource("5_mbl0m")]
 layout_mode = 2
 offset_left = 98.0
 offset_top = 68.0
@@ -185,36 +186,28 @@ offset_bottom = 88.0
 text = "NO"
 minimum_width = 36.0
 
-[node name="FocusTexture" parent="LoseWindow/NinePatchRect/NoButton" index="0"]
+[node name="FocusTexture" parent="LoseWindow/NoButton" index="0"]
 offset_right = 39.0
 offset_bottom = 23.0
 metadata/_edit_lock_ = true
 
-[node name="Button" parent="LoseWindow/NinePatchRect/NoButton" index="1"]
+[node name="Button" parent="LoseWindow/NoButton" index="1"]
 offset_right = 36.0
 offset_bottom = 20.0
 metadata/_edit_lock_ = true
 
-[node name="Frame" parent="LoseWindow/NinePatchRect/NoButton/Button" index="0"]
+[node name="Frame" parent="LoseWindow/NoButton/Button" index="0"]
 offset_right = 36.0
 offset_bottom = 20.0
 metadata/_edit_lock_ = true
 
-[node name="Label" parent="LoseWindow/NinePatchRect/NoButton/Button" index="1"]
+[node name="Label" parent="LoseWindow/NoButton/Button" index="1"]
 offset_right = 32.0
 text = "NO"
 metadata/_edit_lock_ = true
 
-[node name="WinWindow" type="Control" parent="."]
+[node name="WinWindow" type="NinePatchRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="WinWindow"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -227,7 +220,6 @@ offset_right = 100.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
 pivot_offset = Vector2(100, 50)
 texture = ExtResource("3_c7mb3")
 patch_margin_left = 9
@@ -235,7 +227,7 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
-[node name="SuccessLabel" type="Label" parent="WinWindow/NinePatchRect"]
+[node name="SuccessLabel" type="Label" parent="WinWindow"]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 10.75
@@ -246,7 +238,7 @@ defended the tower!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayAgainLabel" type="Label" parent="WinWindow/NinePatchRect"]
+[node name="PlayAgainLabel" type="Label" parent="WinWindow"]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 46.0
@@ -256,14 +248,14 @@ text = "Play again?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="YesButton" parent="WinWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+[node name="YesButton" parent="WinWindow" instance=ExtResource("5_mbl0m")]
 offset_left = 56.0
 offset_top = 68.0
 offset_right = 92.0
 offset_bottom = 88.0
 text = "YES"
 
-[node name="NoButton" parent="WinWindow/NinePatchRect" instance=ExtResource("5_mbl0m")]
+[node name="NoButton" parent="WinWindow" instance=ExtResource("5_mbl0m")]
 offset_left = 108.0
 offset_top = 68.0
 offset_right = 144.0
@@ -276,12 +268,12 @@ process_mode = 2
 visible = false
 is_pause_menu = true
 
-[connection signal="pressed" from="LoseWindow/NinePatchRect/YesButton" to="." method="_on_lose_yes_button_pressed"]
-[connection signal="pressed" from="LoseWindow/NinePatchRect/NoButton" to="." method="_on_lose_no_button_pressed"]
-[connection signal="pressed" from="WinWindow/NinePatchRect/YesButton" to="." method="_on_win_yes_button_pressed"]
-[connection signal="pressed" from="WinWindow/NinePatchRect/NoButton" to="." method="_on_win_no_button_pressed"]
+[connection signal="pressed" from="LoseWindow/YesButton" to="." method="_on_lose_yes_button_pressed"]
+[connection signal="pressed" from="LoseWindow/NoButton" to="." method="_on_lose_no_button_pressed"]
+[connection signal="pressed" from="WinWindow/YesButton" to="." method="_on_win_yes_button_pressed"]
+[connection signal="pressed" from="WinWindow/NoButton" to="." method="_on_win_no_button_pressed"]
 [connection signal="back_button_pressed" from="PauseWindow" to="." method="_on_pause_window_back_button_pressed"]
 [connection signal="quit_button_pressed" from="PauseWindow" to="." method="_on_pause_window_quit_button_pressed"]
 
-[editable path="LoseWindow/NinePatchRect/YesButton"]
-[editable path="LoseWindow/NinePatchRect/NoButton"]
+[editable path="LoseWindow/YesButton"]
+[editable path="LoseWindow/NoButton"]

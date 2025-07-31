@@ -30,12 +30,9 @@ window/size/viewport_width=960
 window/size/viewport_height=640
 window/stretch/mode="viewport"
 
-[file_customization]
+[global_group]
 
-folder_colors={
-"res://Assets/": "red",
-"res://Characters/": "orange"
-}
+Firebolts="Contains all the player's firebolts."
 
 [input]
 

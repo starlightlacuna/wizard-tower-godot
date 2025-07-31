@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cgthamfl5a6di" path="res://Scenes/UI/custom_button.gd" id="1_e87du"]
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_tl800"]
-[ext_resource type="Texture2D" uid="uid://cfuqaba6hc5a5" path="res://Assets/UI/button_focus.png" id="2_m33a2"]
-[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Assets/UI/button.png" id="4_myjmq"]
+[ext_resource type="Texture2D" uid="uid://cfuqaba6hc5a5" path="res://Assets/Images/UI/button_focus.png" id="2_m33a2"]
+[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Assets/Images/UI/button.png" id="4_myjmq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myjmq"]
 

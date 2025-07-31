@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgo35ppjx7gb3"]
+
+[ext_resource type="Texture2D" uid="uid://d267bnbh3bqp7" path="res://Assets/Images/firebolt_poweredup.png" id="1_14uqb"]
+[ext_resource type="Script" uid="uid://biq51esvni2s0" path="res://Scenes/Projectiles/firebolt.gd" id="1_acb8i"]
+[ext_resource type="Script" uid="uid://ttffng4hda1c" path="res://Scenes/Components/damager_component.gd" id="3_o7dvt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acb8i"]
+radius = 8.0
+
+[node name="PoweredUpFirebolt" type="CharacterBody2D" groups=["Firebolts"]]
+script = ExtResource("1_acb8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_14uqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_acb8i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-7.5, 0)
+scale = Vector2(1.75, 1)
+
+[node name="DamagerComponent" type="Node" parent="."]
+script = ExtResource("3_o7dvt")
+damage = 2
+metadata/_custom_type_script = "uid://ttffng4hda1c"

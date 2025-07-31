@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmukmmoumunts"]
 
-[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Assets/UI/button.png" id="1_1sn53"]
-[ext_resource type="Texture2D" uid="uid://dok1u1v8sgu4d" path="res://Assets/UI/volume_down.png" id="2_tyf6m"]
+[ext_resource type="Texture2D" uid="uid://bidmspmxs636" path="res://Assets/Images/UI/button.png" id="1_1sn53"]
+[ext_resource type="Texture2D" uid="uid://dok1u1v8sgu4d" path="res://Assets/Images/UI/volume_down.png" id="2_tyf6m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynxh7"]
 
