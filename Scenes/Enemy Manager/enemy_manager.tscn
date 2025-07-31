@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ke2oqvxlb7wy"]
 
 [ext_resource type="Script" uid="uid://bugof36dl51dx" path="res://Scenes/Enemy Manager/enemy_manager.gd" id="1_g7cyy"]
-[ext_resource type="PackedScene" uid="uid://csfw10w08i0co" path="res://Characters/Enemies/skelly.tscn" id="2_nfqq7"]
-[ext_resource type="PackedScene" uid="uid://deqvmeynk6rse" path="res://Characters/Enemies/ghost.tscn" id="3_76oif"]
-[ext_resource type="PackedScene" uid="uid://ckirv4ehdtd1v" path="res://Characters/Enemies/brute.tscn" id="4_6a37f"]
+[ext_resource type="PackedScene" uid="uid://csfw10w08i0co" path="res://Scenes/Enemies/skelly.tscn" id="2_nfqq7"]
+[ext_resource type="PackedScene" uid="uid://deqvmeynk6rse" path="res://Scenes/Enemies/ghost.tscn" id="3_76oif"]
+[ext_resource type="PackedScene" uid="uid://ckirv4ehdtd1v" path="res://Scenes/Enemies/brute.tscn" id="4_6a37f"]
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_g7cyy")

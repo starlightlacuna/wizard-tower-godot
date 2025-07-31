@@ -9,37 +9,47 @@ signal pause_game_pressed
 signal win_no_button_pressed
 signal win_yes_button_pressed
 
-@export var tower_health_icon_scene: PackedScene
+@export var _tower_health_icon_scene: PackedScene
+
+## The current level.
 @export var current_level_value: int = 20:
 	set(new_value):
 		current_level_value = new_value
-		_set_level_value_label_text()
+		#_set_label_text()
+		_value_label.text = str(current_level_value)
+
+## The total number of levels.
 @export var total_level_value: int = 20:
 	set(new_value):
 		total_level_value = new_value
-		_set_level_value_label_text()
+		#_set_label_text()
+		_total_label.text = str(total_level_value)
 
-var tower_health_icons: Array[TowerHealthIcon]
+var _tower_health_icons: Array[TowerHealthIcon]
 
-@onready var tower_health_bar: Control = $TowerHealthBar
-@onready var lose_window: Control = $LoseWindow
-@onready var pause_window: SettingsMenu = $PauseWindow
-@onready var win_window: Control = $WinWindow
-@onready var _level_tracker: Control = $LevelTracker
-@onready var _level_value_label: Label = $LevelTracker/ValueLabel
+#@onready var _level_tracker: Control = $LevelTracker
+@onready var _value_label: Label = $LevelTracker/ValueLabel
+@onready var _slash_label: Label = $LevelTracker/SlashLabel
+@onready var _total_label: Label = $LevelTracker/TotalLabel
+@onready var _lose_window: Control = $LoseWindow
+@onready var _pause_window: SettingsMenu = $PauseWindow
+@onready var _win_window: Control = $WinWindow
+@onready var _tower_health_bar: Control = $TowerHealthBar
 
 
 func _ready() -> void:
-	assert(tower_health_icon_scene, "[UI] Tower Health Icon not set!")
+	assert(_tower_health_icon_scene, "[UI] Tower Health Icon not set!")
 	
-	lose_window.visible = false
-	win_window.visible = false
-	_level_tracker.visible = false
+	_lose_window.visible = false
+	_win_window.visible = false
+	_value_label.visible = false
+	_slash_label.visible = false
+	_total_label.visible = false
 
 
 func _shortcut_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_game"):
-		if pause_window.visible:
+		if _pause_window.visible:
 			hide_pause_menu()
 			pause_menu_back_button_pressed.emit()
 		else:
@@ -49,47 +59,54 @@ func _shortcut_input(event: InputEvent) -> void:
 
 
 func build_health_bar(max_health: int) -> void:
-	for child in tower_health_bar.get_children():
+	for child in _tower_health_bar.get_children():
 		child.queue_free()
 
 	for index in _get_icon_count(max_health):
-		var new_icon: TowerHealthIcon = tower_health_icon_scene.instantiate()
-		new_icon.position = Vector2(index * 40, 0)
-		tower_health_bar.add_child(new_icon)
-		tower_health_icons.append(new_icon)
+		var new_icon: TowerHealthIcon = _tower_health_icon_scene.instantiate()
+		new_icon.position = Vector2(index * 12, 0)
+		_tower_health_bar.add_child(new_icon)
+		_tower_health_icons.append(new_icon)
 
 
 func hide_pause_menu() -> void:
-	pause_window.visible = false
+	_pause_window.visible = false
 
 
 func update_tower_health_bar(current_health: int, max_health) -> void:
 	for index in _get_icon_count(max_health):
 		if current_health > 1:
-			tower_health_icons[index].update(TowerHealthIcon.Display.FULL)
+			_tower_health_icons[index].update(TowerHealthIcon.Display.FULL)
 			current_health -= 2
 		elif current_health > 0:
-			tower_health_icons[index].update(TowerHealthIcon.Display.HALF)
+			_tower_health_icons[index].update(TowerHealthIcon.Display.HALF)
 			current_health -= 1
 		else:
-			tower_health_icons[index].update(TowerHealthIcon.Display.NONE)
+			_tower_health_icons[index].update(TowerHealthIcon.Display.NONE)
 
 
 func show_level_tracker() -> void:
-	_level_tracker.visible = true
+	_value_label.visible = true
+	_slash_label.visible = true
+	_total_label.visible = true
 
 
+## Sets the lose window to be visible and makes it 
 func show_lose_window() -> void:
-	lose_window.visible = true
+	_lose_window.visible = true
+	_lose_window.get_node("YesButton").button_grab_focus.call_deferred()
 
 
+## Sets the pause window to be visible and makes its Back button grab focus.
 func show_pause_window() -> void:
-	pause_window.visible = true
-	pause_window.back_button_grab_focus_deferred()
+	_pause_window.visible = true
+	_pause_window.back_button_grab_focus_deferred()
 
 
+## Sets the win window to visible and makes its Yes button grab focus.
 func show_win_window() -> void:
-	win_window.visible = true
+	_win_window.visible = true
+	_win_window.get_node("YesButton").button_grab_focus.call_deferred()
 
 
 func _get_icon_count(max_health: int) -> int:
@@ -120,7 +137,3 @@ func _on_pause_window_back_button_pressed() -> void:
 
 func _on_pause_window_quit_button_pressed() -> void:
 	pause_menu_quit_button_pressed.emit()
-
-
-func _set_level_value_label_text() -> void:
-	_level_value_label.text = str(current_level_value) + "/" + str(total_level_value)

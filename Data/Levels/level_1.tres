@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Level" load_steps=37 format=3 uid="uid://b3hprhtni8y5o"]
 
 [ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Enemy Manager/level_step.gd" id="1_agxgp"]
-[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://enemy_config.gd" id="2_m6tf1"]
+[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://Scenes/Enemy Manager/enemy_config.gd" id="2_m6tf1"]
 [ext_resource type="Script" uid="uid://bnfwlbpwfh5fb" path="res://Scenes/Enemy Manager/spawn_enemy_group.gd" id="4_pkmhs"]
 [ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Enemy Manager/level.gd" id="5_13ja6"]
 [ext_resource type="Script" uid="uid://d3wr2buo02nux" path="res://Scenes/Enemy Manager/wait_clear.gd" id="5_agxgp"]
