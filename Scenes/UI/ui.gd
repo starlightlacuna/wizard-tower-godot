@@ -42,7 +42,6 @@ func _ready() -> void:
 	
 	_lose_window.visible = false
 	_win_window.visible = false
-	#_level_tracker.visible = false
 	_value_label.visible = false
 	_slash_label.visible = false
 	_total_label.visible = false
@@ -87,7 +86,6 @@ func update_tower_health_bar(current_health: int, max_health) -> void:
 
 
 func show_level_tracker() -> void:
-	#_level_tracker.visible = true
 	_value_label.visible = true
 	_slash_label.visible = true
 	_total_label.visible = true
@@ -139,8 +137,3 @@ func _on_pause_window_back_button_pressed() -> void:
 
 func _on_pause_window_quit_button_pressed() -> void:
 	pause_menu_quit_button_pressed.emit()
-
-
-#func _set_label_text() -> void:
-	#_level_value_label.text = str(current_level_value)
-	#_total_value_label.text = str(total_level_value)
