@@ -15,19 +15,16 @@ signal win_yes_button_pressed
 @export var current_level_value: int = 20:
 	set(new_value):
 		current_level_value = new_value
-		#_set_label_text()
 		_value_label.text = str(current_level_value)
 
 ## The total number of levels.
 @export var total_level_value: int = 20:
 	set(new_value):
 		total_level_value = new_value
-		#_set_label_text()
 		_total_label.text = str(total_level_value)
 
 var _tower_health_icons: Array[TowerHealthIcon]
 
-#@onready var _level_tracker: Control = $LevelTracker
 @onready var _value_label: Label = $LevelTracker/ValueLabel
 @onready var _slash_label: Label = $LevelTracker/SlashLabel
 @onready var _total_label: Label = $LevelTracker/TotalLabel
@@ -42,6 +39,7 @@ func _ready() -> void:
 	
 	_lose_window.visible = false
 	_win_window.visible = false
+	_pause_window.visible = false
 	_value_label.visible = false
 	_slash_label.visible = false
 	_total_label.visible = false

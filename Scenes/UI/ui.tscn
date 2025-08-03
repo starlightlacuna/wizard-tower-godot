@@ -265,7 +265,7 @@ minimum_width = 36.0
 
 [node name="PauseWindow" parent="." instance=ExtResource("8_jfwrg")]
 process_mode = 2
-visible = false
+scale = Vector2(0.25, 0.25)
 is_pause_menu = true
 
 [connection signal="pressed" from="LoseWindow/YesButton" to="." method="_on_lose_yes_button_pressed"]
