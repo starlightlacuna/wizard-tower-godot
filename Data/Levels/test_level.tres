@@ -1,21 +1,27 @@
 [gd_resource type="Resource" script_class="Level" load_steps=11 format=3 uid="uid://qi45o45m7rhc"]
 
-[ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Enemy Manager/level.gd" id="1_xqvn7"]
-[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Enemy Manager/level_step.gd" id="2_p7ula"]
-[ext_resource type="Script" uid="uid://cnuovcf1umc8s" path="res://Scenes/Enemy Manager/spawn_enemy.gd" id="3_p7ula"]
-[ext_resource type="Script" uid="uid://w46wnmwje315" path="res://Scenes/Enemy Manager/wait_duration.gd" id="4_o6ls6"]
-[ext_resource type="Script" uid="uid://d3wr2buo02nux" path="res://Scenes/Enemy Manager/wait_clear.gd" id="5_nfj6f"]
+[ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Level Manager/level.gd" id="1_xqvn7"]
+[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="2_p7ula"]
+[ext_resource type="Script" uid="uid://cnuovcf1umc8s" path="res://Scenes/Level Manager/spawn_enemy.gd" id="3_p7ula"]
+[ext_resource type="Script" uid="uid://w46wnmwje315" path="res://Scenes/Level Manager/wait_duration.gd" id="4_o6ls6"]
+[ext_resource type="Script" uid="uid://d3wr2buo02nux" path="res://Scenes/Level Manager/wait_clear.gd" id="5_nfj6f"]
 
 [sub_resource type="Resource" id="Resource_o6ls6"]
 script = ExtResource("3_p7ula")
 enemy_type = 0
 lane = 0
+random_lane = false
+min_lane = 0
+max_lane = 0
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_nfj6f"]
 script = ExtResource("3_p7ula")
 enemy_type = 0
 lane = 2
+random_lane = false
+min_lane = 0
+max_lane = 0
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_bjvkk"]
@@ -27,6 +33,9 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 script = ExtResource("3_p7ula")
 enemy_type = 1
 lane = 4
+random_lane = false
+min_lane = 0
+max_lane = 0
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_12jnx"]

@@ -13,13 +13,13 @@ signal start_menu_button_pressed
 ## The tower's maximum health. When the game starts, the tower's health is set to this value.
 @export var tower_max_health: int = 20
 
-## The levels to play. This gets passed into [method EnemyManager.process_levels].
+## The levels to play. This gets passed into [method LevelManager.process_levels].
 @export var levels: Array[Level]
 
 var _tower_health: int = tower_max_health
 
 @onready var _background_music: AudioStreamPlayer = $BackgroundMusic
-@onready var _enemy_manager: EnemyManager = $EnemyManager
+@onready var _level_manager: LevelManager = $LevelManager
 @onready var _firebolts: Node2D = $Firebolts
 @onready var _player: Player = $Player
 #@onready var _ui: UI = $UICanvasLayer/UI
@@ -29,7 +29,7 @@ var _tower_health: int = tower_max_health
 func _ready() -> void:
 	assert(levels, "[Game] Levels is not set!")
 	
-	_player.set_position(Grid.grid_to_world(Vector2i(0, 2)))
+	_player.set_position(Grid.grid_to_world(Vector2i(1, 2)))
 	_player.set_firebolts_node(_firebolts)
 	_ui.build_health_bar(tower_max_health)
 	_ui.set_visible(true)
@@ -49,7 +49,7 @@ func _damage_tower(damage: int) -> void:
 
 
 func _on_enemy_manager_level_index_updated() -> void:
-	_ui.current_level_value = _enemy_manager.level_index + 1
+	_ui.current_level_value = _level_manager.level_index + 1
 	_ui.total_level_value = levels.size()
 
 
@@ -82,7 +82,7 @@ func _on_ui_pause_menu_quit_button_pressed() -> void:
 
 func _on_first_level_delay_timer_timeout() -> void:
 	_ui.show_level_tracker()
-	await _enemy_manager.process_levels(levels)
+	await _level_manager.process_levels(levels)
 	_ui.show_win_window()
 	get_tree().paused = true
 

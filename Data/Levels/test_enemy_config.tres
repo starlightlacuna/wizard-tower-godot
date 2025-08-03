@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3 uid="uid://6ury7eisg5e1"]
 
-[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://Scenes/Enemy Manager/enemy_config.gd" id="1_hifkf"]
+[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://Scenes/Level Manager/enemy_config.gd" id="1_hifkf"]
 
 [resource]
 script = ExtResource("1_hifkf")

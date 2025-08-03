@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8bjrq16v05pq"]
+[gd_scene load_steps=6 format=3 uid="uid://b8bjrq16v05pq"]
 
 [ext_resource type="Script" uid="uid://ck84022nl37fw" path="res://Scenes/Player/player.gd" id="1_eovys"]
 [ext_resource type="PackedScene" uid="uid://c6lqeovf4si6s" path="res://Scenes/Projectiles/firebolt.tscn" id="2_65n15"]
 [ext_resource type="Texture2D" uid="uid://dg8tg38ttxiym" path="res://Assets/Images/monochrome-transparent_packed.png" id="2_vb825"]
 [ext_resource type="PackedScene" uid="uid://dgo35ppjx7gb3" path="res://Scenes/Projectiles/powered_up_firebolt.tscn" id="3_65n15"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtuoh"]
+radius = 8.0
+
+[node name="Player" type="Area2D"]
 script = ExtResource("1_eovys")
 firebolt_scene = ExtResource("2_65n15")
 powered_up_firebolt_scene = ExtResource("3_65n15")
 attack_cooldown = 0.6
+power_up_duration = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
@@ -24,4 +28,12 @@ position = Vector2(14, 8)
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PowerUpTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_mtuoh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]

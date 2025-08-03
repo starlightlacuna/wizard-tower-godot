@@ -1,12 +1,9 @@
-class_name EnemyManager
+class_name LevelManager
 extends Node2D
 ## Handles enemy spawning and tracking.
 
 ## Emitted when the last enemy has been removed from the scene tree.
 signal enemies_cleared
-
-## Emitted when the last level has been processed.
-#signal levels_completed
 
 ## Emitted when the level index has changed, likely when moving to the next level.
 signal level_index_updated
@@ -20,24 +17,28 @@ enum EnemyType { SKELLY, GHOST, BRUTE }
 		level_index = new_value
 		level_index_updated.emit()
 
-@export_subgroup("Enemies")
+@export var _enemies: Node2D
+@export var _power_up_manager: PowerUpManager
+
+@export_subgroup("Enemy Scenes")
 @export var _skelly_scene: PackedScene
 @export var _ghost_scene: PackedScene
 @export var _brute_scene: PackedScene
 
-## The levels to process. This must be set before calling 
-#var levels: Array[Level]
 var _enemies_count: int = 0
 
-@onready var _enemies: Node = $Enemies
+#@onready var _enemies: Node = $Enemies
 @onready var _spawn_timer: Timer = $SpawnTimer
 
 
 func _ready() -> void:
-	assert(_skelly_scene, "[Enemy Manager] Skelly Scene not set!")
-	assert(_ghost_scene, "[Enemy Manager] Ghost Scene not set!")
-	assert(_brute_scene, "[Enemy Manager] Brute Scene not set!")
+	assert(_skelly_scene, "[Level Manager] Skelly Scene not set!")
+	assert(_ghost_scene, "[Level Manager] Ghost Scene not set!")
+	assert(_brute_scene, "[Level Manager] Brute Scene not set!")
+	assert(_enemies, "[Level Manager] Enemies Node not set!")
+	assert(_power_up_manager, "[Level Manager] Power Up Manager not set!")
 	
+	_enemies.child_entered_tree.connect(_on_enemies_child_entered_tree)
 	Event.enemy_died.connect(_on_enemy_died)
 
 
@@ -50,6 +51,7 @@ func process_levels(levels: Array[Level]) -> void:
 		level_index += 1
 
 
+# TODO: Refactor to move execution details to the LevelSteps themselves instead of here.
 func _execute_level_step(level_step: LevelStep) -> void:
 	if level_step is SpawnEnemyGroup:
 		_spawn_enemy_group(level_step)
@@ -62,8 +64,11 @@ func _execute_level_step(level_step: LevelStep) -> void:
 	elif level_step is WaitClear:
 		await enemies_cleared
 		return
+	elif level_step is SpawnPowerUpFairy:
+		_power_up_manager.spawn_power_up()
+		return
 	else:
-		push_error("[Enemy Manager] Unknown LevelStep!")
+		push_error("[Level Manager] Unknown LevelStep!")
 		return
 
 

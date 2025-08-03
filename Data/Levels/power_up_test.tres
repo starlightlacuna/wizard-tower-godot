@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="Level" load_steps=19 format=3 uid="uid://cfqidm6aj5ivv"]
+
+[ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Level Manager/level.gd" id="1_r48nk"]
+[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="2_qx0ke"]
+[ext_resource type="Script" uid="uid://diw3f06r2llk0" path="res://Scenes/Level Manager/spawn_power_up_fairy.gd" id="3_bt18q"]
+[ext_resource type="Script" uid="uid://w46wnmwje315" path="res://Scenes/Level Manager/wait_duration.gd" id="4_gr8r3"]
+
+[sub_resource type="Resource" id="Resource_upfqs"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_8e3kh"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_56qi8"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_2vowc"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_yox4t"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_lemb1"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_a6ftd"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_nxex1"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_pa3qg"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_2lc0x"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_4ti5a"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_pmm7v"]
+script = ExtResource("4_gr8r3")
+duration = 2.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[sub_resource type="Resource" id="Resource_3gqeb"]
+script = ExtResource("3_bt18q")
+metadata/_custom_type_script = "uid://diw3f06r2llk0"
+
+[sub_resource type="Resource" id="Resource_7pdpw"]
+script = ExtResource("4_gr8r3")
+duration = 10.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
+
+[resource]
+script = ExtResource("1_r48nk")
+steps = Array[ExtResource("2_qx0ke")]([SubResource("Resource_upfqs"), SubResource("Resource_8e3kh"), SubResource("Resource_56qi8"), SubResource("Resource_2vowc"), SubResource("Resource_yox4t"), SubResource("Resource_lemb1"), SubResource("Resource_a6ftd"), SubResource("Resource_nxex1"), SubResource("Resource_pa3qg"), SubResource("Resource_2lc0x"), SubResource("Resource_4ti5a"), SubResource("Resource_pmm7v"), SubResource("Resource_3gqeb"), SubResource("Resource_7pdpw")])
+metadata/_custom_type_script = "uid://dtw3dow0778l"

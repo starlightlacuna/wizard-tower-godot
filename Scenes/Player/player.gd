@@ -1,16 +1,18 @@
 class_name Player
-extends Node2D
+extends Area2D
 
 @export var firebolt_scene: PackedScene
 @export var powered_up_firebolt_scene: PackedScene
 @export var attack_cooldown: float = 1.0
 @export var powered_up: bool = false
+@export var power_up_duration: float = 30.0
 
 var firebolts_node: Node2D
 var can_fire: bool = true
 
 @onready var firebolt_spawn_position: Marker2D = $FireboltSpawnPosition
 @onready var attack_timer: Timer = $AttackTimer
+@onready var _power_up_timer: Timer = $PowerUpTimer
 
 
 func set_firebolts_node(node: Node2D) -> void:
@@ -35,8 +37,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_move(Vector2i(1, 0))
 	elif (event.is_action_pressed("move_up")):
 		_move(Vector2i(0, -1))
-	#elif (event.is_action_pressed("fire")):
-		#_shoot_firebolt()
 
 
 func _on_attack_timer_timeout() -> void:
@@ -55,7 +55,6 @@ func _move(translation: Vector2i) -> void:
 
 
 func _shoot_firebolt() -> void:
-	#var firebolt: Firebolt = firebolt_scene.instantiate()
 	var firebolt: Firebolt
 	if powered_up:
 		firebolt = powered_up_firebolt_scene.instantiate()
@@ -65,3 +64,15 @@ func _shoot_firebolt() -> void:
 	firebolts_node.add_child(firebolt)
 	can_fire = false
 	attack_timer.start()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is PowerUpFairy and not powered_up:
+		powered_up = true
+		print("You're powered up. Get in there!")
+		_power_up_timer.start(power_up_duration)
+		(area as PowerUpFairy).consume()
+
+
+func _on_power_up_timer_timeout() -> void:
+	powered_up = false

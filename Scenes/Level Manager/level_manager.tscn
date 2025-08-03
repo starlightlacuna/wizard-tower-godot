@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://ke2oqvxlb7wy"]
+
+[ext_resource type="Script" uid="uid://bugof36dl51dx" path="res://Scenes/Level Manager/level_manager.gd" id="1_yc6q2"]
+[ext_resource type="PackedScene" uid="uid://csfw10w08i0co" path="res://Scenes/Enemies/skelly.tscn" id="2_ktu5p"]
+[ext_resource type="PackedScene" uid="uid://deqvmeynk6rse" path="res://Scenes/Enemies/ghost.tscn" id="3_4x0sf"]
+[ext_resource type="PackedScene" uid="uid://ckirv4ehdtd1v" path="res://Scenes/Enemies/brute.tscn" id="4_0ojag"]
+
+[node name="LevelManager" type="Node2D"]
+script = ExtResource("1_yc6q2")
+_skelly_scene = ExtResource("2_ktu5p")
+_ghost_scene = ExtResource("3_4x0sf")
+_brute_scene = ExtResource("4_0ojag")
+
+[node name="SpawnTimer" type="Timer" parent="."]
