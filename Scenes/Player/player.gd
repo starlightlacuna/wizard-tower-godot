@@ -1,10 +1,15 @@
 class_name Player
 extends Area2D
 
+signal powered_up_changed(value)
+
 @export var firebolt_scene: PackedScene
 @export var powered_up_firebolt_scene: PackedScene
 @export var attack_cooldown: float = 1.0
-@export var powered_up: bool = false
+@export var powered_up: bool = false:
+	set(new_value):
+		powered_up = new_value
+		powered_up_changed.emit(new_value)
 @export var power_up_duration: float = 30.0
 
 var firebolts_node: Node2D
@@ -12,7 +17,7 @@ var can_fire: bool = true
 
 @onready var firebolt_spawn_position: Marker2D = $FireboltSpawnPosition
 @onready var attack_timer: Timer = $AttackTimer
-@onready var _power_up_timer: Timer = $PowerUpTimer
+@onready var power_up_timer: Timer = $PowerUpTimer
 
 
 func set_firebolts_node(node: Node2D) -> void:
@@ -70,8 +75,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is PowerUpFairy and not powered_up:
 		powered_up = true
 		print("You're powered up. Get in there!")
-		_power_up_timer.start(power_up_duration)
-		(area as PowerUpFairy).consume()
+		power_up_timer.start(power_up_duration)
+		#(area as PowerUpFairy).consume()
 
 
 func _on_power_up_timer_timeout() -> void:

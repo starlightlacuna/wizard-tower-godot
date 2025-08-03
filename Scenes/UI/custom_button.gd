@@ -86,8 +86,9 @@ signal pressed
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_focus_texture.set_visible(false)
-		# This is a code smell, but it works. Ideally we shouldn't wait here for ancestors to be 
-		# ready; we should move this behavior upwards in the scene tree.
+		# This is a code smell, but it works. Ideally we shouldn't wait here for
+		# ancestors to be ready; we should move this behavior upwards in the 
+		# scene tree.
 		await owner.ready
 		_button_label.text = text
 		_button_icon.texture = icon

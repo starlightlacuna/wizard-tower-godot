@@ -4,10 +4,12 @@ extends Node2D
 ##
 ## This scene handles all game logic, from start to win or lose.
 
-## Emitted when an InputEvent is received to restart the game
+## Emitted when a signal is received to restart the game. For example, see 
+## [signal UI.win_yes_button_pressed].
 signal restart_button_pressed
 
-## Emitted when an InputEvent is received to return to the start menu
+## Emitted when a signal is received to return to the start menu. For example, see 
+## [signal UI.pause_menu_quit_button_pressed].
 signal start_menu_button_pressed
 
 ## The tower's maximum health. When the game starts, the tower's health is set to this value.
@@ -22,7 +24,6 @@ var _tower_health: int = tower_max_health
 @onready var _level_manager: LevelManager = $LevelManager
 @onready var _firebolts: Node2D = $Firebolts
 @onready var _player: Player = $Player
-#@onready var _ui: UI = $UICanvasLayer/UI
 @onready var _ui: UI = $UI
 
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	_player.set_position(Grid.grid_to_world(Vector2i(1, 2)))
 	_player.set_firebolts_node(_firebolts)
 	_ui.build_health_bar(tower_max_health)
+	_ui.player = _player
 	_ui.set_visible(true)
 	
 	#_background_music.play()

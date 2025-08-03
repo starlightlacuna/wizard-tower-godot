@@ -9,12 +9,11 @@ extends Node2D
 @export var _power_up_fairy_scene: PackedScene
 @export_range(0, 6) var _max_fairies: int = 6
 
-# Array to keep track of all [PowerUpFairy] instances.
 var _pool: Array[PowerUpFairy]
 
 
 func _ready() -> void:
-	assert(_power_up_fairy_scene, "[" + name + "] Power Up Fairy Scene not set!")
+	assert(_power_up_fairy_scene, "[PowerUpManager] Power Up Fairy Scene not set!")
 	_pool = []
 	_pool.resize(_max_fairies)
 	for i in range(_max_fairies):
@@ -23,6 +22,8 @@ func _ready() -> void:
 		_pool[i] = fairy
 
 
+## Gets the first available [PowerUpFairy] instance in the object pool and adds it to the scene.
+## An instance is available if it is not a child of this scene.
 func spawn_power_up() -> void:
 	var available_index: int = -1
 	for index in _pool.size():
@@ -36,4 +37,4 @@ func spawn_power_up() -> void:
 
 
 func _on_fairy_consumed(fairy: PowerUpFairy) -> void:
-	remove_child(fairy)
+	remove_child.call_deferred(fairy)

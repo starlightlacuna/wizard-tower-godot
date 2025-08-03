@@ -17,7 +17,7 @@
 [node name="Game" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_wrm1d")
-levels = Array[ExtResource("2_h4fw4")]([ExtResource("3_ypmwd"), ExtResource("4_oejk7"), ExtResource("3_huoen"), ExtResource("6_upfqs")])
+levels = Array[ExtResource("2_h4fw4")]([ExtResource("3_huoen"), ExtResource("3_ypmwd"), ExtResource("4_oejk7"), ExtResource("6_upfqs")])
 
 [node name="UI" parent="." instance=ExtResource("2_v158k")]
 z_index = 4

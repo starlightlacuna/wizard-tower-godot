@@ -33,8 +33,16 @@ signal win_yes_button_pressed
 ## The current level. This member is used for the level tracker.
 var current_level_value: int:
 	set(new_value):
-		current_level_value = new_value
+		current_level_value = min(new_value, total_level_value)
 		_value_label.text = str(current_level_value)
+
+## The [Player] instance. This must be assigned to show the power up bar.
+var player: Player:
+	set(new_value):
+		player = new_value
+		player.powered_up_changed.connect(func (powered_up):
+			_power_up_bar_container.visible = powered_up
+		)
 
 ## The total number of levels. This member is used for the level tracker.
 var total_level_value: int:
@@ -51,6 +59,8 @@ var _tower_health_icons: Array[TowerHealthIcon]
 @onready var _pause_window: SettingsMenu = $PauseWindow
 @onready var _win_window: Control = $WinWindow
 @onready var _tower_health_bar: Control = $TowerHealthBar
+@onready var _power_up_bar_container: CenterContainer = $PowerUpBarContainer
+@onready var _power_up_bar: TextureProgressBar = $PowerUpBarContainer/PowerUpBar
 
 
 func _ready() -> void:
@@ -62,6 +72,18 @@ func _ready() -> void:
 	_value_label.visible = false
 	_slash_label.visible = false
 	_total_label.visible = false
+	_power_up_bar_container.visible = false
+
+
+func _process(_delta: float) -> void:
+	if player:
+		_power_up_bar.value = remap(
+			player.power_up_timer.time_left,
+			0.0,
+			player.power_up_duration,
+			_power_up_bar.min_value,
+			_power_up_bar.max_value
+		)
 
 
 func _shortcut_input(event: InputEvent) -> void:
