@@ -9,6 +9,9 @@ extends Node2D
 @export var _power_up_fairy_scene: PackedScene
 @export_range(0, 6) var _max_fairies: int = 6
 
+## How long it takes in seconds for a newly spawned fairy to move to the left-most column.
+@export var _move_tween_duration: float = 2.0
+
 var _pool: Array[PowerUpFairy]
 
 
@@ -32,8 +35,18 @@ func spawn_power_up() -> void:
 			break
 	if available_index > -1:
 		var fairy: PowerUpFairy = _pool[available_index]
-		fairy.position = Grid.grid_to_world(Vector2i(0, Grid.START_ROW + available_index))
 		add_child(fairy)
+		fairy.animation_player.play("RESET")
+		fairy.position = Grid.grid_to_world(Vector2i(-1, Grid.START_ROW + available_index))
+		var end_position: Vector2 = Grid.grid_to_world(Vector2i(0, Grid.START_ROW + available_index))
+		var tween: Tween = fairy.create_tween()
+		tween.tween_property(
+			fairy,
+			"position",
+			end_position,
+			_move_tween_duration
+		)
+		tween.tween_callback(fairy.animation_player.play.bind("Power Up Fairy/Hover"))
 
 
 func _on_fairy_consumed(fairy: PowerUpFairy) -> void:
