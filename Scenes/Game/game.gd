@@ -31,7 +31,7 @@ func _ready() -> void:
 	assert(levels, "[Game] Levels is not set!")
 	
 	_player.set_position(Grid.grid_to_world(Vector2i(1, 2)))
-	_player.set_firebolts_node(_firebolts)
+	_player.firebolts_node = _firebolts
 	_ui.build_health_bar(tower_max_health)
 	_ui.player = _player
 	_ui.set_visible(true)
