@@ -50,8 +50,14 @@ func _damage_tower(damage: int) -> void:
 		_lose_game.call_deferred()
 
 
+func _lose_game() -> void:
+	_background_music.stop()
+	_ui.show_lose_window()
+	get_tree().paused = true
+
+
 func _on_enemy_manager_level_index_updated() -> void:
-	_ui.current_level_value = _level_manager.level_index + 1
+	_ui.current_level_value = min(_level_manager.level_index + 1, levels.size())
 	_ui.total_level_value = levels.size()
 
 
@@ -86,10 +92,4 @@ func _on_first_level_delay_timer_timeout() -> void:
 	_ui.show_level_tracker()
 	await _level_manager.process_levels(levels)
 	_ui.show_win_window()
-	get_tree().paused = true
-
-
-func _lose_game() -> void:
-	_background_music.stop()
-	_ui.show_lose_window()
 	get_tree().paused = true

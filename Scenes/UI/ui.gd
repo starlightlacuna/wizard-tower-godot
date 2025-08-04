@@ -33,7 +33,7 @@ signal win_yes_button_pressed
 ## The current level. This member is used for the level tracker.
 var current_level_value: int:
 	set(new_value):
-		current_level_value = min(new_value, total_level_value)
+		current_level_value = new_value
 		_value_label.text = str(current_level_value)
 
 ## The [Player] instance. This must be assigned to show the power up bar.
