@@ -44,14 +44,21 @@ func _on_health_component_damaged(health: int) -> void:
 		queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Firebolts"):
-		var damager: DamagerComponent = body.get_node_or_null("DamagerComponent");
-		if damager == null:
-			return
-		_health_component.damage(damager.damage)
-		body.queue_free()
+#func _on_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("Firebolts"):
+		#var damager: DamagerComponent = body.get_node_or_null("DamagerComponent");
+		#if damager == null:
+			#return
+		#_health_component.damage(damager.damage)
 
 
 func _update_health_bar(value: int) -> void:
 	_health_bar.set_frame(max(value - 1, 0))
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Firebolts"):
+		var damager: DamagerComponent = area.get_node_or_null("DamagerComponent");
+		if damager == null:
+			return
+		_health_component.damage(damager.damage)

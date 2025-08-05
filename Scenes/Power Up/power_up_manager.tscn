@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce7c6lqgynpsa"]
+
+[ext_resource type="Script" uid="uid://ognij0033imb" path="res://Scenes/Power Up/power_up_manager.gd" id="1_l0x7b"]
+[ext_resource type="PackedScene" uid="uid://ca6eymbxaw6ld" path="res://Scenes/Power Up/power_up_fairy.tscn" id="2_iiow3"]
+[ext_resource type="AudioStream" uid="uid://dceetjlbwfh3j" path="res://Assets/Audio/doorOpen_002.ogg" id="3_iiow3"]
+
+[node name="PowerUpManager" type="Node2D"]
+z_index = 3
+script = ExtResource("1_l0x7b")
+_power_up_fairy_scene = ExtResource("2_iiow3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iiow3")
+volume_db = -4.875
+bus = &"Sound Effects"

@@ -85,7 +85,7 @@ signal pressed
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		_focus_texture.set_visible(false)
+		_focus_texture.visible = false
 		# This is a code smell, but it works. Ideally we shouldn't wait here for
 		# ancestors to be ready; we should move this behavior upwards in the 
 		# scene tree.
@@ -129,11 +129,11 @@ func _get_button_path(node_path: NodePath) -> NodePath:
 
 
 func _on_button_focus_entered() -> void:
-	_focus_texture.set_visible(true)
+	_focus_texture.visible = true
 
 
 func _on_button_focus_exited() -> void:
-	_focus_texture.set_visible(false)
+	_focus_texture.visible = false
 
 
 func _on_button_mouse_entered() -> void:

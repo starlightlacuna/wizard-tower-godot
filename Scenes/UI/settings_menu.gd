@@ -19,16 +19,21 @@ const Bus = Settings.Bus
 @onready var back_button: CustomButton = $PanelBackground/BackButton
 @onready var test_button: CustomButton = $PanelBackground/TestButton
 @onready var quit_button: CustomButton = $PanelBackground/QuitButton
+@onready var _test_audio_player: AudioStreamPlayer = $TestAudioPlayer
 
 
 func _ready() -> void:
 	Settings.volume_changed.connect(_on_settings_volume_changed)
 	back_button_grab_focus_deferred()
 	
+	master_volume_group.set_value(Settings.get_volume(Bus.MASTER))
+	music_volume_group.set_value(Settings.get_volume(Bus.MUSIC))
+	sfx_volume_group.set_value(Settings.get_volume(Bus.SFX))
+	
 	if is_pause_menu:
-		back_button.set_position(pause_menu_back_button_position)
-		test_button.set_position(pause_menu_test_button_position)
-		quit_button.set_visible(true)
+		back_button.position = pause_menu_back_button_position
+		test_button.position = pause_menu_test_button_position
+		quit_button.visible = true
 		var quit_button_path: NodePath = quit_button.get_path()
 		back_button.neighbor_left = quit_button_path
 		back_button.neighbor_previous = quit_button_path
@@ -37,9 +42,9 @@ func _ready() -> void:
 		sfx_volume_up_button.set_focus_neighbors()
 		
 	else:
-		back_button.set_position(main_menu_back_button_position)
-		test_button.set_position(main_menu_test_button_position)
-		quit_button.set_visible(false)
+		back_button.position = main_menu_back_button_position
+		test_button.position = main_menu_test_button_position
+		quit_button.visible = false
 
 
 func back_button_grab_focus_deferred() -> void:
@@ -86,3 +91,7 @@ func _on_settings_volume_changed(bus: Bus, value: float) -> void:
 			music_volume_group.set_value(value)
 		Bus.SFX:
 			sfx_volume_group.set_value(value)
+
+
+func _on_test_button_pressed() -> void:
+	_test_audio_player.play()

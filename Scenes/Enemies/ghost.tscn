@@ -12,6 +12,7 @@ height = 14.0
 [node name="Ghost" instance=ExtResource("1_h312f")]
 script = ExtResource("1_nunuq")
 tween_delay = 1.2
+speed = 22.0
 max_health = 3
 
 [node name="Sprite2D" parent="." index="0"]

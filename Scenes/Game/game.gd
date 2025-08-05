@@ -2,7 +2,7 @@ class_name Game
 extends Node2D
 ## The game scene.
 ##
-## This scene handles all game logic, from start to win or lose.
+## This class handles all the  game logic, from start to win or lose.
 
 ## Emitted when a signal is received to restart the game. For example, see 
 ## [signal UI.win_yes_button_pressed].
@@ -15,26 +15,32 @@ signal start_menu_button_pressed
 ## The tower's maximum health. When the game starts, the tower's health is set to this value.
 @export var tower_max_health: int = 20
 
+@export var lose_music: AudioStream
+@export var win_music: AudioStream
+
 ## The levels to play. This gets passed into [method LevelManager.process_levels].
 @export var levels: Array[Level]
 
 var _tower_health: int = tower_max_health
 
-@onready var _background_music: AudioStreamPlayer = $BackgroundMusic
 @onready var _level_manager: LevelManager = $LevelManager
 @onready var _firebolts: Node2D = $Firebolts
 @onready var _player: Player = $Player
 @onready var _ui: UI = $UI
+@onready var _background_music: AudioStreamPlayer = $BackgroundMusic
+@onready var _tower_damaged: AudioStreamPlayer = $TowerDamaged
 
 
 func _ready() -> void:
 	assert(levels, "[Game] Levels is not set!")
+	assert(win_music, "[Game] Win Music is not set!")
+	assert(lose_music, "[Game] Lose Music is not set!")
 	
-	_player.set_position(Grid.grid_to_world(Vector2i(1, 2)))
+	_player.position = Grid.grid_to_world(Vector2i(1, 2))
 	_player.firebolts_node = _firebolts
 	_ui.build_health_bar(tower_max_health)
 	_ui.player = _player
-	_ui.set_visible(true)
+	_ui.visible = true
 	
 	#_background_music.play()
 	Event.tower_damaged.connect(_damage_tower)
@@ -43,6 +49,7 @@ func _ready() -> void:
 func _damage_tower(damage: int) -> void:
 	_tower_health -= damage
 	_ui.update_tower_health_bar(_tower_health, tower_max_health)
+	_tower_damaged.play()
 	
 	if _tower_health <= 0:
 		# Disconnect the signal to prevent multiple invocations
@@ -53,6 +60,8 @@ func _damage_tower(damage: int) -> void:
 func _lose_game() -> void:
 	_background_music.stop()
 	_ui.show_lose_window()
+	_background_music.stream = lose_music
+	_background_music.play()
 	get_tree().paused = true
 
 
@@ -92,4 +101,6 @@ func _on_first_level_delay_timer_timeout() -> void:
 	_ui.show_level_tracker()
 	await _level_manager.process_levels(levels)
 	_ui.show_win_window()
+	_background_music.stream = win_music
+	_background_music.play()
 	get_tree().paused = true

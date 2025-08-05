@@ -17,12 +17,13 @@ signal powered_up_changed(value)
 ## How long the movement tween lasts in seconds. Lower values mean faster movement.
 @export var _move_tween_duration: float = 0.1
 
-@export_subgroup("Firebolt Scenes")
+@export_subgroup("Firebolts")
 ## The scene to instantiate when the player attacks.
 @export var _firebolt_scene: PackedScene
-
+@export var _firebolt_audio: AudioStream
 ## The scene to instantiate when the player attacks while powered up.
 @export var _powered_up_firebolt_scene: PackedScene
+@export var _powered_up_firebolt_audio: AudioStream
 
 ## The node to add firebolts to. If this is not set, attacking will throw errors.
 var firebolts_node: Node2D
@@ -41,16 +42,30 @@ var _movement_tween: Tween
 
 @onready var _firebolt_spawn_position: Marker2D = $FireboltSpawnPosition
 @onready var _attack_timer: Timer = $AttackTimer
-
+@onready var _firebolts_audio_player: AudioStreamPlayer = $FireboltsAudioPlayer
+@onready var _powered_up_firebolts_audio_player: AudioStreamPlayer = $PoweredUpFireboltsAudioPlayer
+@onready var _hit_audio_player: AudioStreamPlayer = $HitAudioPlayer
 
 
 func _ready() -> void:
+	assert(_firebolt_audio, "[Player] Firebolt Audio not set!")
+	assert(_powered_up_firebolt_audio, "[Player] Powered Up Firebolt Audio not set!")
+	
 	_attack_timer.set_wait_time(_attack_cooldown)
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("fire") and _can_fire:
 		_shoot_firebolt()
+	
+	var areas: Array[Area2D] = get_overlapping_areas()
+	for area in areas:
+		if area is PowerUpFairy and not powered_up:
+			powered_up = true
+			print("You're powered up. Get in there!")
+			power_up_timer.start(power_up_duration)
+			area.consumed.emit()
+			return
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,13 +101,6 @@ func _move(translation: Vector2i) -> void:
 	_movement_tween.tween_callback(func (): _movement_tween = null)
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area is PowerUpFairy and not powered_up:
-		powered_up = true
-		print("You're powered up. Get in there!")
-		power_up_timer.start(power_up_duration)
-
-
 func _on_attack_timer_timeout() -> void:
 	_can_fire = true
 
@@ -109,9 +117,12 @@ func _shoot_firebolt() -> void:
 	var firebolt: Firebolt
 	if powered_up:
 		firebolt = _powered_up_firebolt_scene.instantiate()
+		_powered_up_firebolts_audio_player.play()
 	else:
 		firebolt = _firebolt_scene.instantiate()
+		_firebolts_audio_player.play()
 	firebolt.set_global_position(_firebolt_spawn_position.get_global_position())
 	firebolts_node.add_child(firebolt)
+	firebolt.hit.connect(_hit_audio_player.play)
 	_can_fire = false
 	_attack_timer.start()

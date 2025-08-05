@@ -27,7 +27,6 @@ enum EnemyType { SKELLY, GHOST, BRUTE }
 
 var _enemies_count: int = 0
 
-#@onready var _enemies: Node = $Enemies
 @onready var _spawn_timer: Timer = $SpawnTimer
 
 

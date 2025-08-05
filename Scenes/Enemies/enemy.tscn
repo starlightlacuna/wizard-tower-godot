@@ -16,5 +16,5 @@ metadata/_custom_type_script = "uid://jl12bc1d6d6d"
 
 [node name="HealthBar" type="Sprite2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]

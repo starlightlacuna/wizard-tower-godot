@@ -14,6 +14,8 @@ extends Node2D
 
 var _pool: Array[PowerUpFairy]
 
+@onready var _audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 func _ready() -> void:
 	assert(_power_up_fairy_scene, "[PowerUpManager] Power Up Fairy Scene not set!")
@@ -50,4 +52,5 @@ func spawn_power_up() -> void:
 
 
 func _on_fairy_consumed(fairy: PowerUpFairy) -> void:
+	_audio_stream_player.play()
 	remove_child.call_deferred(fairy)
