@@ -1,0 +1,6 @@
+# Project-specific ignores
+Assets/Audio
+
+# Godot 4+ specific ignores
+.godot/
+/android/
