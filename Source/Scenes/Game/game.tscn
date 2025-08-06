@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://brhllmdgpj07q"]
+[gd_scene load_steps=16 format=4 uid="uid://brhllmdgpj07q"]
 
 [ext_resource type="TileSet" uid="uid://tibl5rc5piad" path="res://Scenes/Game/level_tile_set.tres" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://s5g5xuyidp5p" path="res://Scenes/Game/game.gd" id="1_wrm1d"]
@@ -8,41 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://dpsv6nrk5dkh" path="res://Scenes/UI/ui.tscn" id="2_v158k"]
 [ext_resource type="PackedScene" uid="uid://ke2oqvxlb7wy" path="res://Scenes/Level Manager/level_manager.tscn" id="3_1l0tm"]
 [ext_resource type="AudioStream" uid="uid://2qp0nv3h88gk" path="res://Assets/Audio/Victory.ogg" id="3_56qi8"]
-[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="5_upfqs"]
-[ext_resource type="Script" uid="uid://diw3f06r2llk0" path="res://Scenes/Level Manager/spawn_power_up_fairy.gd" id="6_8e3kh"]
-[ext_resource type="Script" uid="uid://w46wnmwje315" path="res://Scenes/Level Manager/wait_duration.gd" id="7_56qi8"]
+[ext_resource type="Resource" uid="uid://c3uw4nb4g4gxs" path="res://Data/Levels/level_1.tres" id="5_8e3kh"]
+[ext_resource type="Resource" uid="uid://3wnmrq1x5qia" path="res://Data/Levels/level_2.tres" id="6_56qi8"]
+[ext_resource type="Resource" uid="uid://dsk55to5nq6ak" path="res://Data/Levels/level_3.tres" id="7_2vowc"]
+[ext_resource type="Resource" uid="uid://ctklgd70ap4he" path="res://Data/Levels/level_4.tres" id="8_yox4t"]
 [ext_resource type="AudioStream" uid="uid://wd1goqxq72d6" path="res://Assets/Audio/Action 2 (Loop).ogg" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ce7c6lqgynpsa" path="res://Scenes/Power Up/power_up_manager.tscn" id="9_ypmwd"]
 [ext_resource type="AudioStream" uid="uid://bnl4khx3eq8fx" path="res://Assets/Audio/lowFrequency_explosion_001.ogg" id="13_oejk7"]
-
-[sub_resource type="Resource" id="Resource_2vowc"]
-script = ExtResource("6_8e3kh")
-metadata/_custom_type_script = "uid://diw3f06r2llk0"
-
-[sub_resource type="Resource" id="Resource_yox4t"]
-script = ExtResource("6_8e3kh")
-metadata/_custom_type_script = "uid://diw3f06r2llk0"
-
-[sub_resource type="Resource" id="Resource_lemb1"]
-script = ExtResource("6_8e3kh")
-metadata/_custom_type_script = "uid://diw3f06r2llk0"
-
-[sub_resource type="Resource" id="Resource_a6ftd"]
-script = ExtResource("7_56qi8")
-duration = 60.0
-metadata/_custom_type_script = "uid://w46wnmwje315"
-
-[sub_resource type="Resource" id="Resource_nxex1"]
-script = ExtResource("2_h4fw4")
-steps = Array[ExtResource("5_upfqs")]([SubResource("Resource_2vowc"), SubResource("Resource_yox4t"), SubResource("Resource_lemb1"), SubResource("Resource_a6ftd")])
-metadata/_custom_type_script = "uid://dtw3dow0778l"
 
 [node name="Game" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_wrm1d")
 lose_music = ExtResource("2_8e3kh")
 win_music = ExtResource("3_56qi8")
-levels = Array[ExtResource("2_h4fw4")]([SubResource("Resource_nxex1")])
+levels = Array[ExtResource("2_h4fw4")]([ExtResource("5_8e3kh"), ExtResource("6_56qi8"), ExtResource("7_2vowc"), ExtResource("8_yox4t")])
 
 [node name="UI" parent="." instance=ExtResource("2_v158k")]
 z_index = 4
