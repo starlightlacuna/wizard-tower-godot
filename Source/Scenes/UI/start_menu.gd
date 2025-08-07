@@ -5,7 +5,7 @@ signal start_button_pressed
 signal settings_button_pressed
 signal quit_button_pressed
 
-@onready var _start_button: CustomButton = $StartButton
+@onready var _start_button: CustomButton = $MenuFrame/StartButton
 
 
 func _ready() -> void:
