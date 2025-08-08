@@ -96,7 +96,8 @@ func _ready() -> void:
 		set_focus_neighbors()
 
 
-## Calls the [member button]'s [method Control.grab_focus] method.
+## Calls the [member button]'s [method Control.grab_focus] method. We have to
+## use this because we can't override [method Control.grab_focus].
 func button_grab_focus() -> void:
 	button.grab_focus()
 
