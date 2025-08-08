@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4kvrc8nrq0wc"]
+
+[ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_q4iv0"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="2_lm48m"]
+[ext_resource type="Script" uid="uid://v6rnonv703hc" path="res://Scenes/UI/credits.gd" id="2_tdxk4"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchor_right = 0.25
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q4iv0")
+script = ExtResource("2_tdxk4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 5.0
+offset_right = 49.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+
+[node name="CreatedBy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 35.0
+offset_right = 94.0
+offset_bottom = 47.0
+grow_horizontal = 2
+text = "Created by StarlightLacuna"
+
+[node name="Assets" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.5
+offset_top = -102.0
+offset_right = 105.5
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "\"1-Bit Pack\" by Kenney
+\"Sci-fi Sounds\" by Kenney
+\"Elemental Magic: Fire Attacks\"
+    by LastDayDreaming
+\"Fantasy RPG Music Vol. 2\"
+    by alkakrab"
+
+[node name="BackButton" parent="." instance=ExtResource("2_lm48m")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -25.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
+minimum_width = 60.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(120, 80)
+zoom = Vector2(4, 4)
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
