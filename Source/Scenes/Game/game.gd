@@ -7,20 +7,23 @@ extends Node2D
 ## Emitted when a signal is received to restart the game. For example, see 
 ## [signal UI.win_yes_button_pressed].
 signal restart_button_pressed
-
 ## Emitted when a signal is received to return to the start menu. For example, 
 ## see [signal UI.pause_menu_quit_button_pressed].
 signal start_menu_button_pressed
 
-## The tower's maximum health.
-@export var tower_max_health: int = 20
 ## The cell to place the player at the start of the game. This value is clamped 
 ## to between (0, 2) and (1, 7) in the [method Node._ready] method.
 @export var player_start_position := Vector2i(0, 2)
+## The tower's maximum health.
+@export var tower_max_health: int = 20
 
 @export_subgroup("Music")
-@export var lose_music: AudioStream
-@export var win_music: AudioStream
+## Music to play while the game is ongoing.
+@export var _background_music: AudioStream
+## Music for when the player loses the game.
+@export var _lose_music: AudioStream
+## Music for when the player wins the game.
+@export var _win_music: AudioStream
 
 var _tower_health: int = tower_max_health
 
@@ -28,13 +31,13 @@ var _tower_health: int = tower_max_health
 @onready var _firebolts: Node2D = $Firebolts
 @onready var _player: Player = $Player
 @onready var _ui: UI = $UI
-@onready var _background_music: AudioStreamPlayer = $BackgroundMusic
 @onready var _tower_damaged: AudioStreamPlayer = $TowerDamaged
 
 
 func _ready() -> void:
-	assert(win_music, "[Game] Win Music is not set!")
-	assert(lose_music, "[Game] Lose Music is not set!")
+	assert(_background_music, "[Game] Background Music is not set!")
+	assert(_lose_music, "[Game] Lose Music is not set!")
+	assert(_win_music, "[Game] Win Music is not set!")
 	
 	_player.position = Grid.grid_to_world(Vector2i(
 			clampi(player_start_position.x, 0, 1),
@@ -46,6 +49,8 @@ func _ready() -> void:
 	_ui.visible = true
 	
 	Event.tower_damaged.connect(_damage_tower)
+	
+	BackgroundMusic.play(_background_music)
 
 
 func _damage_tower(damage: int) -> void:
@@ -60,10 +65,8 @@ func _damage_tower(damage: int) -> void:
 
 
 func _lose_game() -> void:
-	_background_music.stop()
 	_ui.show_lose_window()
-	_background_music.stream = lose_music
-	_background_music.play()
+	BackgroundMusic.play(_lose_music)
 	get_tree().paused = true
 
 
@@ -71,8 +74,7 @@ func _on_first_level_delay_timer_timeout() -> void:
 	_ui.show_level_tracker()
 	await _level_manager.process_levels()
 	_ui.show_win_window()
-	_background_music.stream = win_music
-	_background_music.play()
+	BackgroundMusic.play(_win_music)
 	get_tree().paused = true
 
 

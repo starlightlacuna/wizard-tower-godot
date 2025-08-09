@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_dotjr")
 script = ExtResource("1_xry01")
+music = ExtResource("4_2ybwg")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [161.0]
 
@@ -149,10 +150,6 @@ neighbor_right = NodePath("../MenuFrame/SettingsButton")
 neighbor_bottom = NodePath(".")
 neighbor_next = NodePath("../MenuFrame/SettingsButton")
 neighbor_previous = NodePath("../MenuFrame/HowToPlayButton")
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_2ybwg")
-autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
