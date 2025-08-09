@@ -21,8 +21,9 @@
 process_mode = 1
 script = ExtResource("1_wrm1d")
 player_start_position = Vector2i(1, 4)
-lose_music = ExtResource("2_8e3kh")
-win_music = ExtResource("3_56qi8")
+_background_music = ExtResource("9_h4fw4")
+_lose_music = ExtResource("2_8e3kh")
+_win_music = ExtResource("3_56qi8")
 
 [node name="UI" parent="." instance=ExtResource("2_v158k")]
 z_index = 4
@@ -70,12 +71,6 @@ stream = ExtResource("13_oejk7")
 volume_db = -4.494
 max_polyphony = 5
 bus = &"Sound Effects"
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("9_h4fw4")
-autoplay = true
-bus = &"Music"
 
 [node name="FirstLevelDelayTimer" type="Timer" parent="."]
 one_shot = true

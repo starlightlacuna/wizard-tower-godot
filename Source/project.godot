@@ -24,6 +24,7 @@ buses/default_bus_layout="res://Data/default_bus_layout.tres"
 
 Event="*res://Utilities/event.gd"
 Settings="*res://Utilities/settings.gd"
+BackgroundMusic="*res://Utilities/background_music.gd"
 
 [display]
 
