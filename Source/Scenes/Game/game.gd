@@ -15,9 +15,9 @@ signal start_menu_button_pressed
 ## The tower's maximum health.
 @export var tower_max_health: int = 20
 ## The cell to place the player at the start of the game. This value must be 
-## between (2, 0) and (7, 1), inclusive, and values outside that range will be
+## between (0, 2) and (1, 7), inclusive, and values outside that range will be
 ## clamped.
-@export var player_start_position := Vector2i(2, 0)
+@export var player_start_position := Vector2i(0, 2)
 
 @export_subgroup("Music")
 @export var lose_music: AudioStream
