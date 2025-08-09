@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=50 format=3 uid="uid://c3uw4nb4g4gxs"]
+[gd_resource type="Resource" script_class="Level" load_steps=52 format=3 uid="uid://c3uw4nb4g4gxs"]
 
 [ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Level Manager/level.gd" id="1_m6tf1"]
 [ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="2_6cmcy"]
@@ -62,6 +62,11 @@ metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 [sub_resource type="Resource" id="Resource_mrvxo"]
 script = ExtResource("6_glsth")
 metadata/_custom_type_script = "uid://d3wr2buo02nux"
+
+[sub_resource type="Resource" id="Resource_rvstf"]
+script = ExtResource("5_i0ms8")
+duration = 1.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_7q00k"]
 script = ExtResource("3_agxgp")
@@ -173,6 +178,11 @@ metadata/_custom_type_script = "uid://bnfwlbpwfh5fb"
 [sub_resource type="Resource" id="Resource_5fkig"]
 script = ExtResource("6_glsth")
 metadata/_custom_type_script = "uid://d3wr2buo02nux"
+
+[sub_resource type="Resource" id="Resource_uw4r6"]
+script = ExtResource("5_i0ms8")
+duration = 1.0
+metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_wcwwb"]
 script = ExtResource("3_agxgp")
@@ -301,5 +311,5 @@ metadata/_custom_type_script = "uid://d3wr2buo02nux"
 
 [resource]
 script = ExtResource("1_m6tf1")
-steps = Array[ExtResource("2_6cmcy")]([SubResource("Resource_6cmcy"), SubResource("Resource_pkmhs"), SubResource("Resource_13ja6"), SubResource("Resource_i0ms8"), SubResource("Resource_glsth"), SubResource("Resource_feghg"), SubResource("Resource_7giln"), SubResource("Resource_mrvxo"), SubResource("Resource_7q00k"), SubResource("Resource_r30ib"), SubResource("Resource_k1v68"), SubResource("Resource_ct25w"), SubResource("Resource_hxrjq"), SubResource("Resource_tj1aq"), SubResource("Resource_4mn7o"), SubResource("Resource_7l8na"), SubResource("Resource_s414v"), SubResource("Resource_2rcml"), SubResource("Resource_xia2a"), SubResource("Resource_5fkig"), SubResource("Resource_wcwwb"), SubResource("Resource_w78pb"), SubResource("Resource_1kmor"), SubResource("Resource_xjr5e"), SubResource("Resource_c6juw"), SubResource("Resource_wuwsa"), SubResource("Resource_p4n86"), SubResource("Resource_h88kv"), SubResource("Resource_862wp"), SubResource("Resource_m6ps5"), SubResource("Resource_j7a1j"), SubResource("Resource_k71ph"), SubResource("Resource_ws386"), SubResource("Resource_skc3t")])
+steps = Array[ExtResource("2_6cmcy")]([SubResource("Resource_6cmcy"), SubResource("Resource_pkmhs"), SubResource("Resource_13ja6"), SubResource("Resource_i0ms8"), SubResource("Resource_glsth"), SubResource("Resource_feghg"), SubResource("Resource_7giln"), SubResource("Resource_mrvxo"), SubResource("Resource_rvstf"), SubResource("Resource_7q00k"), SubResource("Resource_r30ib"), SubResource("Resource_k1v68"), SubResource("Resource_ct25w"), SubResource("Resource_hxrjq"), SubResource("Resource_tj1aq"), SubResource("Resource_4mn7o"), SubResource("Resource_7l8na"), SubResource("Resource_s414v"), SubResource("Resource_2rcml"), SubResource("Resource_xia2a"), SubResource("Resource_5fkig"), SubResource("Resource_uw4r6"), SubResource("Resource_wcwwb"), SubResource("Resource_w78pb"), SubResource("Resource_1kmor"), SubResource("Resource_xjr5e"), SubResource("Resource_c6juw"), SubResource("Resource_wuwsa"), SubResource("Resource_p4n86"), SubResource("Resource_h88kv"), SubResource("Resource_862wp"), SubResource("Resource_m6ps5"), SubResource("Resource_j7a1j"), SubResource("Resource_k71ph"), SubResource("Resource_ws386"), SubResource("Resource_skc3t")])
 metadata/_custom_type_script = "uid://dtw3dow0778l"

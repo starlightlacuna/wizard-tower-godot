@@ -38,8 +38,7 @@ func spawn_power_up() -> void:
 	if available_index > -1:
 		var fairy: PowerUpFairy = _pool[available_index]
 		add_child(fairy)
-		fairy.animation_player.play("RESET")
-		fairy.position = Grid.grid_to_world(Vector2i(-1, Grid.START_ROW + available_index))
+		fairy.position = Grid.grid_to_world(Vector2i(-2, Grid.START_ROW + available_index))
 		var end_position: Vector2 = Grid.grid_to_world(Vector2i(0, Grid.START_ROW + available_index))
 		var tween: Tween = fairy.create_tween()
 		tween.tween_property(
@@ -53,4 +52,6 @@ func spawn_power_up() -> void:
 
 func _on_fairy_consumed(fairy: PowerUpFairy) -> void:
 	_audio_stream_player.play()
+	fairy.animation_player.play("Power Up Fairy/RESET")
+	fairy.position = Vector2(0.0, 0.0)
 	remove_child.call_deferred(fairy)
