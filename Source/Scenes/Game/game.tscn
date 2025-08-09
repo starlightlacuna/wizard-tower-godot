@@ -47,7 +47,6 @@ z_index = 3
 [node name="Player" parent="." instance=ExtResource("2_3dryh")]
 z_index = 3
 position = Vector2(16, 32)
-power_up_duration = 3.0
 
 [node name="LevelMapLayer" type="TileMapLayer" parent="."]
 z_index = 2
