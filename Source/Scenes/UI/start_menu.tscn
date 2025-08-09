@@ -23,6 +23,7 @@ grow_vertical = 2
 theme = ExtResource("1_dotjr")
 script = ExtResource("1_xry01")
 metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [161.0]
 
 [node name="BackgroundImageOld" type="TextureRect" parent="."]
 visible = false
@@ -37,24 +38,25 @@ metadata/_edit_lock_ = true
 
 [node name="Bridge" type="TextureRect" parent="."]
 layout_mode = 0
+offset_left = -1.0
 offset_top = 82.0
-offset_right = 252.0
+offset_right = 251.0
 offset_bottom = 160.0
 texture = ExtResource("4_vxxty")
 
 [node name="Tower" type="TextureRect" parent="."]
 layout_mode = 0
+offset_left = -1.0
 offset_top = -40.0
-offset_right = 82.0
+offset_right = 81.0
 offset_bottom = 160.0
 texture = ExtResource("5_8hnkv")
 
 [node name="Banner" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 44.0
+offset_left = 43.0
 offset_top = 96.0
-offset_right = 70.0
+offset_right = 69.0
 offset_bottom = 148.0
 texture = ExtResource("6_vxxty")
 
@@ -80,11 +82,12 @@ offset_bottom = 94.0
 texture = ExtResource("7_dotjr")
 
 [node name="StartButton" parent="MenuFrame" instance=ExtResource("3_8wf1d")]
-offset_left = 59.0
+offset_left = 29.0
 offset_top = 102.0
-offset_right = 106.0
+offset_right = 135.0
 offset_bottom = 122.0
 text = "Start"
+minimum_width = 106.0
 neighbor_left = NodePath(".")
 neighbor_top = NodePath(".")
 neighbor_right = NodePath(".")
@@ -93,11 +96,12 @@ neighbor_next = NodePath("../HowToPlayButton")
 neighbor_previous = NodePath("../QuitButton")
 
 [node name="HowToPlayButton" parent="MenuFrame" instance=ExtResource("3_8wf1d")]
-offset_left = 39.0
+offset_left = 29.0
 offset_top = 126.0
-offset_right = 126.0
+offset_right = 135.0
 offset_bottom = 146.0
-text = "How to play"
+text = "How to Play"
+minimum_width = 106.0
 neighbor_left = NodePath(".")
 neighbor_top = NodePath("../StartButton")
 neighbor_right = NodePath(".")
@@ -121,9 +125,10 @@ neighbor_previous = NodePath("../../Credits Button")
 [node name="QuitButton" parent="MenuFrame" instance=ExtResource("3_8wf1d")]
 offset_left = 99.0
 offset_top = 150.0
-offset_right = 134.0
+offset_right = 135.0
 offset_bottom = 170.0
 text = "Quit"
+minimum_width = 36.0
 neighbor_left = NodePath("../SettingsButton")
 neighbor_top = NodePath("../HowToPlayButton")
 neighbor_right = NodePath(".")
@@ -134,9 +139,10 @@ neighbor_previous = NodePath("../SettingsButton")
 [node name="Credits Button" parent="." instance=ExtResource("3_8wf1d")]
 offset_left = 5.0
 offset_top = 135.0
-offset_right = 63.0
+offset_right = 73.0
 offset_bottom = 155.0
 text = "Credits"
+minimum_width = 68.0
 neighbor_left = NodePath(".")
 neighbor_top = NodePath(".")
 neighbor_right = NodePath("../MenuFrame/SettingsButton")

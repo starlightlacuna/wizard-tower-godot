@@ -2,24 +2,25 @@ class_name Game
 extends Node2D
 ## The game scene.
 ##
-## This class handles all the  game logic, from start to win or lose.
+## This class handles all the  game logic, from start to win or lose. 
 
 ## Emitted when a signal is received to restart the game. For example, see 
 ## [signal UI.win_yes_button_pressed].
 signal restart_button_pressed
 
-## Emitted when a signal is received to return to the start menu. For example, see 
-## [signal UI.pause_menu_quit_button_pressed].
+## Emitted when a signal is received to return to the start menu. For example, 
+## see [signal UI.pause_menu_quit_button_pressed].
 signal start_menu_button_pressed
 
-## The tower's maximum health. When the game starts, the tower's health is set to this value.
+## The tower's maximum health.
 @export var tower_max_health: int = 20
+## The cell to place the player at the start of the game. This value is clamped 
+## to between (0, 2) and (1, 7) in the [method Node._ready] method.
+@export var player_start_position := Vector2i(0, 2)
 
+@export_subgroup("Music")
 @export var lose_music: AudioStream
 @export var win_music: AudioStream
-
-## The levels to play. This gets passed into [method LevelManager.process_levels].
-@export var levels: Array[Level]
 
 var _tower_health: int = tower_max_health
 
@@ -32,17 +33,18 @@ var _tower_health: int = tower_max_health
 
 
 func _ready() -> void:
-	assert(levels, "[Game] Levels is not set!")
 	assert(win_music, "[Game] Win Music is not set!")
 	assert(lose_music, "[Game] Lose Music is not set!")
 	
-	_player.position = Grid.grid_to_world(Vector2i(1, 2))
+	_player.position = Grid.grid_to_world(Vector2i(
+			clampi(player_start_position.x, 0, 1),
+			clampi(player_start_position.y, 2, 7)
+	))
 	_player.firebolts_node = _firebolts
 	_ui.build_health_bar(tower_max_health)
 	_ui.player = _player
 	_ui.visible = true
 	
-	#_background_music.play()
 	Event.tower_damaged.connect(_damage_tower)
 
 
@@ -65,23 +67,30 @@ func _lose_game() -> void:
 	get_tree().paused = true
 
 
-func _on_enemy_manager_level_index_updated() -> void:
-	_ui.current_level_value = min(_level_manager.level_index + 1, levels.size())
-	_ui.total_level_value = levels.size()
-
-
-func _on_enemy_manager_levels_completed() -> void:
+func _on_first_level_delay_timer_timeout() -> void:
+	_ui.show_level_tracker()
+	await _level_manager.process_levels()
 	_ui.show_win_window()
+	_background_music.stream = win_music
+	_background_music.play()
 	get_tree().paused = true
 
 
-func _on_start_menu_button_pressed() -> void:
-	start_menu_button_pressed.emit()
-	get_tree().paused = false
+func _on_level_manager_level_index_updated(
+		current_level: int,
+		total_levels: int
+) -> void:
+	_ui.current_level_value = min(current_level + 1, total_levels)
+	_ui.total_level_value = total_levels
 
 
 func _on_restart_button_pressed() -> void:
 	restart_button_pressed.emit()
+	get_tree().paused = false
+
+
+func _on_start_menu_button_pressed() -> void:
+	start_menu_button_pressed.emit()
 	get_tree().paused = false
 
 
@@ -95,12 +104,3 @@ func _on_ui_pause_game_pressed() -> void:
 
 func _on_ui_pause_menu_quit_button_pressed() -> void:
 	start_menu_button_pressed.emit()
-
-
-func _on_first_level_delay_timer_timeout() -> void:
-	_ui.show_level_tracker()
-	await _level_manager.process_levels(levels)
-	_ui.show_win_window()
-	_background_music.stream = win_music
-	_background_music.play()
-	get_tree().paused = true
