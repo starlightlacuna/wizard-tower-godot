@@ -14,9 +14,8 @@ signal start_menu_button_pressed
 
 ## The tower's maximum health.
 @export var tower_max_health: int = 20
-## The cell to place the player at the start of the game. This value must be 
-## between (0, 2) and (1, 7), inclusive, and values outside that range will be
-## clamped.
+## The cell to place the player at the start of the game. This value is clamped 
+## to between (0, 2) and (1, 7) in the [method Node._ready] method.
 @export var player_start_position := Vector2i(0, 2)
 
 @export_subgroup("Music")
@@ -38,8 +37,8 @@ func _ready() -> void:
 	assert(lose_music, "[Game] Lose Music is not set!")
 	
 	_player.position = Grid.grid_to_world(Vector2i(
-			player_start_position.x,
-			player_start_position.y
+			clampi(player_start_position.x, 0, 1),
+			clampi(player_start_position.y, 2, 7)
 	))
 	_player.firebolts_node = _firebolts
 	_ui.build_health_bar(tower_max_health)

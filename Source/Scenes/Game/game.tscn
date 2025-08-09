@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://brhllmdgpj07q"]
+[gd_scene load_steps=16 format=4 uid="uid://brhllmdgpj07q"]
 
 [ext_resource type="TileSet" uid="uid://tibl5rc5piad" path="res://Scenes/Game/level_tile_set.tres" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://s5g5xuyidp5p" path="res://Scenes/Game/game.gd" id="1_wrm1d"]
@@ -14,56 +14,12 @@
 [ext_resource type="Resource" uid="uid://ctklgd70ap4he" path="res://Data/Levels/level_4.tres" id="8_yox4t"]
 [ext_resource type="AudioStream" uid="uid://wd1goqxq72d6" path="res://Assets/Audio/Action 2 (Loop).ogg" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ce7c6lqgynpsa" path="res://Scenes/Power Up/power_up_manager.tscn" id="9_ypmwd"]
-[ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="11_lemb1"]
-[ext_resource type="Script" uid="uid://b3caof2drmctg" path="res://Scenes/Level Manager/enemy_config.gd" id="12_a6ftd"]
-[ext_resource type="Script" uid="uid://bnfwlbpwfh5fb" path="res://Scenes/Level Manager/spawn_enemy_group.gd" id="13_nxex1"]
 [ext_resource type="AudioStream" uid="uid://bnl4khx3eq8fx" path="res://Assets/Audio/lowFrequency_explosion_001.ogg" id="13_oejk7"]
-[ext_resource type="Script" uid="uid://d3wr2buo02nux" path="res://Scenes/Level Manager/wait_clear.gd" id="14_pa3qg"]
-
-[sub_resource type="Resource" id="Resource_2lc0x"]
-script = ExtResource("12_a6ftd")
-enemy_type = 0
-lane = 0
-random_lane = false
-min_lane = 0
-max_lane = 5
-metadata/_custom_type_script = "uid://b3caof2drmctg"
-
-[sub_resource type="Resource" id="Resource_4ti5a"]
-script = ExtResource("12_a6ftd")
-enemy_type = 0
-lane = 1
-random_lane = false
-min_lane = 0
-max_lane = 5
-metadata/_custom_type_script = "uid://b3caof2drmctg"
-
-[sub_resource type="Resource" id="Resource_pmm7v"]
-script = ExtResource("12_a6ftd")
-enemy_type = 1
-lane = 5
-random_lane = false
-min_lane = 0
-max_lane = 5
-metadata/_custom_type_script = "uid://b3caof2drmctg"
-
-[sub_resource type="Resource" id="Resource_3gqeb"]
-script = ExtResource("13_nxex1")
-enemies = Array[ExtResource("12_a6ftd")]([SubResource("Resource_2lc0x"), SubResource("Resource_4ti5a"), SubResource("Resource_pmm7v")])
-metadata/_custom_type_script = "uid://bnfwlbpwfh5fb"
-
-[sub_resource type="Resource" id="Resource_7pdpw"]
-script = ExtResource("14_pa3qg")
-metadata/_custom_type_script = "uid://d3wr2buo02nux"
-
-[sub_resource type="Resource" id="Resource_gqd4u"]
-script = ExtResource("2_h4fw4")
-steps = Array[ExtResource("11_lemb1")]([SubResource("Resource_3gqeb"), SubResource("Resource_7pdpw")])
-metadata/_custom_type_script = "uid://dtw3dow0778l"
 
 [node name="Game" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_wrm1d")
+player_start_position = Vector2i(1, 4)
 lose_music = ExtResource("2_8e3kh")
 win_music = ExtResource("3_56qi8")
 
@@ -76,7 +32,7 @@ offset_right = 240.0
 offset_bottom = 160.0
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("_enemies", "_power_up_manager") instance=ExtResource("3_1l0tm")]
-levels = Array[ExtResource("2_h4fw4")]([SubResource("Resource_gqd4u"), ExtResource("5_8e3kh"), ExtResource("6_56qi8"), ExtResource("7_2vowc"), ExtResource("8_yox4t")])
+levels = Array[ExtResource("2_h4fw4")]([ExtResource("5_8e3kh"), ExtResource("6_56qi8"), ExtResource("7_2vowc"), ExtResource("8_yox4t")])
 _enemies = NodePath("../Enemies")
 _power_up_manager = NodePath("../PowerUpManager")
 
