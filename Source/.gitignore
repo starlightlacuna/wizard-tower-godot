@@ -1,5 +1,5 @@
 # Project-specific ignores
-Assets/Audio
+Assets/Audio/*.ogg*
 
 # Godot 4+ specific ignores
 .godot/

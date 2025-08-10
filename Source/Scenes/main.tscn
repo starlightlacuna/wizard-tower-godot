@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bbvdbqskmbdcm" path="res://Scenes/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://brhllmdgpj07q" path="res://Scenes/Game/game.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://cjv3ykbxr5gmn" path="res://Scenes/UI/start_menu.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dynm7se0gewia" path="res://Scenes/UI/settings_menu.tscn" id="3_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://4mbdigtstaiq" path="res://Scenes/UI/how_to_play.tscn" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://b4kvrc8nrq0wc" path="res://Scenes/UI/credits.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cjv3ykbxr5gmn" path="res://Scenes/Menus/start_menu.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dynm7se0gewia" path="res://Scenes/Menus/settings_menu.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://4mbdigtstaiq" path="res://Scenes/Menus/how_to_play.tscn" id="4_21xkr"]
+[ext_resource type="PackedScene" uid="uid://b4kvrc8nrq0wc" path="res://Scenes/Menus/credits.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")

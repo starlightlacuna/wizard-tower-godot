@@ -9,22 +9,16 @@ extends Control
 
 ## Emitted when the No button in the lose window is pressed.
 signal lose_no_button_pressed
-
 ## Emitted when the Yes button in the lose window is pressed.
 signal lose_yes_button_pressed
-
 ## Emitted when the Back button in the pause menu is pressed.
 signal pause_menu_back_button_pressed
-
 ## Emitted when the Quit button in the pause menu is pressed.
 signal pause_menu_quit_button_pressed
-
 ## Emitted when the [code]pause_game[/code] input action is pressed.
 signal pause_game_pressed
-
 ## Emitted when the No button in the win window is pressed.
 signal win_no_button_pressed
-
 ## Emitted when the Yes button in the win window is pressed.
 signal win_yes_button_pressed
 
@@ -37,14 +31,9 @@ var current_level_value: int:
 		_value_label.text = str(current_level_value)
 
 ## The [Player] instance. This must be assigned to show the power up bar.
-var player: Player:
-	set(new_value):
-		player = new_value
-		player.powered_up_changed.connect(func (powered_up):
-			_power_up_bar_container.visible = powered_up
-		)
+@export var _player: Player
 
-## The total number of levels. This member is used for the level tracker.
+## The total number of levels. This is used for the level tracker.
 var total_level_value: int:
 	set(new_value):
 		total_level_value = new_value
@@ -73,14 +62,21 @@ func _ready() -> void:
 	_slash_label.visible = false
 	_total_label.visible = false
 	_power_up_bar_container.visible = false
+	
+	if _player:
+		_player.powered_up_changed.connect(func (powered_up):
+			_power_up_bar_container.visible = powered_up
+		)
+	else:
+		push_warning("[UI] _player not set!")
 
 
 func _process(_delta: float) -> void:
-	if player:
+	if _player:
 		_power_up_bar.value = remap(
-			player.power_up_timer.time_left,
+			_player.power_up_timer.time_left,
 			0.0,
-			player.power_up_duration,
+			_player.power_up_duration,
 			_power_up_bar.min_value,
 			_power_up_bar.max_value
 		)
@@ -97,8 +93,9 @@ func _shortcut_input(event: InputEvent) -> void:
 		return
 
 
-## Builds the tower's health bar. The health bar is composed of tower sprites, each representing 
-## two hit points. [param max_health] is used to determine how many sprites are created initially.
+## Builds the tower's health bar. The health bar is composed of tower sprites,
+## each representing two hit points. [param max_health] is used to determine how
+## many sprites are created initially.
 func build_health_bar(max_health: int) -> void:
 	for child in _tower_health_bar.get_children():
 		child.queue_free()
@@ -110,8 +107,8 @@ func build_health_bar(max_health: int) -> void:
 		_tower_health_icons.append(new_icon)
 
 
-## Updates the tower's health bar. The health bar's individual icons are updated to the approprite 
-## sprites. See [method TowerHealthIcon.update].
+## Updates the tower's health bar. The health bar's individual icons are updated
+## to the approprite sprites. See [method TowerHealthIcon.update].
 func update_tower_health_bar(current_health: int, max_health: int) -> void:
 	for index in _get_icon_count(max_health):
 		if current_health > 1:

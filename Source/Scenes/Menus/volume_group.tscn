@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm4u7at475mjr"]
+
+[ext_resource type="Script" uid="uid://cc7ed362s5kki" path="res://Scenes/Menus/volume_group.gd" id="1_tym0c"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/Menus/custom_button.tscn" id="2_8l4wn"]
+[ext_resource type="Texture2D" uid="uid://dtqy5w5dmu8fo" path="res://Assets/Images/UI/volume_up.png" id="3_8lj13"]
+[ext_resource type="Texture2D" uid="uid://clkntjue27jpl" path="res://Assets/Images/UI/volume.png" id="3_w3fb6"]
+[ext_resource type="Texture2D" uid="uid://dok1u1v8sgu4d" path="res://Assets/Images/UI/volume_down.png" id="4_v3b0a"]
+
+[node name="VolumeGroup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 122.0
+offset_bottom = 22.0
+script = ExtResource("1_tym0c")
+
+[node name="DownButton" parent="." instance=ExtResource("2_8l4wn")]
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 21.0
+icon = ExtResource("4_v3b0a")
+
+[node name="TextureRect" type="TextureRect" parent="DownButton"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 14.0
+texture = ExtResource("4_v3b0a")
+stretch_mode = 2
+
+[node name="ValueBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 94.0
+offset_bottom = 22.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+texture_progress = ExtResource("3_w3fb6")
+
+[node name="UpButton" parent="." instance=ExtResource("2_8l4wn")]
+offset_left = 100.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 21.0
+icon = ExtResource("3_8lj13")
+
+[node name="TextureRect" type="TextureRect" parent="UpButton"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 14.0
+texture = ExtResource("3_8lj13")
+stretch_mode = 2
+
+[connection signal="pressed" from="DownButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="UpButton" to="." method="_on_up_button_pressed"]

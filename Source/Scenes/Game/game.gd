@@ -45,7 +45,6 @@ func _ready() -> void:
 	))
 	_player.firebolts_node = _firebolts
 	_ui.build_health_bar(tower_max_health)
-	_ui.player = _player
 	_ui.visible = true
 	
 	Event.tower_damaged.connect(_damage_tower)

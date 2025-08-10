@@ -25,13 +25,14 @@ _background_music = ExtResource("9_h4fw4")
 _lose_music = ExtResource("2_8e3kh")
 _win_music = ExtResource("3_56qi8")
 
-[node name="UI" parent="." instance=ExtResource("2_v158k")]
+[node name="UI" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_v158k")]
 z_index = 4
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 240.0
 offset_bottom = 160.0
+_player = NodePath("../Player")
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("_enemies", "_power_up_manager") instance=ExtResource("3_1l0tm")]
 levels = Array[ExtResource("2_h4fw4")]([ExtResource("5_8e3kh"), ExtResource("6_56qi8"), ExtResource("7_2vowc"), ExtResource("8_yox4t"), ExtResource("7_ypmwd")])
