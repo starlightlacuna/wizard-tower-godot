@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dynm7se0gewia"]
 
-[ext_resource type="Script" uid="uid://bqmfav66fbuh4" path="res://Scenes/UI/settings_menu.gd" id="1_cs2gm"]
+[ext_resource type="Script" uid="uid://bqmfav66fbuh4" path="res://Scenes/Menus/settings_menu.gd" id="1_cs2gm"]
 [ext_resource type="Texture2D" uid="uid://b67nm148cfyt6" path="res://Assets/Images/UI/modal_frame.png" id="1_kfh4b"]
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="2_ynxh7"]
-[ext_resource type="PackedScene" uid="uid://cm4u7at475mjr" path="res://Scenes/UI/volume_group.tscn" id="4_n6o6n"]
-[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="5_cs2gm"]
+[ext_resource type="PackedScene" uid="uid://cm4u7at475mjr" path="res://Scenes/Menus/volume_group.tscn" id="4_n6o6n"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/Menus/custom_button.tscn" id="5_cs2gm"]
 [ext_resource type="AudioStream" uid="uid://bv083r4vykbp1" path="res://Assets/Audio/EM_FIRE_CAST_02.ogg" id="6_n6o6n"]
 
 [node name="SettingsMenu" type="Control"]

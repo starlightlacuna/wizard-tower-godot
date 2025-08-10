@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccitkwd6gnqw0"
-path="res://.godot/imported/selection.png-63398bfcb661c63da6846770498f5077.ctex"
+uid="uid://hoy7orwgtvew"
+path="res://.godot/imported/direction_keys2.png-84fc4f7a05bb72afd4460e0e81620c44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/selection.png"
-dest_files=["res://.godot/imported/selection.png-63398bfcb661c63da6846770498f5077.ctex"]
+source_file="res://Assets/Images/UI/How to Play/direction_keys2.png"
+dest_files=["res://.godot/imported/direction_keys2.png-84fc4f7a05bb72afd4460e0e81620c44.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4kvrc8nrq0wc"]
 
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_q4iv0"]
-[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="2_lm48m"]
-[ext_resource type="Script" uid="uid://v6rnonv703hc" path="res://Scenes/UI/credits.gd" id="2_tdxk4"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/Menus/custom_button.tscn" id="2_lm48m"]
+[ext_resource type="Script" uid="uid://v6rnonv703hc" path="res://Scenes/Menus/credits.gd" id="2_tdxk4"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3

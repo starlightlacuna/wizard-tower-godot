@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjv3ykbxr5gmn"]
+[gd_scene load_steps=12 format=3 uid="uid://cjv3ykbxr5gmn"]
 
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_dotjr"]
-[ext_resource type="Script" uid="uid://bx8luj603scuu" path="res://Scenes/UI/start_menu.gd" id="1_xry01"]
-[ext_resource type="Texture2D" uid="uid://6cohqijp23h3" path="res://Assets/Images/UI/main_menu_background_old.png" id="2_3kyvb"]
-[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/UI/custom_button.tscn" id="3_8wf1d"]
+[ext_resource type="Script" uid="uid://bx8luj603scuu" path="res://Scenes/Menus/start_menu.gd" id="1_xry01"]
+[ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/Menus/custom_button.tscn" id="3_8wf1d"]
 [ext_resource type="AudioStream" uid="uid://bbrcduyohi4wn" path="res://Assets/Audio/Ambient 9.ogg" id="4_2ybwg"]
 [ext_resource type="Texture2D" uid="uid://pnet4je3hnr3" path="res://Assets/Images/UI/Start Menu/bridge.png" id="4_vxxty"]
 [ext_resource type="Texture2D" uid="uid://b8idub8u78lf7" path="res://Assets/Images/UI/Start Menu/tower.png" id="5_8hnkv"]
@@ -25,17 +24,6 @@ script = ExtResource("1_xry01")
 music = ExtResource("4_2ybwg")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [161.0]
-
-[node name="BackgroundImageOld" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_3kyvb")
-metadata/_edit_lock_ = true
 
 [node name="Bridge" type="TextureRect" parent="."]
 layout_mode = 0
