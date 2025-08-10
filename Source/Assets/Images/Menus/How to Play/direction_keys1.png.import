@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dng4ywlq2nd2w"
-path="res://.godot/imported/spacebar.png-ebf6079acc42596f740bfc9261cd6661.ctex"
+uid="uid://4qf83igs5kn5"
+path="res://.godot/imported/direction_keys1.png-eb83ab27c4813191549d7d3b506d52f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/How to Play/spacebar.png"
-dest_files=["res://.godot/imported/spacebar.png-ebf6079acc42596f740bfc9261cd6661.ctex"]
+source_file="res://Assets/Images/Menus/How to Play/direction_keys1.png"
+dest_files=["res://.godot/imported/direction_keys1.png-eb83ab27c4813191549d7d3b506d52f7.ctex"]
 
 [params]
 

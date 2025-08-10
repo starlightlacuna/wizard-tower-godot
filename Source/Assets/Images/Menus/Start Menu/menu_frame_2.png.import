@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcnepjxdn5sw6"
-path="res://.godot/imported/escape.png-45fee7858e7f43d88dbe13e060a659bd.ctex"
+uid="uid://nq7k1b12lyjv"
+path="res://.godot/imported/menu_frame_2.png-d8ac36b95acbd1f3c7accb1a03650a31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/How to Play/escape.png"
-dest_files=["res://.godot/imported/escape.png-45fee7858e7f43d88dbe13e060a659bd.ctex"]
+source_file="res://Assets/Images/Menus/Start Menu/menu_frame_2.png"
+dest_files=["res://.godot/imported/menu_frame_2.png-d8ac36b95acbd1f3c7accb1a03650a31.ctex"]
 
 [params]
 

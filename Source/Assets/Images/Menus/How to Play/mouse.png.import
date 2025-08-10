@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4qf83igs5kn5"
-path="res://.godot/imported/direction_keys1.png-02d068d31760af88ef7b6b13f6a07b6b.ctex"
+uid="uid://cbh7vd5ryu8q7"
+path="res://.godot/imported/mouse.png-b4a242a3e3f1873a9ed2e51ee57a7fba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/How to Play/direction_keys1.png"
-dest_files=["res://.godot/imported/direction_keys1.png-02d068d31760af88ef7b6b13f6a07b6b.ctex"]
+source_file="res://Assets/Images/Menus/How to Play/mouse.png"
+dest_files=["res://.godot/imported/mouse.png-b4a242a3e3f1873a9ed2e51ee57a7fba.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8idub8u78lf7"
-path="res://.godot/imported/tower.png-c547dd452c7bdf902e8ea24621e5add7.ctex"
+uid="uid://dng4ywlq2nd2w"
+path="res://.godot/imported/spacebar.png-88d33e29e1e33cdc5b7d83f56a9b4782.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/Start Menu/tower.png"
-dest_files=["res://.godot/imported/tower.png-c547dd452c7bdf902e8ea24621e5add7.ctex"]
+source_file="res://Assets/Images/Menus/How to Play/spacebar.png"
+dest_files=["res://.godot/imported/spacebar.png-88d33e29e1e33cdc5b7d83f56a9b4782.ctex"]
 
 [params]
 

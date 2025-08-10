@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pnet4je3hnr3"
-path="res://.godot/imported/bridge.png-a1b0b259151c45dde0305f4677cb0844.ctex"
+uid="uid://hoy7orwgtvew"
+path="res://.godot/imported/direction_keys2.png-3523ebff43916bdc5dfc3b653dd773cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/UI/Start Menu/bridge.png"
-dest_files=["res://.godot/imported/bridge.png-a1b0b259151c45dde0305f4677cb0844.ctex"]
+source_file="res://Assets/Images/Menus/How to Play/direction_keys2.png"
+dest_files=["res://.godot/imported/direction_keys2.png-3523ebff43916bdc5dfc3b653dd773cc.ctex"]
 
 [params]
 
