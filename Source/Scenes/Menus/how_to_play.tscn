@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bvc68a08t7ecl" path="res://Scenes/Menus/how_to_play.gd" id="1_23ib0"]
 [ext_resource type="Theme" uid="uid://metrw8hf6qy1" path="res://Scenes/UI/base_theme.tres" id="1_ufirb"]
-[ext_resource type="Texture2D" uid="uid://4qf83igs5kn5" path="res://Assets/Images/UI/How to Play/direction_keys1.png" id="2_dnfn8"]
-[ext_resource type="Texture2D" uid="uid://hoy7orwgtvew" path="res://Assets/Images/UI/How to Play/direction_keys2.png" id="3_pwo0l"]
-[ext_resource type="Texture2D" uid="uid://dng4ywlq2nd2w" path="res://Assets/Images/UI/How to Play/spacebar.png" id="5_8b7o0"]
-[ext_resource type="Texture2D" uid="uid://bcnepjxdn5sw6" path="res://Assets/Images/UI/How to Play/escape.png" id="6_ua34x"]
-[ext_resource type="Texture2D" uid="uid://cbh7vd5ryu8q7" path="res://Assets/Images/UI/How to Play/mouse.png" id="7_abvdx"]
+[ext_resource type="Texture2D" uid="uid://4qf83igs5kn5" path="res://Assets/Images/Menus/How to Play/direction_keys1.png" id="2_dnfn8"]
+[ext_resource type="Texture2D" uid="uid://hoy7orwgtvew" path="res://Assets/Images/Menus/How to Play/direction_keys2.png" id="3_pwo0l"]
+[ext_resource type="Texture2D" uid="uid://dng4ywlq2nd2w" path="res://Assets/Images/Menus/How to Play/spacebar.png" id="5_8b7o0"]
+[ext_resource type="Texture2D" uid="uid://bcnepjxdn5sw6" path="res://Assets/Images/Menus/How to Play/escape.png" id="6_ua34x"]
+[ext_resource type="Texture2D" uid="uid://cbh7vd5ryu8q7" path="res://Assets/Images/Menus/How to Play/mouse.png" id="7_abvdx"]
 [ext_resource type="PackedScene" uid="uid://co4vy8ojvpmq7" path="res://Scenes/Menus/custom_button.tscn" id="8_ecist"]
 
 [sub_resource type="Animation" id="Animation_dnfn8"]
