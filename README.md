@@ -23,3 +23,7 @@ This project was made using Godot 4.4.1. It is written entirely in GDScript, so 
 You can download the engine from https://godotengine.org/download/. 
 
 Note that there are no audio files distributed in this repository. See [the README.md file in the Audio folder](/Source/Assets/Audio/README.md) to see how to get the files.
+
+Aseprite was used to create and modify pixel art assets. Some `.aseprite` project files can be found in the asset folders. To open them, you can get Aseprite from:
+
+https://www.aseprite.org/
