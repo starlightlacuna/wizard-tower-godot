@@ -11,7 +11,10 @@ config_version=5
 [application]
 
 config/name="The Wizard Tower"
-config/version="0.2"
+config/description="Defend your tower, wizard!
+
+A short action game where you play a wizard fending off waves of enemies using firebolts."
+config/version="1.0"
 run/main_scene="uid://crbi44w3tom4i"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
