@@ -14,5 +14,7 @@ func _ready() -> void:
 ## Plays the input [param audio_stream]. If passed in, the stream will be played
 ## starting at [param from].
 func play(audio_stream: AudioStream, from: float = 0.0) -> void:
+	if _audio_stream_player.stream == audio_stream:
+		return
 	_audio_stream_player.stream = audio_stream
 	_audio_stream_player.play(from)
