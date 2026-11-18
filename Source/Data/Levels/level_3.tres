@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=45 format=3 uid="uid://dsk55to5nq6ak"]
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://dsk55to5nq6ak"]
 
 [ext_resource type="Script" uid="uid://dtw3dow0778l" path="res://Scenes/Level Manager/level.gd" id="1_ji7i2"]
 [ext_resource type="Script" uid="uid://cg88oo8ssi1b1" path="res://Scenes/Level Manager/level_step.gd" id="2_1rdik"]
@@ -15,10 +15,7 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_jspg3"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
 max_lane = 2
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
@@ -29,11 +26,8 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_8u5yk"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 3
-max_lane = 5
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_ll3p1"]
@@ -43,10 +37,7 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_lykce"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
 max_lane = 2
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
@@ -57,11 +48,8 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_f2g4b"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 3
-max_lane = 5
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_w27wu"]
@@ -71,10 +59,7 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_vopua"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
 max_lane = 2
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
@@ -85,11 +70,8 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_0cxtr"]
 script = ExtResource("4_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 3
-max_lane = 5
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_ovxxa"]
@@ -99,17 +81,12 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_tou8f"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
 max_lane = 1
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_gibcs"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 2
 max_lane = 3
@@ -117,11 +94,8 @@ metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_laj55"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 4
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_jf1mv"]
@@ -138,27 +112,16 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 script = ExtResource("6_6ag76")
 enemy_type = 1
 lane = 5
-random_lane = false
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_d65et"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_suysy"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_5t26t"]
@@ -173,17 +136,12 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 
 [sub_resource type="Resource" id="Resource_5domt"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
 max_lane = 1
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_uytbn"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 2
 max_lane = 3
@@ -191,11 +149,8 @@ metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_xxxbf"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
 min_lane = 4
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_crlqh"]
@@ -211,28 +166,16 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 [sub_resource type="Resource" id="Resource_v8rpy"]
 script = ExtResource("6_6ag76")
 enemy_type = 1
-lane = 0
-random_lane = false
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_rdpyk"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_ehuvj"]
 script = ExtResource("6_6ag76")
-enemy_type = 0
-lane = 0
 random_lane = true
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://b3caof2drmctg"
 
 [sub_resource type="Resource" id="Resource_ucec7"]
@@ -249,9 +192,6 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 script = ExtResource("4_6ag76")
 enemy_type = 2
 lane = 2
-random_lane = false
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_lp8w8"]
@@ -263,9 +203,6 @@ metadata/_custom_type_script = "uid://w46wnmwje315"
 script = ExtResource("4_6ag76")
 enemy_type = 2
 lane = 4
-random_lane = false
-min_lane = 0
-max_lane = 5
 metadata/_custom_type_script = "uid://cnuovcf1umc8s"
 
 [sub_resource type="Resource" id="Resource_4hwb5"]

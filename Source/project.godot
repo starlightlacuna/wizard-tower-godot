@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="The Wizard Tower"
@@ -16,7 +20,7 @@ config/description="Defend your tower, wizard!
 A short action game where you play a wizard fending off waves of enemies using firebolts."
 config/version="1.0"
 run/main_scene="uid://crbi44w3tom4i"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -34,6 +38,7 @@ BackgroundMusic="*res://Utilities/background_music.gd"
 window/size/viewport_width=960
 window/size/viewport_height=640
 window/stretch/mode="viewport"
+
 
 [file_customization]
 

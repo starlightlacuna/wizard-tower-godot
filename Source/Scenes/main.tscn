@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crbi44w3tom4i"]
+[gd_scene format=3 uid="uid://crbi44w3tom4i"]
 
 [ext_resource type="Script" uid="uid://bbvdbqskmbdcm" path="res://Scenes/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://brhllmdgpj07q" path="res://Scenes/Game/game.tscn" id="1_jjgbg"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4mbdigtstaiq" path="res://Scenes/Menus/how_to_play.tscn" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://b4kvrc8nrq0wc" path="res://Scenes/Menus/credits.tscn" id="5_kry3j"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=154811889]
 script = ExtResource("1_bo1nx")
 credits_scene = ExtResource("5_kry3j")
 game_scene = ExtResource("1_jjgbg")
